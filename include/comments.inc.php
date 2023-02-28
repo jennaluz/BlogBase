@@ -1,6 +1,8 @@
 <?php
 // Update the details below with your MySQL details
-require('logic.php');
+//require('logic.php');
+
+require "./connect.inc.php";
 
 session_start();
 if(isset($_SESSION["username"])){
@@ -53,7 +55,8 @@ return $html;
 
 // This function is the template for the write comment form
 function show_write_comment_form($parent_id = -1) {
-  require('logic.php');
+  //require('logic.php');
+require "./connect.inc.php";
   if(isset($_SESSION["username"])){
     $loggedInUser = $_SESSION["username"];
   $getSignedIn = $con->query("SELECT username FROM users WHERE username='$loggedInUser'");

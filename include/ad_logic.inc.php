@@ -24,22 +24,22 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
             $insert = $con->query("INSERT into ad_displays (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
             if($insert){
                 $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                header("Location: ad_design.php");
+                header("Location: ../content/ads.php");
             }else{
                 $statusMsg = "File upload failed, please try again.";
-                header("Location: ad_design.php");
+                header("Location: ../content/ads.php");
             }
         }else{
             $statusMsg = "Sorry, there was an error uploading your file.";
-                header("Location: ad_design.php");
+                header("Location: ../content/ads.php");
         }
     }else{
         $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-                header("Location: ad_design.php");
+                header("Location: ../content/ads.php");
     }
 }else{
     $statusMsg = 'Please select a file to upload.';
-                header("Location: ad_design.php");
+                header("Location: ../content/ads.php");
 }
 
 // Display status message

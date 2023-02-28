@@ -3,6 +3,6 @@
     // Destroy session
     if(session_destroy()) {
         // Redirecting To Home Page
-        header("Location: logout_page.php");
+        header("Location: ../content/logout.php");
     }
 ?>

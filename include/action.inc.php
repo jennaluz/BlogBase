@@ -15,7 +15,7 @@ if(isset($_REQUEST['replyCont'])){
                 VALUES ('$loggedInUser', '$COMMENTID', '$replyCont', '$content5')";
   $resultReply = mysqli_query($con, $newreply);
   if($resultReply){
-    header("Location: viewpost.php?id=$realPostID");
+    header("Location: ../content/post.php?id=$realPostID");
   }else{
     echo "<h4>There was an error submitting the query...</h4>";
   }
