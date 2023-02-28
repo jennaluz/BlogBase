@@ -1,6 +1,6 @@
 <?php
-require "../include/connect.php";
-include "../include/auth_session.php";
+require "../include/connect.inc.php";
+include "../include/auth_session.inc.php";
 ?>
 <!DOCTYPE html>
 <!--
@@ -27,7 +27,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
           </div>
           <div class="nav-mid flex-div">
               <div class="search-box flex-div">
-                <form action="search-proc.php" method="POST" id="searchForm">
+                <form action="./search.php" method="POST" id="searchForm">
             <input type="text/submiit" name="search" placeholder="search"/> <img src="./images/search.png">
         </form>
               </div>
@@ -146,7 +146,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             while($row = $result->fetch_assoc()){
                                 echo "<tr><td> " . $row["userid"] . "</td><td>" . $row["username"] . " </td><td> " . $row["fname"] . " " . $row["lname"] . " </td><td> " . $row["email"] . "</td><td> " .$row["is_approved"] . "</td><td>" . $row["Admin"] . " </td><td> " . $row["graphic_Des"] . " </td><td> " . $row["writer"] . " </td><td> " . $row["reader"] . " </td><td> " . $row["advr"] . " </td>";
                                 ?>
-                    <td><a href="../include/delete_post.php?userid=<?php echo $row["userid"]; ?>">Delete</a></td><!-- comment -->
+                    <td><a href="../include/delete_post.inc.php?userid=<?php echo $row["userid"]; ?>">Delete</a></td><!-- comment -->
                     <?php
                     echo "</tr><br>";
                             }
@@ -181,8 +181,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 echo "<tr><td> " . $row["userid"] . "</td><td>" . $row["username"] . " </td><td> " . $row["fname"] . " " . $row["lname"] . " </td><td> " . $row["email"] . "</td>";
                                 echo "<td> " .$row["is_approved"] . "</td><td>" . $row["Admin"] . " </td><td> " . $row["graphic_Des"] . " </td><td> " . $row["writer"] . " </td><td> " . $row["reader"] . " </td><td> " . $row["advr"] . " </td>";
                                 ?>
-                    <td><a href="../include/delete_post.php?userid=<?php echo $row["userid"]; ?>">Delete</a></td><!-- comment -->
-                    <td><a href="../include/approve_user.php?userid=<?php echo $row["userid"]; ?>">Approve</a></td>
+                    <td><a href="../include/delete_post.inc.php?userid=<?php echo $row["userid"]; ?>">Delete</a></td><!-- comment -->
+                    <td><a href="../include/approve_user.inc.php?userid=<?php echo $row["userid"]; ?>">Approve</a></td>
                     <?php
                     echo "</tr><br>";
                             }
