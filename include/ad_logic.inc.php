@@ -1,6 +1,11 @@
 <?php
 // Include the database configuration file
-include 'logic.php';
+//include 'logic.php';
+
+include "./logic.inc.php";
+
+//require "./connect.inc.php";
+
 $statusMsg = '';
 
 // File upload path
