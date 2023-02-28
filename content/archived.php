@@ -1,5 +1,5 @@
 <?php
-include 'logic.php';
+include "../include/connect.inc.php";
 ?>
 <!DOCTYPE html>
 <!--
@@ -13,20 +13,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta charset="utf-8"><!-- comment -->
         <meta name="viewport" content="width=device-width, intitial-scale=1.0">
         <title>Blog Base e-newspaper</title>
-        <link rel="stylesheet" href="BBlog.css">
+        <link rel="stylesheet" href="./css/styles.css">
     </head>
 
     <body>
 
       <nav class="flex-div">
           <div class="nav-left flex-div">
-              <img class="menu-icon" src="menu_icon.png">
-              <a href="index.php"><img src="logo1.png" class="logo" ></a>
+              <img class="menu-icon" src="./images/menu_icon.png">
+              <a href="./index.php"><img src="./images/logo1.png" class="logo" ></a>
           </div>
           <div class="nav-mid flex-div">
               <div class="search-box flex-div">
-                <form action="search-proc.php" method="POST" id="searchForm">
-            <input type="text/submiit" name="search" placeholder="search"/> <img src="search.png">
+                <form action="./search.php" method="POST" id="searchForm">
+            <input type="text/submit" name="search" placeholder="search"/> <img src="./images/search.png">
         </form>
               </div>
           </div><!-- comment -->
@@ -36,24 +36,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             $loggedInUser = $_SESSION["username"];
             ?>
             <div class="nav-right flex-div">
-                <a href="admin.php"><img src="admin_img.png"></a>
-                <a href="graphDes.php"><img src="gd.png"></a>
-                <a href="create.php"><img src="editor_img.png"></a>
-                <a href="ad_design.php"><img src="ad.png"></a>
-                <a href="user_profile.php" style="padding: 10px"><img src="follow.png"></a>
+                <a href="./admin.php"><img src="./images/admin_img.png"></a>
+                <a href="./design.php"><img src="./images/gd.png"></a>
+                <a href="./create.php"><img src="./images/editor_img.png"></a>
+                <a href="./ads.php"><img src="./images/ad.png"></a>
+                <a href="./profile.php" style="padding: 10px"><img src="./images/follow.png"></a>
                 <u><?php echo $_SESSION['username'] ?></u>
-                <a href="logout.php" style="padding: 10px">Logout</a>
+                <a href="./logout.php" style="padding: 10px">Logout</a>
             <?php
           }else{
             ?>
       <div class="nav-right flex-div">
-          <a href="admin.php"><img src="admin_img.png"></a>
-          <a href="graphDes.php"><img src="gd.png"></a>
-          <a href="create.php"><img src="editor_img.png"></a>
-          <a href="ad_design.php"><img src="ad.png"></a>
-          <a href="user_profile.php"><img src="follow.png"></a>
-          <a href="login.php" >Login</a><!-- comment -->
-          <a href="register.php" style="padding: 10px">Sign Up</a>
+          <a href="./admin.php"><img src="./images/admin_img.png"></a>
+          <a href="./design.php"><img src="./images/gd.png"></a>
+          <a href="./create.php"><img src="./images/editor_img.png"></a>
+          <a href="./ads.php"><img src="./images/ad.png"></a>
+          <a href="./profile.php"><img src="./images/follow.png"></a>
+          <a href="./login.php" >Login</a><!-- comment -->
+          <a href="./register.php" style="padding: 10px">Sign Up</a>
       </div>
       <?php
     }
@@ -63,15 +63,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
       <!--------------------- side bar --------------------->
       <div class="sidebar">
           <div class="shortcut-links">
-              <a href="index.php"><img src="home.png"> Home </a></p>
-              <a href="hot.php"><p><img src="hot.png"> Hot! </a></p>
-              <a href="viewSaved.php"><p><img src="saved.png"> Saved </a></p>
-              <a style="color: orange" href="archived.php"><p><img src="history.png"> Archived </a></p>
+              <a href="./index.php"><img src="./images/home.png"> Home </a></p>
+              <a href="./hot.php"><p><img src="./images/hot.png"> Hot! </a></p>
+              <a href="./saved.php"><p><img src="./images/saved.png"> Saved </a></p>
+              <a style="color: orange" href="./archived.php"><p><img src="./images/history.png"> Archived </a></p>
               <hr>
           </div>
           <div class="Authors">
             <center>
-              <p><a href="social.php">Social</a></p>
+              <p><a href="./social.php">Social</a></p>
             </center>
               <?php
               if(isset($_SESSION["username"])){
@@ -87,7 +87,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                   while($row1 = $getFollowList->fetch_assoc()){
 
                ?>
-                  <a href=""><p><img src="follow.png"><?php echo $row1["username"]; ?></a></p>
+                  <a href=""><p><img src="./images/follow.png"><?php echo $row1["username"]; ?></a></p>
                 <?php
               }
               }
@@ -120,11 +120,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                echo "<center><td>";
                echo '<div class="card">';
                echo '<div class="container">';
-               echo '<h1><a href="viewpost.php?id=' . $row['postID'] . '">' . $row['postTitle'] . '</a></h1>';
+               echo '<h1><a href="post.php?id=' . $row['postID'] . '">' . $row['postTitle'] . '</a></h1>';
                echo '</div>';
                echo '<p>Posted on ' . $row['postDate'] . '</p><br>';
                echo '<p>' . $row['postDesc'] . '</p>';
-               echo '<p><a href="viewpost.php?id=' . $row['postID'] . '">Read More</a></p>';
+               echo '<p><a href="post.php?id=' . $row['postID'] . '">Read More</a></p>';
                echo '</div>';
                echo "</td></center>";
                $i = $i+1;
