@@ -1,6 +1,6 @@
 <?php
-include "../include/connect.php";
-include "../include/auth_ad.php";
+include "../include/connect.inc.php";
+include "../include/auth_ad.inc.php";
 ?>
 <!DOCTYPE html>
 <!--
