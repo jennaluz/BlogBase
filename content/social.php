@@ -1,26 +1,29 @@
 <?php
-  include("logic.php");
-  include('auth_social.php');
+  //include("logic.php");
+  //include('auth_social.php');
+
+include "../include/connect.inc.php";
+include "../include/auth_social.inc.php";
  ?>
 <html lang="eng">
     <head>
         <meta charset="utf-8"><!-- comment -->
         <meta name="viewport" content="width=device-width, intitial-scale=1.0">
         <title>Blog Base e-newspaper</title>
-        <link rel="stylesheet" href="BBlog.css">
+        <link rel="stylesheet" href="./css/styles.css">
     </head>
 
     <body>
 
       <nav class="flex-div">
           <div class="nav-left flex-div">
-              <img class="menu-icon" src="menu_icon.png">
-              <a href="index.php"><img src="logo1.png" class="logo" ></a>
+              <img class="menu-icon" src="./images/menu_icon.png">
+              <a href="./index.php"><img src="./images/logo1.png" class="logo" ></a>
           </div>
           <div class="nav-mid flex-div">
               <div class="search-box flex-div">
-                <form action="search-proc.php" method="POST" id="searchForm">
-            <input type="text/submiit" name="search" placeholder="search"/> <img src="search.png">
+                <form action="./search.php" method="POST" id="searchForm">
+            <input type="text/submiit" name="search" placeholder="search"/> <img src="./images/search.png">
         </form>
               </div>
           </div><!-- comment -->
@@ -29,24 +32,24 @@
             $loggedInUser = $_SESSION["username"];
             ?>
             <div class="nav-right flex-div">
-                <a href="admin.php"><img src="admin_img.png"></a>
-                <a href="graphDes.php"><img src="gd.png"></a>
-                <a href="create.php"><img src="editor_img.png"></a>
-                <a href="ad_design.php"><img src="ad.png"></a>
-                <a href="user_profile.php" style="padding: 10px"><img src="follow.png"></a>
+                <a href="./admin.php"><img src="./images/admin_img.png"></a>
+                <a href="./design.php"><img src="./imgaes/gd.png"></a>
+                <a href="./create.php"><img src="./images/editor_img.png"></a>
+                <a href="./ads.php"><img src="./images/ad.png"></a>
+                <a href="./profile.php" style="padding: 10px"><img src="./images/follow.png"></a>
                 <u><?php echo $_SESSION['username'] ?></u>
-                <a href="logout.php" style="padding: 10px">Logout</a>
+                <a href="./logout.php" style="padding: 10px">Logout</a>
             <?php
           }else{
             ?>
       <div class="nav-right flex-div">
-          <a href="admin.php"><img src="admin_img.png"></a>
-          <a href="graphDes.php"><img src="gd.png"></a>
-          <a href="create.php"><img src="editor_img.png"></a>
-          <a href="ad_design.php"><img src="ad.png"></a>
-          <a href="user_profile.php"><img src="follow.png"></a>
-          <a href="login.php" >Login</a><!-- comment -->
-          <a href="register.php" style="padding: 10px">Sign Up</a>
+          <a href="./admin.php"><img src="./images/admin_img.png"></a>
+          <a href="./design.php"><img src="./images/gd.png"></a>
+          <a href="./create.php"><img src="./images/editor_img.png"></a>
+          <a href="./ads.php"><img src="./images/ad.png"></a>
+          <a href="./profile.php"><img src="./images/follow.png"></a>
+          <a href="./login.php" >Login</a><!-- comment -->
+          <a href="./register.php" style="padding: 10px">Sign Up</a>
       </div>
       <?php
     }
@@ -56,15 +59,15 @@
       <!--------------------- side bar --------------------->
       <div class="sidebar">
           <div class="shortcut-links">
-              <a href="index.php"><img src="home.png"> Home </a></p>
-              <a href="hot.php"><p><img src="hot.png"> Hot! </a></p>
-              <a href="viewSaved.php"><p><img src="saved.png"> Saved </a></p>
-              <a href="archived.php"><p><img src="history.png"> Archived </a></p>
+              <a href="./index.php"><img src="./images/home.png"> Home </a></p>
+              <a href="./hot.php"><p><img src="./images/hot.png"> Hot! </a></p>
+              <a href="./saved.php"><p><img src="./images/saved.png"> Saved </a></p>
+              <a href="./archived.php"><p><img src="./images/history.png"> Archived </a></p>
               <hr>
           </div>
           <div class="Authors">
             <center>
-              <p style="color: orange;"><a href="social.php">Social</a></p>
+              <p style="color: orange;"><a href="./social.php">Social</a></p>
             </center>
               <?php
               if(isset($_SESSION["username"])){
@@ -80,7 +83,7 @@
                   while($row1 = $getFollowList->fetch_assoc()){
 
                ?>
-                  <a href=""><p><img src="follow.png"><?php echo $row1["username"]; ?></a></p>
+                  <a href=""><p><img src="./images/follow.png"><?php echo $row1["username"]; ?></a></p>
                 <?php
               }
               }
@@ -160,12 +163,12 @@
                       //while($row2 = $getSocialPart->fetch_assoc()){
                         if($row1["follow_id"] == 1 ){
                           ?>
-                          <td><a href="approve_follow1.php?unique_number=<?php echo $row1["unique_number"]; ?>">Following</a></td>
+                          <td><a href="../include/approve_follow.php?unique_number=<?php echo $row1["unique_number"]; ?>">Following</a></td>
                             <?php
                           }
                         else{
                           ?>
-                          <td><a href="approve_follow2.php?unique_number=<?php echo $row1["unique_number"]; ?>">Follow</a></td>
+                          <td><a href="../include/approve_unfollow.php?unique_number=<?php echo $row1["unique_number"]; ?>">Follow</a></td>
                           <?php
                         }
                         echo "</tr>";
@@ -182,6 +185,6 @@
 
             ?>
         </center>
-<script src="script.js"></script>
+<script src="./js/script.js"></script>
       </body>
   </html>
