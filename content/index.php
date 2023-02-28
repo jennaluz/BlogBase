@@ -25,7 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>
             <div class="nav-mid flex-div">
                 <div class="search-box flex-div">
-                  <form action="search-proc.php" method="POST" id="searchForm">
+                  <form action="./search.php" method="POST" id="searchForm">
               <input type="text/submiit" name="search" placeholder="search"/> <img src="./images/search.png">
           </form>
                 </div>
