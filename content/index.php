@@ -118,11 +118,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
              echo "<center><td>";
              echo '<div class="card">';
              echo '<div class="container">';
-             echo '<h1><a href="./post.php?id=' . $row['postID'] . '">' . $row['postTitle'] . '</a></h1>';
+             echo '<h1><a href="./post1.php?id=' . $row['postID'] . '">' . $row['postTitle'] . '</a></h1>';
              echo '</div>';
              echo '<p>Posted on ' . $row['postDate'] . '</p><br>';
              echo '<p>' . $row['postDesc'] . '</p>';
-             echo '<p><a href="./post.php?id=' . $row['postID'] . '">Read More</a></p>';
+             echo '<p><a href="./post1.php?id=' . $row['postID'] . '">Read More</a></p>';
              echo '</div>';
              echo "</td></center>";
              $i = $i+1;

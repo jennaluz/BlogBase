@@ -52,7 +52,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
           <a href="./design.php"><img src="./images/gd.png"></a>
           <a href="./create.php"><img src="./images/editor_img.png"></a>
           <a href="./ads.php"><img src="./images/ad.png"></a>
-          <a href="./.php"><img src="./images/follow.png"></a>
+          <a href="./profile.php"><img src="./images/follow.png"></a>
           <a href="./login.php" >Login</a><!-- comment -->
           <a href="./register.php" style="padding: 10px">Sign Up</a>
       </div>

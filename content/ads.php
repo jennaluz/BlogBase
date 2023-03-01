@@ -161,6 +161,6 @@ if($query->num_rows > 0){
 }
 
 ?>
-<script src="script.js"></script>
+<script src="./js/script.js"></script>
     </body>
 </html>
