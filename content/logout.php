@@ -121,6 +121,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </center>
 
     </body>
-    <script src="./jsscript.js"></script>
+    <script src="./js/script.js"></script>
 
 </html>
