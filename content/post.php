@@ -1,5 +1,7 @@
 <?php
-require('logic.php');
+//require('logic.php');
+
+require "../include/connect.inc.php";
 
 $stmt = $con->query("SELECT postID, postTitle, postCont, postDate FROM blog_posts WHERE postID ='" . $_GET["id"] . "'");
 //$stmt->$query(array('postID' => $_GET['id']));
@@ -22,8 +24,8 @@ if ($row['postID'] == '') {
 <head>
     <meta charset="utf-8">
     <title>Blog - <?php echo $row['postTitle']; ?></title>
-    <link rel="stylesheet" href="BBlog.css">
-    		<link href="comments.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/styles/.css">
+    		<link href="./css/comments.css" rel="stylesheet" type="text/css">
     <!--<link rel="stylesheet" href="style/main.css">-->
     <style>
     .card1 {
@@ -63,13 +65,13 @@ if ($row['postID'] == '') {
 <body>
   <nav class="flex-div">
       <div class="nav-left flex-div">
-          <img class="menu-icon" src="menu_icon.png">
-          <a href="index.php"><img src="logo1.png" class="logo" ></a>
+          <img class="menu-icon" src="./images/menu_icon.png">
+          <a href="./index.php"><img src="./images/logo1.png" class="logo" ></a>
       </div>
       <div class="nav-mid flex-div">
           <div class="search-box flex-div">
-            <form action="search-proc.php" method="POST" id="searchForm">
-        <input type="text/submiit" name="search" placeholder="search"/> <img src="search.png">
+            <form action="./search.php" method="POST" id="searchForm">
+        <input type="text/submiit" name="search" placeholder="search"/> <img src="./images/search.png">
     </form>
           </div>
       </div><!-- comment -->
@@ -79,24 +81,24 @@ if ($row['postID'] == '') {
         $loggedInUser = $_SESSION["username"];
         ?>
         <div class="nav-right flex-div">
-            <a href="admin.php"><img src="admin_img.png"></a>
-            <a href="graphDes.php"><img src="gd.png"></a>
-            <a href="create.php"><img src="editor_img.png"></a>
-            <a href="ad_design.php"><img src="ad.png"></a>
-            <a href="user_profile.php" style="padding: 10px"><img src="follow.png"></a>
+            <a href="./admin.php"><img src="./images/admin_img.png"></a>
+            <a href="./design.php"><img src="./images/gd.png"></a>
+            <a href="./create.php"><img src="./images/editor_img.png"></a>
+            <a href="./ads.php"><img src="./images/ad.png"></a>
+            <a href="./profile.php" style="padding: 10px"><img src="./images/follow.png"></a>
             <u><?php echo $_SESSION['username'] ?></u>
-            <a href="logout.php" style="padding: 10px">Logout</a>
+            <a href="./logout.php" style="padding: 10px">Logout</a>
         <?php
       }else{
         ?>
   <div class="nav-right flex-div">
-      <a href="admin.php"><img src="admin_img.png"></a>
-      <a href="graphDes.php"><img src="gd.png"></a>
-      <a href="create.php"><img src="editor_img.png"></a>
-      <a href="ad_design.php"><img src="ad.png"></a>
-      <a href="user_profile.php"><img src="follow.png"></a>
-      <a href="login.php" >Login</a><!-- comment -->
-      <a href="register.php" style="padding: 10px">Sign Up</a>
+      <a href="./admin.php"><img src="./images/admin_img.png"></a>
+      <a href="./design.php"><img src="./images/gd.png"></a>
+      <a href="./create.php"><img src="./images/editor_img.png"></a>
+      <a href="./ads.php"><img src="./images/ad.png"></a>
+      <a href="./profile.php"><img src="./images/follow.png"></a>
+      <a href="./login.php" >Login</a><!-- comment -->
+      <a href="./register.php" style="padding: 10px">Sign Up</a>
   </div>
   <?php
 }
@@ -106,15 +108,15 @@ if ($row['postID'] == '') {
   <!--------------------- side bar --------------------->
   <div class="sidebar">
       <div class="shortcut-links">
-          <a href="index.php"><img src="home.png"> Home </a></p>
-          <a href="hot.php"><p><img src="hot.png"> Hot! </a></p>
-          <a href="viewSaved.php"><p><img src="saved.png"> Saved </a></p>
-          <a href="archived.php"><p><img src="history.png"> Archived </a></p>
+          <a href="./index.php"><img src="./images/home.png"> Home </a></p>
+          <a href="./hot.php"><p><img src="./images/hot.png"> Hot! </a></p>
+          <a href="./saved.php"><p><img src="./images/saved.png"> Saved </a></p>
+          <a href="./archived.php"><p><img src="./images/history.png"> Archived </a></p>
           <hr>
       </div>
       <div class="Authors">
         <center>
-          <p><a href="social.php">Social</a></p>
+          <p><a href="./social.php">Social</a></p>
         </center>
           <?php
           if(isset($_SESSION["username"])){
@@ -130,7 +132,7 @@ if ($row['postID'] == '') {
               while($row1 = $getFollowList->fetch_assoc()){
 
            ?>
-              <a href=""><p><img src="follow.png"><?php echo $row1["username"]; ?></a></p>
+              <a href=""><p><img src="./images/follow.png"><?php echo $row1["username"]; ?></a></p>
             <?php
           }
           }
@@ -199,25 +201,25 @@ if ($row['postID'] == '') {
               if($saveCheck['is_saved']==0){
                 ?>
                 <p><h1><?php echo $row10['postTitle']; ?>
-                  <a href="savePost.php?saveID=<?php echo $saveCheck['saveID']; ?>"><img style="width: 20px; height: 20px;" src="saveIcon.png"></a></h1></p>
+                  <a href="../include/save.php?saveID=<?php echo $saveCheck['saveID']; ?>"><img style="width: 20px; height: 20px;" src="./images/saveIcon.png"></a></h1></p>
                 <?php
                 echo '<p>Posted on ' . $row10['postDate'] . '</p><br>';
                 echo '<p>' . $row10['postCont'] . '</p>';
                 ?>
                 <br>
-                <p><center><a href="unApprove-post.php?postID=<?php echo $row10["postID"]; ?>"><h3>Un-approve Post?</a></h3></center></p>
+                <p><center><a href="../include/revoke_post.inc.php?postID=<?php echo $row10["postID"]; ?>"><h3>Un-approve Post?</a></h3></center></p>
                 <br>
                   <?php
                 echo '</div>';
               }else{
          ?>
-            <p><h1><?php echo $row10['postTitle']; ?><a href="unsavePost.php?saveID=<?php echo $saveCheck['saveID']; ?>"><img style="width: 20px; height: 20px;" src="checkmark.png"></a></h1></p>
+            <p><h1><?php echo $row10['postTitle']; ?><a href="unsave.inc.php?saveID=<?php echo $saveCheck['saveID']; ?>"><img style="width: 20px; height: 20px;" src="./images/checkmark.png"></a></h1></p>
           <?php
           echo '<p>Posted on ' . $row10['postDate'] . '</p><br>';
           echo '<p>' . $row10['postCont'] . '</p>';
           ?>
           <br>
-          <p><center><a href="unApprove-post.php?postID=<?php echo $row10["postID"]; ?>"><h3>Un-approve Post?</a></h3></center></p>
+          <p><center><a href="../include/revoke_post.inc.php?postID=<?php echo $row10["postID"]; ?>"><h3>Un-approve Post?</a></h3></center></p>
           <br>
             <?php
           echo '</div>';
@@ -261,25 +263,25 @@ if ($row['postID'] == '') {
       if($saveCheck['is_saved']==0){
         ?>
         <p><h1><?php echo $row10['postTitle']; ?>
-          <a href="savePost.php?saveID=<?php echo $saveCheck['saveID']; ?>"><img style="width: 20px; height: 20px;" src="saveIcon.png"></a></h1></p>
+          <a href="../include/save.inc.php?saveID=<?php echo $saveCheck['saveID']; ?>"><img style="width: 20px; height: 20px;" src="./images/saveIcon.png"></a></h1></p>
         <?php
         echo '<p>Posted on ' . $row10['postDate'] . '</p><br>';
         echo '<p>' . $row10['postCont'] . '</p>';
         ?>
         <br>
-        <p><center><a href="approve-post.php?postID=<?php echo $row10["postID"]; ?>"><h3>Approve Post?</a> or <a href="delete-post.php?postID=<?php echo $row10["postID"]; ?>">Delete Post?</a></h3></center></p>
+        <p><center><a href="approve_post.inc.php?postID=<?php echo $row10["postID"]; ?>"><h3>Approve Post?</a> or <a href="../include/delete_post.inc.php?postID=<?php echo $row10["postID"]; ?>">Delete Post?</a></h3></center></p>
         <br>
           <?php
         echo '</div>';
       }else{
  ?>
-    <p><h1><?php echo $row10['postTitle']; ?><a href="unsavePost.php?saveID=<?php echo $saveCheck['saveID']; ?>"><img style="width: 20px; height: 20px;" src="checkmark.png"></a></h1></p>
+    <p><h1><?php echo $row10['postTitle']; ?><a href="../include/unsave.inc.php?saveID=<?php echo $saveCheck['saveID']; ?>"><img style="width: 20px; height: 20px;" src="./images/checkmark.png"></a></h1></p>
   <?php
   echo '<p>Posted on ' . $row10['postDate'] . '</p><br>';
   echo '<p>' . $row10['postCont'] . '</p>';
   ?>
   <br>
-  <p><center><a href="approve-post.php?postID=<?php echo $row10["postID"]; ?>"><h3>Approve Post?</a> or <a href="delete-post.php?postID=<?php echo $row10["postID"]; ?>">Delete Post?</a></h3></center></p>
+  <p><center><a href="../include/approve_post.inc.php?postID=<?php echo $row10["postID"]; ?>"><h3>Approve Post?</a> or <a href="../include/delete_post.inc.php?postID=<?php echo $row10["postID"]; ?>">Delete Post?</a></h3></center></p>
   <br>
     <?php
   echo '</div>';
@@ -314,7 +316,7 @@ echo '</div>';
        ?>
     <script>
     const comments_page_id = '<?php echo $realPostID; ?>'; // This number should be unique on every page
-    fetch("comments.php?page_id=" + comments_page_id).then(response => response.text()).then(data => {
+    fetch("../include/comments.inc.php?page_id=" + comments_page_id).then(response => response.text()).then(data => {
     	document.querySelector(".comments").innerHTML = data;
     	document.querySelectorAll(".comments .write_comment_btn, .comments .reply_comment_btn").forEach(element => {
     		element.onclick = event => {
@@ -327,7 +329,7 @@ echo '</div>';
     	document.querySelectorAll(".comments .write_comment form").forEach(element => {
     		element.onsubmit = event => {
     			event.preventDefault();
-    			fetch("comments.php?page_id=" + comments_page_id, {
+    			fetch("../include/comments.inc.php?page_id=" + comments_page_id, {
     				method: 'POST',
     				body: new FormData(element)
     			}).then(response => response.text()).then(data => {
@@ -339,7 +341,7 @@ echo '</div>';
     </script>
 
 
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
 
 </body>
 
