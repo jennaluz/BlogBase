@@ -7,7 +7,7 @@ if (mysqli_query($con, $sql)) {
     $info = "SELECT postID FROM save WHERE saveID='$realSaveID'";
     $getInfo = $con->query($info);
     $realPostID = $getInfo->fetch_assoc();
-    header("Location: ../content/post.php?id=" . $realPostID["postID"] . "");
+    header("Location: ../content/post1.php?id=" . $realPostID["postID"] . "");
 } else {
     echo "Error updating record: " . mysqli_error($con);
 }
