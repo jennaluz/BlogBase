@@ -68,7 +68,7 @@ if ($row['postID'] == '') {
       </div>
       <div class="nav-mid flex-div">
           <div class="search-box flex-div">
-            <form action="search-proc.php" method="POST" id="searchForm">
+            <form action="./search.php" method="POST" id="searchForm">
         <input type="text/submit" name="search" placeholder="search"/> <img src="./images/search.png">
     </form>
           </div>
