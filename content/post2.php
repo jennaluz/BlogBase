@@ -24,7 +24,7 @@ if ($row['postID'] == '') {
 <head>
     <meta charset="utf-8">
     <title>Blog - <?php echo $row['postTitle']; ?></title>
-    <link rel="stylesheet" href="./css/styles/.css">
+    <link rel="stylesheet" href="./css/styles.css">
     		<link href="./css/comments.css" rel="stylesheet" type="text/css">
     <!--<link rel="stylesheet" href="style/main.css">-->
     <style>
@@ -213,7 +213,7 @@ if ($row['postID'] == '') {
                 echo '</div>';
               }else{
          ?>
-            <p><h1><?php echo $row10['postTitle']; ?><a href="unsave.inc.php?saveID=<?php echo $saveCheck['saveID']; ?>"><img style="width: 20px; height: 20px;" src="./images/checkmark.png"></a></h1></p>
+            <p><h1><?php echo $row10['postTitle']; ?><a href="../include/unsave.inc.php?saveID=<?php echo $saveCheck['saveID']; ?>"><img style="width: 20px; height: 20px;" src="./images/checkmark.png"></a></h1></p>
           <?php
           echo '<p>Posted on ' . $row10['postDate'] . '</p><br>';
           echo '<p>' . $row10['postCont'] . '</p>';
