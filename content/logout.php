@@ -4,9 +4,9 @@ include "../include/connect.inc.php";
 <!DOCTYPE html>
 <html lang="eng">
     <head>
+        <title>Blog Base e-newspaper</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intitial-scale=1.0">
-        <title>Blog Base e-newspaper</title>
         <link rel="stylesheet" href="./css/styles.css">
     </head>
     <body>
