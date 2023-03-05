@@ -5,12 +5,13 @@
 <div class="nav-mid flex-div">
     <div class="search-box flex-div">
             <form action="./search.php" method="POST" id="searchForm">
-            <input type="text/submiit" name="search" placeholder="search"/> <img src="./images/search.png">
+            <input type="text/submit" name="search" placeholder="search"/> <img src="./images/search.png">
             </form>
     </div>
-</div><!-- comment -->
+</div>
 
 <?php
+session_start();
 if(isset($_SESSION["username"])){
     $loggedInUser = $_SESSION["username"];
 ?>
