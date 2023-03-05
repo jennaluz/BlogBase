@@ -23,4 +23,5 @@ require "../include/connect.inc.php";
         <p><h3>Would you like to register <a href="./register.php">again?</a><br>Or<br>Would you like to <a href="./index.php">return</a> to home?</h3></p>
       </center>
     </body>
+    <script src="./js/script.js"></script>
 </html>
