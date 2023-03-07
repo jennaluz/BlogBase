@@ -33,7 +33,7 @@ require "../include/connect.inc.php";
         <br><br>
         <?php
         //require('logic.php');
-        require "../include/connect.inc.php";
+        //require "../include/connect.inc.php";
         if(isset($_REQUEST['username'])){
             $username = stripslashes($_REQUEST['username']);
             $username = mysqli_real_escape_string($con, $username);
@@ -55,7 +55,7 @@ require "../include/connect.inc.php";
         $check_select = mysqli_query($con, $check);
         $random_name = mysqli_num_rows($check_select);
         if($random_name > 0){
-          header("Location: ./username_wrong.inc.php");
+          header("Location: ./username_wrong.php");
         }else{
 
         $query    = "INSERT into `users` (username, fname, lname, email, password, Admin, graphic_des, writer, reader, advr)
@@ -66,12 +66,12 @@ require "../include/connect.inc.php";
                 echo "<div><h3>Registered successfully.</h3></div>";
                 header("Location: ./login.php");
             }
-            else{
+            else {
                 echo "<div><h3>Required fields are missing...</h3></div>";
             }
           }
         }
-        else{
+        else {
         ?>
     <center>
         <form class=" align-items-center justify-content-center" action="" method="post">
