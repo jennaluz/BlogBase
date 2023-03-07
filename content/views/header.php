@@ -22,7 +22,7 @@ if(isset($_SESSION["username"])){
     <a href="./ads.php"><img src="./images/ad.png"></a>
     <a href="./profile.php" style="padding: 10px"><img src="./images/follow.png"></a>
     <u><?php echo $_SESSION['username'] ?></u>
-    <a href="./logout.php" style="padding: 10px">Logout</a>
+    <a href="../include/logout.inc.php" style="padding: 10px">Logout</a>
 <?php
 } else {
 ?>
