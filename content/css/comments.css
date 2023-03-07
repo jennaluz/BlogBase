@@ -78,3 +78,35 @@
 .comments .comment .replies {
     padding-left: 30px;
 }
+
+.card1 {
+    color: black;
+    width: fit-content;
+    padding: 15px;
+    box-shadow: 0 4px 8px 0 rgba(178, 178, 178,0.6);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+}
+.container1 {
+    padding: 4px 18px;
+}
+.textBox {
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+.textBox1 {
+    height: 75px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
