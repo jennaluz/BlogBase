@@ -43,27 +43,23 @@
             $password = stripslashes($_REQUEST['password']);
             $password = mysqli_escape_string($con, $password);
 
-            if (!isset($_REQUEST['graphic_Des'])) {
-                $designer = 0;
-            } else {
+            $designer = 0;
+            $writer = 0;
+            $advertiser = 0;
+            $admin = 0;
+            if (isset($_REQUEST['graphic_Des'])) {
                 $designer = 1;
             }
 
-            if (!isset($_REQUEST['writer'])) {
-                $writer = 0;
-            } else {
+            if (isset($_REQUEST['writer'])) {
                 $writer = 1;
             }
 
-            if (!isset($_REQUEST['advr'])) {;
-                $advertiser = 0;
-            } else {
+            if (isset($_REQUEST['advr'])) {;
                 $advertiser = 1;
             }
 
-            if (!isset($_REQUEST['Admin'])) {
-                $admin = 0;
-            } else {
+            if (isset($_REQUEST['Admin'])) {
                 $admin = 1;
             }
 
