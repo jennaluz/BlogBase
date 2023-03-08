@@ -30,29 +30,52 @@
         if (isset($_REQUEST['username'])) {
             $username = stripslashes($_REQUEST['username']);
             $username = mysqli_real_escape_string($con, $username);
+
             $fname = stripslashes($_REQUEST['fname']);
             $fname = mysqli_real_escape_string($con, $fname);
+
             $lname = stripslashes($_REQUEST['lname']);
             $lname = mysqli_real_escape_string($con, $lname);
+
             $email = stripslashes($_REQUEST['email']);
             $email = mysqli_real_escape_string($con, $email);
+
             $password = stripslashes($_REQUEST['password']);
             $password = mysqli_escape_string($con, $password);
-            $Admin = $_REQUEST['Admin'];
-            $graphic_Des = $_REQUEST['graphic_Des'];
-            $writer = $_REQUEST['writer'];
-            $reader = $_REQUEST['reader'];
-            $advr = $_REQUEST['advr'];
+
+            if (!isset($_REQUEST['graphic_Des'])) {
+                $designer = 0;
+            } else {
+                $designer = 1;
+            }
+
+            if (!isset($_REQUEST['writer'])) {
+                $writer = 0;
+            } else {
+                $writer = 1;
+            }
+
+            if (!isset($_REQUEST['advr'])) {;
+                $advertiser = 0;
+            } else {
+                $advertiser = 1;
+            }
+
+            if (!isset($_REQUEST['Admin'])) {
+                $admin = 0;
+            } else {
+                $admin = 1;
+            }
 
             $check = "SELECT * FROM `users` WHERE username='$username'";
             $check_select = mysqli_query($con, $check);
             $random_name = mysqli_num_rows($check_select);
 
-            if($random_name > 0){
-            header("Location: ./username_wrong.php");
+            if($random_name > 0) {
+                header("Location: ./username_wrong.php");
             } else {
-                $query = "INSERT into `users` (username, fname, lname, email, password, Admin, graphic_des, writer, reader, advr)
-                          VALUES ('$username', '$fname', '$lname', '$email', '" . md5($password) . "', '$Admin', '$graphic_Des', '$writer', '$reader', '$advr')";
+                $query = "INSERT into `users` (username, fname, lname, email, password, Admin, graphic_Des, writer, advr)
+                          VALUES ('$username', '$fname', '$lname', '$email', '" . md5($password) . "', '$admin', '$designer', '$writer', '$advertiser')";
                 $result = mysqli_query($con, $query);
 
                 if ($result) {
@@ -95,19 +118,19 @@
                     </div>
                     <div class="form-check">
                         <div class="mb-2">
-                            <input class="form-check-input" type="checkbox" id="Admin" name="Admin">
+                            <input class="form-check-input" type="checkbox" id="Admin" name="Admin" value="1">
                             <label class="form-check-label" for="Admin">Admin</label>
                         </div>
                         <div class="mb-2">
-                            <input class="form-check-input" type="checkbox" id="graphic_Des" name="graphic_Des">
+                            <input class="form-check-input" type="checkbox" id="graphic_Des" name="graphic_Des" value="1">
                             <label class="form-check-label" for="graphic_Des">Graphic Designer</label>
                         </div>
                         <div class="mb-2">
-                            <input class="form-check-input" type="checkbox" id="write" name="writer">
+                            <input class="form-check-input" type="checkbox" id="write" name="writer" value="1">
                             <label class="form-check-label" for="writer">Writer</label>
                         </div>
                         <div class="mb-2">
-                            <input class="form-check-input" type="checkbox" id="advr" name="advr">
+                            <input class="form-check-input" type="checkbox" id="advr" name="advr" value="1">
                             <label class="form-check-label" for="advr">Advertiser</label>
                         </div>
 <!--
