@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <div class="header"
+        <div class="header">
             <?php include "./views/header.php" ?>
         </div>
 
