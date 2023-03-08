@@ -100,6 +100,7 @@ include_once "../include/auth_session.inc.php";
                         <?php
                         $unreg_users_query = "SELECT userid, username, fname, lname, email, is_approved, Admin, graphic_Des, writer, reader, advr FROM users WHERE is_approved!=1";
                         $unreg_users_result = mysqli_query($con, $unreg_users_query);
+                        $unreg_users_array = $unreg_users_result->fetch_all(MYSQLI_BOTH);
                         ?>
                         <table class="table">
                             <thead>
@@ -128,7 +129,7 @@ include_once "../include/auth_session.inc.php";
                                         <?php } ?>
                                             <td>
                                                 <a href="../include/approve_user.inc.php?userid=<?php echo $unreg_users_array[$i]["userid"]; ?>" class="btn btn-outline-primary">Approve</a>
-                                                <a href="../include/delete_user.inc.php?userid=<?php echo $unreg_users_arry[$i]["userid"]; ?>" class="btn btn-outline-danger">Delete</a>
+                                                <a href="../include/delete_user.inc.php?userid=<?php echo $unreg_users_array[$i]["userid"]; ?>" class="btn btn-outline-danger">Deny</a>
                                             </td>
                                     </tr>
                                 <?php } ?>
