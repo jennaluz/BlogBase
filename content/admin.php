@@ -1,7 +1,4 @@
 <?php
-/*
- * Logan Finley
- */
 require_once "../include/connect.inc.php";
 include_once "../include/auth_session.inc.php";
 ?>
