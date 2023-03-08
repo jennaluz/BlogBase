@@ -1,40 +1,33 @@
-<?php
+<?php require "../include/connect.inc.php"; ?>
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
- */
-//require('logic.php');
-require "../include/connect.inc.php";
-?>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>Blogbase - Sign Up</title>
-        <meta charset="utf-8"><!-- <meta -->
-        <meta name="viewport" content="width=device-width, inital-scale=1"><!-- comment -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-         <link rel="stylesheet" href="./css/styles.css">
-                  <link rel="stylesheet" href="./css/enter.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1">
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="./css/enter.css">
+
+        <title>BlogBase Register</title>
     </head>
+
     <body>
-      <nav class="flex-div">
-        <?php include "./views/header.php" ?>
-      </nav>
-      <div class="sidebar">
-        <?php include "./views/sidebar.php" ?>
-      </div>
-        <div class="d-flex align-items-center justify-content-center">
-            <h1>Register for BlogBase:</h1><!-- comment -->
+        <nav class="flex-div">
+            <?php include "./views/header.php" ?>
+        </nav>
+        <div class="sidebar">
+            <?php include "./views/sidebar.php" ?>
         </div>
-        <br><br>
+
+        <div class="container mt-5 mb-3 text-center">
+            <h1 class="display-3">BlogBase</h1>
+        </div>
+
         <?php
-        //require('logic.php');
-        //require "../include/connect.inc.php";
-        if(isset($_REQUEST['username'])){
+        if (isset($_REQUEST['username'])) {
             $username = stripslashes($_REQUEST['username']);
             $username = mysqli_real_escape_string($con, $username);
             $fname = stripslashes($_REQUEST['fname']);
@@ -51,81 +44,98 @@ require "../include/connect.inc.php";
             $reader = $_REQUEST['reader'];
             $advr = $_REQUEST['advr'];
 
-        $check = "SELECT * FROM `users` WHERE username='$username'";
-        $check_select = mysqli_query($con, $check);
-        $random_name = mysqli_num_rows($check_select);
-        if($random_name > 0){
-          header("Location: ./username_wrong.php");
-        }else{
+            $check = "SELECT * FROM `users` WHERE username='$username'";
+            $check_select = mysqli_query($con, $check);
+            $random_name = mysqli_num_rows($check_select);
 
-        $query    = "INSERT into `users` (username, fname, lname, email, password, Admin, graphic_des, writer, reader, advr)
-                     VALUES ('$username', '$fname', '$lname', '$email', '" . md5($password) . "', '$Admin', '$graphic_Des', '$writer', '$reader', '$advr')";
-        $result   = mysqli_query($con, $query);
+            if($random_name > 0){
+            header("Location: ./username_wrong.php");
+            } else {
+                $query = "INSERT into `users` (username, fname, lname, email, password, Admin, graphic_des, writer, reader, advr)
+                          VALUES ('$username', '$fname', '$lname', '$email', '" . md5($password) . "', '$Admin', '$graphic_Des', '$writer', '$reader', '$advr')";
+                $result = mysqli_query($con, $query);
 
-            if ($result) {
-                echo "<div><h3>Registered successfully.</h3></div>";
-                header("Location: ./login.php");
+                if ($result) {
+                    echo "<div><h3>Successfully Registered</h3></div>";
+                    header("Location: ./login.php");
+                } else {
+                    echo "<div><h3>Missing Required Fields</h3></div>";
+                }
             }
-            else {
-                echo "<div><h3>Required fields are missing...</h3></div>";
-            }
-          }
-        }
-        else {
+        } else {
         ?>
-    <center>
-        <form class=" align-items-center justify-content-center" action="" method="post">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input class="form-control" type="text" id="username" name="username" placeholder="Username" required />
+
+        <div class="row">
+            <div class="col"></div>
+
+            <div class="col-5">
+                <form class="container" method="post">
+                    <div class="row mt-2 mb-3 align-items-center">
+                        <div class="col">
+                            <label for="fname">First name</label>
+                            <input class="form-control" type="text" id="fname" name="fname" required /><!-- comment -->
+                        </div>
+                        <div class="col">
+                            <label for="lname">Last name</label>
+                            <input class="form-control" type="text" id="lname" name="lname" required /><!-- comment -->
+                        </div>
+                    </div>
+
+                    <div class="mt-2 mb-3">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="email" id="email" name="email" required />
+                    </div>
+                    <div class="mt-2 mb-3">
+                        <label for="username">Username</label>
+                        <input class="form-control" type="text" id="username" name="username" required />
+                    </div>
+                    <div class="mt-2 mb-4">
+                        <label for="password">Password</label>
+                        <input class="form-control" type="password" id="password" name="password" required />
+                    </div>
+                    <div class="form-check">
+                        <div class="mb-2">
+                            <input class="form-check-input" type="checkbox" id="Admin" name="Admin">
+                            <label class="form-check-label" for="Admin">Admin</label>
+                        </div>
+                        <div class="mb-2">
+                            <input class="form-check-input" type="checkbox" id="graphic_Des" name="graphic_Des">
+                            <label class="form-check-label" for="graphic_Des">Graphic Designer</label>
+                        </div>
+                        <div class="mb-2">
+                            <input class="form-check-input" type="checkbox" id="write" name="writer">
+                            <label class="form-check-label" for="writer">Writer</label>
+                        </div>
+                        <div class="mb-2">
+                            <input class="form-check-input" type="checkbox" id="advr" name="advr">
+                            <label class="form-check-label" for="advr">Advertiser</label>
+                        </div>
+<!--
+                        <div class="mb-2">
+                            <label for="reader">Reader</label>
+                            <input type="checkbox" id="reader" name="reader" value="1" class="#" required />
+                        </div>
+-->
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" name="submit" class="btn btn-outline-dark">Register</button>
+                        </div>
+                        <div class="col-7">
+                            <p>Already have an account?&emsp;<a href="./login.php">Login to Account</a></p>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="fname">First name:</label>
-                <input class="form-control" type="text" id="fname" name="fname" placeholder="First Name" required /><!-- comment -->
-            </div>
-            <div class="form-group">
-                <label for="lname">Last name:</label>
-                <input class="form-control" type="text" id="lname" name="lname" placeholder="Last Name" required /><!-- comment -->
-            </div><!-- comment -->
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input class="form-control" type="email" id="email" name="email" placeholder="Email" required />
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input class="form-control" type="password" id="password" name="password" placeholder="Password" required />
-            </div>
-            <div class="form-group">
-              <label for="Admin">Admin:</label>
-              <input type="checkbox" id="Admin" name="Admin" value="1" class="#"/>
-              <br>
-              <label for="graphic_Des">Graphic Designer:</label>
-              <input type="checkbox" id="graphic_Des" name="graphic_Des" value="1" class="#"/>
-              <br>
-              <label for="writer">Writer:</label>
-              <input type="checkbox" id="writer" name="writer" value="1" class="#"/>
-              <br>
-              <label for="reader">Reader:</label>
-              <input type="checkbox" id="reader" name="reader" value="1" class="#" required />
-              <br>
-              <label for="advr">Advritiser:</label>
-              <input type="checkbox" id="advr" name="advr" value="1" class="#"/>
-            </div>
-            <br>
-            <div class="form-group">
-                <input type="submit" value="Submit" name="submit" class="form-control"/>
-            </div>
-        </form>
-    </center>
+
+            <div class="col"></div>
+        </div>
         <?php
         }
         ?>
-        <br>
-    <center>
-      <h3>Already have an account? <a href="./login.php">login</a> here.</h3>
-      <br>
-      <h3>Not what you wanted to see? Go <a href="./index.php">back</a> to home.</h3>
-    </center>
-    <script src="./js/script.js"></script>
+
+        <script src="./js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>
