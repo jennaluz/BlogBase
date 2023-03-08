@@ -86,17 +86,16 @@
 
         <div class="row">
             <div class="col"></div>
-
             <div class="col-5">
                 <form class="container" method="post">
                     <div class="row mt-2 mb-3 align-items-center">
                         <div class="col">
                             <label for="fname">First name</label>
-                            <input class="form-control" type="text" id="fname" name="fname" required /><!-- comment -->
+                            <input class="form-control" type="text" id="fname" name="fname" required />
                         </div>
                         <div class="col">
                             <label for="lname">Last name</label>
-                            <input class="form-control" type="text" id="lname" name="lname" required /><!-- comment -->
+                            <input class="form-control" type="text" id="lname" name="lname" required />
                         </div>
                     </div>
 
@@ -112,42 +111,32 @@
                         <label for="password">Password</label>
                         <input class="form-control" type="password" id="password" name="password" required />
                     </div>
-                    <div class="form-check">
-                        <div class="mb-2">
-                            <input class="form-check-input" type="checkbox" id="Admin" name="Admin" value="1">
-                            <label class="form-check-label" for="Admin">Admin</label>
-                        </div>
-                        <div class="mb-2">
-                            <input class="form-check-input" type="checkbox" id="graphic_Des" name="graphic_Des" value="1">
-                            <label class="form-check-label" for="graphic_Des">Graphic Designer</label>
-                        </div>
-                        <div class="mb-2">
+
+
+                    <div class="col mb-4">
+                        <span class="mb-2" style="font-size: 18px">Check all that apply</span>
+                        <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="write" name="writer" value="1">
                             <label class="form-check-label" for="writer">Writer</label>
                         </div>
-                        <div class="mb-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="graphic_Des" name="graphic_Des" value="1">
+                            <label class="form-check-label" for="graphic_Des">Designer</label>
+                        </div>
+                        <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="advr" name="advr" value="1">
                             <label class="form-check-label" for="advr">Advertiser</label>
                         </div>
-<!--
-                        <div class="mb-2">
-                            <label for="reader">Reader</label>
-                            <input type="checkbox" id="reader" name="reader" value="1" class="#" required />
-                        </div>
--->
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" name="submit" class="btn btn-outline-dark">Register</button>
-                        </div>
-                        <div class="col-7">
-                            <p>Already have an account?&emsp;<a href="./login.php">Login to Account</a></p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="Admin" name="Admin" value="1">
+                            <label class="form-check-label" for="Admin">Admin</label>
                         </div>
                     </div>
+
+                    <button class="btn btn-outline-dark mb-2" type="submit" name="submit">Register</button>
+                    <p>Already have an account?&emsp;<a href="./login.php">Login to Account</a></p>
                 </form>
             </div>
-
             <div class="col"></div>
         </div>
         <?php
