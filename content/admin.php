@@ -54,13 +54,13 @@ include_once "../include/auth_session.inc.php";
 
                     <div class="tab-pane fade show active" id="registered-tab-pane" role="tabpanel" aria-labelledby="registered-tab" tabindex="0">
                         <?php
-                        $reg_users_query = "SELECT userid, username, fname, lname, email, is_approved, Admin, graphic_Des, writer, reader, advr
+                        $reg_users_query = "SELECT userid, username, fname, lname, email , Admin, graphic_Des, writer, reader, advr
                                             FROM users
                                             WHERE is_approved=1";
                         $reg_users_result = mysqli_query($con, $reg_users_query);
                         $reg_users_array = $reg_users_result->fetch_all(MYSQLI_BOTH);
                         ?>
-                        <table class="table">
+                        <table class="table table-responsive">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
@@ -68,7 +68,6 @@ include_once "../include/auth_session.inc.php";
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Approved</th>
                                     <th scope="col">Admin</th>
                                     <th scope="col">Designer</th>
                                     <th scope="col">Writer</th>
@@ -96,7 +95,7 @@ include_once "../include/auth_session.inc.php";
 
                     <div class="tab-pane fade" id="unregistered-tab-pane" role="tabpanel" aria-labelledby="unregistered-tab" tabindex="0">
                         <?php
-                        $unreg_users_query = "SELECT userid, username, fname, lname, email, is_approved, Admin, graphic_Des, writer, reader, advr FROM users WHERE is_approved!=1";
+                        $unreg_users_query = "SELECT userid, username, fname, lname, email, Admin, graphic_Des, writer, reader, advr FROM users WHERE is_approved!=1";
                         $unreg_users_result = mysqli_query($con, $unreg_users_query);
                         $unreg_users_array = $unreg_users_result->fetch_all(MYSQLI_BOTH);
                         ?>
@@ -108,7 +107,6 @@ include_once "../include/auth_session.inc.php";
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Approved</th>
                                     <th scope="col">Admin</th>
                                     <th scope="col">Designer</th>
                                     <th scope="col">Writer</th>
