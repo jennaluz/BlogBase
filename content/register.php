@@ -1,4 +1,5 @@
-<?php require_once "../include/connect.inc.php"; 
+<?php
+require_once "../include/connect.inc.php"; 
 ob_start();
 ?>
 
@@ -51,6 +52,7 @@ ob_start();
             $writer = 0;
             $advertiser = 0;
             $admin = 0;
+
             if (isset($_REQUEST['graphic_Des'])) {
                 $designer = 1;
             }
@@ -59,7 +61,7 @@ ob_start();
                 $writer = 1;
             }
 
-            if (isset($_REQUEST['advr'])) {;
+            if (isset($_REQUEST['advr'])) {
                 $advertiser = 1;
             }
 
@@ -104,7 +106,6 @@ ob_start();
                             <input class="form-control" type="text" id="lname" name="lname" required />
                         </div>
                     </div>
-
                     <div class="mt-2 mb-3">
                         <label for="email">Email</label>
                         <input class="form-control" type="email" id="email" name="email" required />
@@ -117,8 +118,6 @@ ob_start();
                         <label for="password">Password</label>
                         <input class="form-control" type="password" id="password" name="password" required />
                     </div>
-
-
                     <div class="col mb-4">
                         <span class="mb-2" style="font-size: 18px">Check all that apply</span>
                         <div class="form-check">

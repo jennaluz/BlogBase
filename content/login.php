@@ -1,5 +1,7 @@
-<?php require_once "../include/connect.inc.php"; 
-ob_start(); ?>
+<?php
+require_once "../include/connect.inc.php"; 
+ob_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +43,6 @@ ob_start(); ?>
                       WHERE username='$username' AND password='" .md5($password) . "' AND is_approved!=0";
             $result = mysqli_query($con, $query) or die(mysql_error());
             $rows = mysqli_num_rows($result);
-            echo "test";
 
             if ($rows == 1) {
                 $_SESSION['username'] = $username;
