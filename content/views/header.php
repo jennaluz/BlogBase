@@ -56,9 +56,22 @@ if(isset($_SESSION["username"])){
             </a>
         </li>
         <li class="nav-item">
+<!--
             <button class="btn" type="submit">
                 <span class="fa-solid fa-magnifying-glass"></span>
             </button>
+-->
+            <a class="btn" href="./search.php" role="button">
+                <span class="fa-solid fa-magnifying-glass"></span>
+            </a>
+<!--
+            <form action="./search.php" method="POST" id="searchForm">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn" type="submit">
+                    <span class="fa-solid fa-magnifying-glass"></span>
+                </button>
+            </form>
+-->
         </li>
         <li class="nav-item">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -66,20 +79,28 @@ if(isset($_SESSION["username"])){
       </ul>
     </div>
 
-    <a class="navbar-brand mx-auto text-center order-0 order-md-1" href="#">BlogBase</a>
+    <a class="navbar-brand mx-auto text-center order-0 order-md-1" href="./index.php">BlogBase</a>
 
     <div class="collapse navbar-collapse order-2" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-            <a class="nav-link" href="#">admin
+            <a class="nav-link" href="./admin.php">admin
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">design
+            <a class="nav-link" href="./ads.php">ads
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">logout
+            <a class="nav-link" href="./create.php">create
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./design.php">design
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../include/logout.inc.php">logout
             </a>
         </li>
       </ul>
