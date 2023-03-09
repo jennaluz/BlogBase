@@ -1,4 +1,6 @@
-<?php require "../include/connect.inc.php"; ?>
+<?php require_once "../include/connect.inc.php"; 
+ob_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,6 +72,7 @@
             $random_name = mysqli_num_rows($check_select);
 
             if($random_name > 0) {
+                //echo "test";
                 header("Location: ./username_wrong.php");
             } else {
                 $query = "INSERT into `users` (username, fname, lname, email, password, Admin, graphic_Des, writer, advr)
@@ -77,8 +80,9 @@
                 $result = mysqli_query($con, $query);
 
                 if ($result) {
-                    echo "<div><h3>Successfully Registered</h3></div>";
+                    //echo "<div><h3>Successfully Registered</h3></div>";
                     header("Location: ./login.php");
+                    ob_end_flush();
                 } else {
                     echo "<div><h3>Missing Required Fields</h3></div>";
                 }

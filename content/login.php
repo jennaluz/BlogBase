@@ -1,4 +1,5 @@
-<?php require_once "../include/connect.inc.php"; ?>
+<?php require_once "../include/connect.inc.php"; 
+ob_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,7 @@
         <div class="container mt-5 mb-3 text-center">
             <h1 class="display-3">BlogBase</h1>
         </div>
+
         <?php
         if (isset($_POST['username'])) {
             $username = stripslashes($_REQUEST['username']);
@@ -39,12 +41,15 @@
                       WHERE username='$username' AND password='" .md5($password) . "' AND is_approved!=0";
             $result = mysqli_query($con, $query) or die(mysql_error());
             $rows = mysqli_num_rows($result);
+            echo "test";
 
             if ($rows == 1) {
                 $_SESSION['username'] = $username;
                 header("Location: ./index.php");
+                ob_end_flush();
             } else{
                 header("Location: ./login_error.php");
+                ob_end_flush();
             }
         } else{
         ?>
@@ -61,16 +66,15 @@
                         <label for="password">Password</label>
                         <input class="form-control" type="password" id="password" name="password" required />
                     </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <button class="btn btn-outline-dark mb-2" type="submit" name="submit">Login</button>
+                        </div>
+                        <div class="col-auto pt-2">
+                            <p>Don't have an account?&emsp;<a href="./register.php">Register Now</a></p>
+                        </div>
+                    </div>
                 </form>
-
-                <div class="row">
-                    <div class="col-auto">
-                        <button class="btn btn-outline-dark mb-2" type="submit" name="submit">Login</button>
-                    </div>
-                    <div class="col-auto pt-2">
-                        <p>Don't have an account?&emsp;<a href="./register.php">Register Now</a></p>
-                    </div>
-                </div>
             </div>
             <div class="col"></div>
         </div>
