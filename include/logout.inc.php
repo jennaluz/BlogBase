@@ -1,8 +1,9 @@
 <?php
-    session_start();
-    // Destroy session
-    if(session_destroy()) {
-        // Redirecting To Home Page
-        header("Location: ../content/logout.php");
-    }
+session_start();
+
+// destroy session
+if(session_destroy()) {
+    // redirect to homepage
+    header("Location: ../content/logout.php");
+}
 ?>
