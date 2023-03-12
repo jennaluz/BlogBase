@@ -1,5 +1,5 @@
 <?php
-include_once "./connect.inc.php";
+require_once "./connect.inc.php";
 
 $realSaveID = $_GET["saveID"];
 $sql = "UPDATE `SavedArticles`
