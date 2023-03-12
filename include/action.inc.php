@@ -1,5 +1,5 @@
 <?php
-include_once "./connect.inc.php";
+require_once "./connect.inc.php";
 
 if(isset($_REQUEST['replyCont'])){
     // redirection purposes
