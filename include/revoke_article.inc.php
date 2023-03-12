@@ -1,5 +1,5 @@
 <?php
-include_once "./connect.inc.php";
+require_once "./connect.inc.php";
 
 $sql = "UPDATE `Articles`
         SET approved = 0
