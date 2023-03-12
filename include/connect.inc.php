@@ -3,7 +3,6 @@ $hostName = "localhost";
 $userName = "root";
 $password = "";
 $databaseName = "BlogBase";
-
 $con = mysqli_connect($hostName, $userName , $password, $databaseName);
 
 if (!$con) {
@@ -18,7 +17,8 @@ if (isset($_REQUEST["new_post"])) {
     $title = $_REQUEST["title"];
     $content = $_REQUEST["editor1"];
 
-    $sql = "INSERT INTO Articles(title, description, content) VALUES('$title','$content','$content')";
+    $sql = "INSERT INTO `Articles` (title, description, content)
+            VALUES ('$title','$content','$content')";
     mysqli_query($con, $sql);
 }
 ?>
