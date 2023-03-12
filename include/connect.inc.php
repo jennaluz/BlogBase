@@ -10,7 +10,7 @@ if (!$con) {
 }
 
 $sql = "SELECT * 
-        FROM Articles";
+        FROM `Articles`";
 $query = mysqli_query($con, $sql);
 
 if (isset($_REQUEST["new_post"])) {
