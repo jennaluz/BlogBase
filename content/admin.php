@@ -68,20 +68,37 @@ include_once "../include/auth_session.inc.php";
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Admin</th>
-                                    <th scope="col">Designer</th>
-                                    <th scope="col">Writer</th>
-                                    <th scope="col">Reader</th>
-                                    <th scope="col">Advertiser</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Roles</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php for ($i = 0; $i < $reg_users_result->num_rows; $i++) { ?>
                                     <tr>
-                                        <?php for ($j = 0; $j < $reg_users_result->field_count; $j++) {  ?>
+                                        <?php for ($j = 0; $j < 6; $j++) {  ?>
                                             <td>
-                                                <?php echo $reg_users_array[$i][$j]; ?>
+                                                <?php
+                                                if ($j > 4) {
+                                                    //echo $reg_users_array[$i][$j];
+                                                    //        <span class="badge badge-success rounded-pill d-inline">Active</span>
+                                                    if ($reg_users_array[$i]["Admin"] == 1) {
+                                                        echo "<span class='badge bg-success rounded-pill d-inline'>admin</span>";
+                                                    }
+                                                    if ($reg_users_array[$i]["graphic_Des"] == 1) {
+                                                        echo "<span class='badge bg-warning rounded-pill d-inline'>designer</span>";
+                                                    }
+                                                    if ($reg_users_array[$i]["reader"] == 1) {
+                                                        echo "<span class='badge bg-primary rounded-pill d-inline'>reader</span>";
+                                                    }
+                                                    if ($reg_users_array[$i]["writer"] == 1) {
+                                                        echo "<span class='badge bg-info rounded-pill d-inline'>writer</span>";
+                                                    }
+                                                    if ($reg_users_array[$i]["advr"] == 1) {
+                                                        echo "<span class='badge bg-danger rounded-pill d-inline'>advertiser</span>";
+                                                    }
+                                                } else {
+                                                    echo $reg_users_array[$i][$j];
+                                                }
+                                                ?>
                                             </td>
                                         <?php } ?>
                                             <td>
