@@ -10,7 +10,6 @@ ob_start();
         <meta name="viewport" content="width=device-width, inital-scale=1">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
         <link rel="stylesheet" href="./css/styles.css">
@@ -69,15 +68,17 @@ ob_start();
                 $admin = 1;
             }
 
-            $check = "SELECT * FROM `users` WHERE username='$username'";
+            $check = "SELECT *
+                      FROM `Users`
+                      WHERE username = '$username'";
             $check_select = mysqli_query($con, $check);
             $random_name = mysqli_num_rows($check_select);
 
-            if($random_name > 0) {
+            if ($random_name > 0) {
                 //echo "test";
                 header("Location: ./username_wrong.php");
             } else {
-                $query = "INSERT into `users` (username, fname, lname, email, password, Admin, graphic_Des, writer, advr)
+                $query = "INSERT INTO `Users` (username, first_name, last_name, email, password, admin, designer, writer, advertiser)
                           VALUES ('$username', '$fname', '$lname', '$email', '" . md5($password) . "', '$admin', '$designer', '$writer', '$advertiser')";
                 $result = mysqli_query($con, $query);
 
@@ -148,7 +149,7 @@ ob_start();
         }
         ?>
 
-        <script src="./js/script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="./js/script.js"></script>
     </body>
 </html>
