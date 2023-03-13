@@ -30,8 +30,8 @@ include_once "../include/auth_session.inc.php";
             // check if the current user has admin authorization
             $current_user = $_SESSION['username'];
             $test_auth_query = "SELECT username
-                                FROM users
-                                WHERE username='$current_user' AND Admin=1";
+                                FROM `Users` 
+                                WHERE username = '$current_user' AND admin = 1";
             $test_auth_result = mysqli_query($con, $test_auth_query);
 
             // if the user does have admin authorization
@@ -54,9 +54,9 @@ include_once "../include/auth_session.inc.php";
 
                     <div class="tab-pane fade show active" id="registered-tab-pane" role="tabpanel" aria-labelledby="registered-tab" tabindex="0">
                         <?php
-                        $reg_users_query = "SELECT userid, username, fname, lname, email , Admin, graphic_Des, writer, reader, advr
-                                            FROM users
-                                            WHERE is_approved=1";
+                        $reg_users_query = "SELECT user_id, username, first_name, last_name, email , admin, designer, writer, reader, advertiser
+                                            FROM `Users`
+                                            WHERE approved = 1";
                         $reg_users_result = mysqli_query($con, $reg_users_query);
                         $reg_users_array = $reg_users_result->fetch_all(MYSQLI_BOTH);
                         ?>
@@ -112,7 +112,9 @@ include_once "../include/auth_session.inc.php";
 
                     <div class="tab-pane fade" id="unregistered-tab-pane" role="tabpanel" aria-labelledby="unregistered-tab" tabindex="0">
                         <?php
-                        $unreg_users_query = "SELECT userid, username, fname, lname, email, Admin, graphic_Des, writer, reader, advr FROM users WHERE is_approved!=1";
+                        $unreg_users_query = "SELECT user_id, username, first_name, last_name, email, admin, designer, writer, reader, advertiser
+                                              FROM `Users`
+                                              WHERE approved != 1";
                         $unreg_users_result = mysqli_query($con, $unreg_users_query);
                         $unreg_users_array = $unreg_users_result->fetch_all(MYSQLI_BOTH);
                         ?>
@@ -141,8 +143,8 @@ include_once "../include/auth_session.inc.php";
                                             </td>
                                         <?php } ?>
                                             <td>
-                                                <a href="../include/approve_user.inc.php?userid=<?php echo $unreg_users_array[$i]["userid"]; ?>" class="btn btn-outline-primary">Approve</a>
-                                                <a href="../include/delete_user.inc.php?userid=<?php echo $unreg_users_array[$i]["userid"]; ?>" class="btn btn-outline-danger">Deny</a>
+                                                <a href="../include/approve_user.inc.php?userid=<?php echo $unreg_users_array[$i]["user_id"]; ?>" class="btn btn-outline-primary">Approve</a>
+                                                <a href="../include/delete_user.inc.php?userid=<?php echo $unreg_users_array[$i]["user_id"]; ?>" class="btn btn-outline-danger">Deny</a>
                                             </td>
                                     </tr>
                                 <?php } ?>

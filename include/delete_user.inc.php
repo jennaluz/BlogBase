@@ -1,7 +1,9 @@
 <?php
-//include_once('logic.php');
-include_once "./connect.inc.php";
-$sql = "DELETE FROM users WHERE userid='" . $_GET["userid"] . "'";
+require_once "./connect.inc.php";
+
+$sql = "DELETE FROM `Users`
+        WHERE userid = '" . $_GET["userid"] . "'";
+
 if (mysqli_query($con, $sql)) {
     header("Location: ../content/admin.php");
 } else {

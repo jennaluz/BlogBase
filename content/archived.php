@@ -1,4 +1,4 @@
-<?php include "../include/connect.inc.php"; ?>
+<?php require_once "../include/connect.inc.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,48 +18,47 @@
         <div class="header">
             <?php include "./views/header.php" ?>
         </div>
-
-      <div class="sidebar">
-        <?php include "./views/sidebar.php" ?>
-      </div>
-
+        <div class="sidebar">
+            <?php include "./views/sidebar.php" ?>
+        </div>
 
         <?php
-       try {
-         $effectiveDate = date('Y-m-d', strtotime("-3 month"));
-           $stmt = $con->query("SELECT postID, postTitle, postDesc, postDate FROM blog_posts WHERE is_approved=1 and postDate<='2022/08/26' ORDER BY postID DESC");
-           //echo "$effectiveDate";
-           ?><table class="main-space"><?php
-           $i =0;
-           $stmt->fetch_assoc();
-           foreach($stmt as $row) {
+        try {
+            $effectiveDate = date('Y-m-d', strtotime("-3 month"));
+            $stmt = $con->query("SELECT article_id, title, description, submit_date
+                                 FROM `Articles`
+                                 WHERE approved = 1 AND submit_date <= '2022/08/26'
+                                 ORDER BY article_id DESC");
+        ?>
+        <table class="main-space">
+            <?php
+            $i =0;
+            $stmt->fetch_assoc();
+            foreach($stmt as $row) {
+                echo "<center><td>";
+                echo '<div class="card">';
+                echo '<div class="container">';
+                echo '<h1><a href="./post1.php?id=' . $row['postID'] . '">' . $row['postTitle'] . '</a></h1>';
+                echo '</div>';
+                echo '<p>Posted on ' . $row['postDate'] . '</p><br>';
+                echo '<p>' . $row['postDesc'] . '</p>';
+                echo '<p><a href="./post1.php?id=' . $row['postID'] . '">Read More</a></p>';
+                echo '</div>';
+                echo "</td></center>";
+                $i = $i+1;
 
-               echo "<center><td>";
-               echo '<div class="card">';
-               echo '<div class="container">';
-               echo '<h1><a href="./post1.php?id=' . $row['postID'] . '">' . $row['postTitle'] . '</a></h1>';
-               echo '</div>';
-               echo '<p>Posted on ' . $row['postDate'] . '</p><br>';
-               echo '<p>' . $row['postDesc'] . '</p>';
-               echo '<p><a href="./post1.php?id=' . $row['postID'] . '">Read More</a></p>';
-               echo '</div>';
-               echo "</td></center>";
-               $i = $i+1;
-               if($i % 3 == 0 )
-               {
+               if ($i % 3 == 0 ) {
                    echo "<tr></tr>";
                }
            }
        } catch (PDOException $e) {
            echo $e->getMessage();
-       }echo "</table>";
-       ?>
-
-   </div>
-   </div>
-   </center>
-   <script src="./js/script.js"></script>
-
-
+       }
+            ?>
+        </table>
+        </div>
+        </div>
+        </center>
+        <script src="./js/script.js"></script>
     </body>
 </html>

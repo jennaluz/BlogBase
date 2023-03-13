@@ -1,7 +1,10 @@
 <?php
-//include_once('logic.php');
-include_once "./connect.inc.php";
-$sql = "UPDATE users SET is_approved=1 WHERE userid='" . $_GET["userid"] . "'";
+require_once "./connect.inc.php";
+
+$sql = "UPDATE `Users`
+        SET approved = 1
+        WHERE user_id = '" . $_GET["userid"] . "'";
+
 if (mysqli_query($con, $sql)) {
     echo "Record updated successfully";
     header("Location: ../content/admin.php");

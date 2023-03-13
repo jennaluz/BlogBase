@@ -1,7 +1,9 @@
 <?php
-//include_once('logic.php');
-include_once "./connect.inc.php";
-$sql = "DELETE FROM blog_posts WHERE postID='" . $_GET["postID"] . "'";
+require_once "./connect.inc.php";
+
+$sql = "DELETE FROM `Articles`
+        WHERE article_id = '" . $_GET["postID"] . "'";
+
 if (mysqli_query($con, $sql)) {
     header("Location: ../content/design.php");
 } else {
