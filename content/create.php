@@ -100,7 +100,7 @@ include_once "../include/auth_create.inc.php";
         ?>
             <h1 style='font-size: 24px; text-align: center; padding-top: 15px;'><strong>Blog Submission's </strong></h1>
             <div style='align-items: center; text-align:center;'class="makePost">
-                <form method="Get">
+                <form method="post">
                     <br>
                     <br>
                     <input style='color:black; background-color: white; height: 30px; text-align:center;' type="text" name="title" placeholder="POST TITLE" class="title-box">
