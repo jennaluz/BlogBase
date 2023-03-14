@@ -100,8 +100,13 @@ if(isset($_SESSION["username"])){
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../include/logout.inc.php">logout
-            </a>
+        <?php
+        session_start();
+        if (isset($_SESSION["username"])) { ?>
+            <a class="nav-link" href="../include/logout.inc.php">logout</a>
+        <?php } else { ?>
+            <a class="nav-link" href="./login.php">login</a>
+        <?php } ?>
         </li>
       </ul>
     </div>
