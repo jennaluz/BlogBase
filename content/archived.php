@@ -38,11 +38,11 @@
                 echo "<center><td>";
                 echo '<div class="card">';
                 echo '<div class="container">';
-                echo '<h1><a href="./post1.php?id=' . $row['postID'] . '">' . $row['postTitle'] . '</a></h1>';
+                echo '<h1><a href="./post1.php?id=' . $row['article_id'] . '">' . $row['title'] . '</a></h1>';
                 echo '</div>';
-                echo '<p>Posted on ' . $row['postDate'] . '</p><br>';
-                echo '<p>' . $row['postDesc'] . '</p>';
-                echo '<p><a href="./post1.php?id=' . $row['postID'] . '">Read More</a></p>';
+                echo '<p>Submitted on ' . $row['submit_date'] . '</p><br>';
+                echo '<p>' . $row['description'] . '</p>';
+                echo '<p><a href="./post1.php?id=' . $row['article_id'] . '">Read More</a></p>';
                 echo '</div>';
                 echo "</td></center>";
                 $i = $i+1;
@@ -59,6 +59,7 @@
         </div>
         </div>
         </center>
+
         <script src="./js/script.js"></script>
     </body>
 </html>
