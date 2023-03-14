@@ -1,3 +1,4 @@
+<?php /* ?>
 <div class="shortcut-links">
     <a href="./index.php"><img src="./images/home.png"> Home </a></p>
     <a href="./hot.php"><p><img src="./images/hot.png"> Hot! </a></p>
@@ -41,6 +42,7 @@ if(isset($_SESSION["username"])){
             }
 ?>
     </div>
+<?php */ ?>
 
 
 <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Link with href</a>
