@@ -1,6 +1,7 @@
 <?php
 require_once "../include/connect.inc.php";
 include_once "../include/auth_create.inc.php";
+include "../include/create_post.php";
 ?>
 
 <!DOCTYPE html>
