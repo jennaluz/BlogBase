@@ -30,7 +30,7 @@ include_once "../include/auth_session.inc.php";
             // check if the current user has admin authorization
             $current_user = $_SESSION['username'];
             $test_auth_query = "SELECT username
-                                FROM `Users` 
+                                FROM `Users`
                                 WHERE username = '$current_user' AND admin = 1";
             $test_auth_result = mysqli_query($con, $test_auth_query);
 
@@ -69,6 +69,7 @@ include_once "../include/auth_session.inc.php";
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Roles</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,10 +81,10 @@ include_once "../include/auth_session.inc.php";
                                                 if ($j > 4) {
                                                     //echo $reg_users_array[$i][$j];
                                                     //        <span class="badge badge-success rounded-pill d-inline">Active</span>
-                                                    if ($reg_users_array[$i]["Admin"] == 1) {
+                                                    if ($reg_users_array[$i]["admin"] == 1) {
                                                         echo "<span class='badge bg-success rounded-pill d-inline'>admin</span>";
                                                     }
-                                                    if ($reg_users_array[$i]["graphic_Des"] == 1) {
+                                                    if ($reg_users_array[$i]["designer"] == 1) {
                                                         echo "<span class='badge bg-warning rounded-pill d-inline'>designer</span>";
                                                     }
                                                     if ($reg_users_array[$i]["reader"] == 1) {
@@ -92,7 +93,7 @@ include_once "../include/auth_session.inc.php";
                                                     if ($reg_users_array[$i]["writer"] == 1) {
                                                         echo "<span class='badge bg-info rounded-pill d-inline'>writer</span>";
                                                     }
-                                                    if ($reg_users_array[$i]["advr"] == 1) {
+                                                    if ($reg_users_array[$i]["advertiser"] == 1) {
                                                         echo "<span class='badge bg-danger rounded-pill d-inline'>advertiser</span>";
                                                     }
                                                 } else {
