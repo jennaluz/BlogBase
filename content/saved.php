@@ -40,7 +40,7 @@ $saved_articles_result = mysqli_query($con, $saved_articles_query);
         </div>
 
         <div class="mt-3 text-center">
-            <h1>Saved Articles</h1>
+            <h1>Your Saved Articles</h1>
         </div>
 
         <div class="col-10 col-lg-7 mx-auto mt-3">
