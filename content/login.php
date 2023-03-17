@@ -53,8 +53,7 @@ ob_start();
             }
         } else{ ?>
             <div class="row">
-                <div class="col"></div>
-                <div class="col-5">
+                <div class="col-5 mx-auto">
                     <form method="post" name="login">
                         <div class="mt-2 mb-3">
                             <label for="username">Username</label>
@@ -74,7 +73,6 @@ ob_start();
                         </div>
                     </form>
                 </div>
-                <div class="col"></div>
             </div>
         <?php
         }

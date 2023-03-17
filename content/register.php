@@ -94,8 +94,7 @@ ob_start();
         ?>
 
         <div class="row">
-            <div class="col"></div>
-            <div class="col-5">
+            <div class="col-5 mx-auto">
                 <form class="container" method="post">
                     <div class="row mt-2 mb-3 align-items-center">
                         <div class="col">
@@ -143,7 +142,6 @@ ob_start();
                     <p>Already have an account?&emsp;<a href="./login.php">Login to Account</a></p>
                 </form>
             </div>
-            <div class="col"></div>
         </div>
         <?php
         }
