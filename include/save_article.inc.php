@@ -1,18 +1,19 @@
 <?php
 require_once "./connect.inc.php";
+include_once "./user_info.inc.php";
 
 if (isset($_GET['save_id'])) {
     // requesting to save an article
     $requested_id = $_GET['save_id'];
-    $update_saved = "UPDATE SavedArticles
-                     SET saved = 1
-                     WHERE saved_id = '" . $requested_id . "'";
+    $update_saved = "INSERT INTO SavedArticles (article_id, user_id)
+                     VALUES ('" . $requested_id . "', '" . $user_info['user_id'] . "')";
 } else {
     // requesting to unsave an article
     $requested_id = $_GET['unsave_id'];
-    $update_saved = "UPDATE SavedArticles
-                     SET saved = 0
-                     WHERE saved_id = '" . $requested_id . "'";
+    $update_saved = "DELETE
+                     FROM SavedArticles
+                     WHERE article_id = '" . $requested_id . "' AND user_id = '" . $user_info['user_id'] . "'";
+    echo $update_saved;
 }
 
 if (mysqli_query($con, $update_saved)) {
