@@ -18,6 +18,11 @@ if ($article_info == null) {
     //ob_end_flush();
     echo "doesn't exist 404";
 }
+
+if ($article_info['approved'] == false && $user_info['designer'] == false) {
+    // send to "you don't have access" page
+    echo "You don't have access";
+}
 ?>
 
 <!DOCTYPE html>
