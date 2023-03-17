@@ -55,7 +55,7 @@ if ($article_info['approved'] == false && $user_info['designer'] == false) {
                     <ul class="list-inline">
                     <?php if ($article_info['approved'] == false) { ?>
                         <li class="list-inline-item align-middle">
-                            <a class="btn btn-outline-primary px-2 py-1" type="button" href="../include/article_approval.inc.php?approve_id=<?php echo $article_info['article_id']; ?>"">Approve</a>
+                            <a class="btn btn-outline-primary px-2 py-1" type="button" href="../include/article_approval.inc.php?approve_id=<?php echo $article_info['article_id']; ?>">Approve</a>
                         </li>
                         <li class="list-inline-item align-middle">
                             <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?deny_id=<?php echo $article_info['article_id']; ?>">Deny</a>
