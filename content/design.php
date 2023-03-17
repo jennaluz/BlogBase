@@ -34,31 +34,89 @@ if ($user_info['designer'] == false) {
             <?php include "./views/sidebar.php" ?>
         </div>
 
-        <ul class="nav nav-tabs" id="artical-approval-tabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="unapproved-articles-tab" data-bs-toggle="tab" data-bs-target="#unapproved-articles-tab-pane" type="button" role="tab" aria-controls="unapproved-articles-tab-pane" aria-selected="true">Unapproved Articles</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="approved-articles-tab" data-bs-toggle="tab" data-bs-target="#approved-articles-tab-pane" type="button" role="tab" aria-controls="approved-articles-tab-pane" aria-selected="true">Approved Articles</button>
-            </li>
-        </ul>
+        <div class="mt-5 text-center">
+            <h1>Article Approval</h1>
+        </div>
 
-        <div class="tab-content" id="article-approval-content">
-            <div class="tab-pane fade show active" id="unapproved-articles-tab-pane" role="tabpanel" aria-labelledby="unapproved-articles-tab" tabindex="0">
-                <?php
-                $unapproved_query = "SELECT title, submit_date
-                                     FROM Articles
-                                     WHERE approved = 0";
-                $unapproved_result = mysqli_query($con, $unapproved_query);
-                $unapproved_articles = $unapproved_result->fetch_all(MYSQLI_BOTH);
-                ?>
+        <div class="col-10 col-lg-7 mt-5 mx-auto">
+            <ul class="nav nav-tabs" id="artical-approval-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="unapproved-tab" data-bs-toggle="tab" data-bs-target="#unapproved-tab-pane" type="button" role="tab" aria-controls="unapproved-tab-pane" aria-selected="true">Unapproved</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="approved-tab" data-bs-toggle="tab" data-bs-target="#approved-tab-pane" type="button" role="tab" aria-controls="approved-tab-pane" aria-selected="true">Approved</button>
+                </li>
+            </ul>
 
-                <table class="table">
-                    <thead>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </thead>
-                </table>
+            <div class="tab-content" id="article-approval-content">
+                <div class="tab-pane fade show active" id="unapproved-tab-pane" role="tabpanel" aria-labelledby="unapproved-tab" tabindex="0">
+                    <?php
+                    $unapproved_query = "SELECT title, description, UNIX_TIMESTAMP(submit_date) as submit_date
+                                         FROM Articles
+                                         WHERE approved = 0";
+                    $unapproved_result = mysqli_query($con, $unapproved_query);
+                    $unapproved_articles = $unapproved_result->fetch_all(MYSQLI_BOTH);
+                    ?>
+
+                    <table class="table text-start">
+                        <thead>
+                            <th scope="col">Date</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Article</th>
+                            <th scope="col">Action</th>
+                        </thead>
+                        <tbody>
+                            <?php for ($i = 0; $i < $unapproved_result->num_rows; $i++) { ?>
+                                <tr>
+                                    <td class="text-nowrap">
+                                        <?php echo date("M. d, Y", $unapproved_articles[$i]['submit_date']) ?>
+                                    </td>
+                                    <td>
+                                        <?php //echo $article_info['author']) ?>Chad Flemmington
+                                    </td>
+                                    <td>
+                                        <h4><?php echo $unapproved_articles[$i]['title'] ?></h4>
+                                        <?php echo $unapproved_articles[$i]['description'] ?>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody> 
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="approved-tab-pane" role="tabpanel" aria-labelledby="approved-tab" tabindex="1">
+                    <?php
+                    $approved_query = "SELECT title, description, UNIX_TIMESTAMP(submit_date) as submit_date
+                                         FROM Articles
+                                         WHERE approved = 1";
+                    $approved_result = mysqli_query($con, $approved_query);
+                    $approved_articles = $approved_result->fetch_all(MYSQLI_BOTH);
+                    ?>
+
+                    <table class="table text-start">
+                        <thead>
+                            <th scope="col">Date</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Article</th>
+                            <th scope="col">Action</th>
+                        </thead>
+                        <tbody>
+                            <?php for ($i = 0; $i < $approved_result->num_rows; $i++) { ?>
+                                <tr>
+                                    <td class="text-nowrap">
+                                        <?php echo date("M. d, Y", $approved_articles[$i]['submit_date']) ?>
+                                    </td>
+                                    <td>
+                                        <?php //echo $article_info['author']) ?>Chad Flemmington
+                                    </td>
+                                    <td>
+                                        <h4><?php echo $approved_articles[$i]['title'] ?></h4>
+                                        <?php echo $approved_articles[$i]['description'] ?>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody> 
+                    </table>
+                </div>
             </div>
         </div>
     </body>
