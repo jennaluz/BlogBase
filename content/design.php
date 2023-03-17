@@ -64,11 +64,11 @@ include_once "../include/auth_editor.inc.php";
                         echo "<center><td>";
                         echo '<div class="card">';
                         echo '<div class="container">';
-                        echo '<h1><a href="./post2.php?id=' . $row['article_id'] . '">' . $row['title'] . '</a></h1>';
+                        echo '<h1><a href="./article.php?id=' . $row['article_id'] . '">' . $row['title'] . '</a></h1>';
                         echo '</div>';
                         echo '<p>Submitted on ' . $row['submit_date'] . '</p><br>';
                         echo '<p>' . $row['description'] . '</p>';
-                        echo '<p><a href="./post2.php?id=' . $row['article_id'] . '">Read More</a></p>';
+                        echo '<p><a href="./article.php?id=' . $row['article_id'] . '">Read More</a></p>';
                         echo '</div>';
                         echo "</td></center>";
 
@@ -118,11 +118,11 @@ include_once "../include/auth_editor.inc.php";
                         echo "<center><td>";
                         echo '<div class="card">';
                         echo '<div class="container">';
-                        echo '<h1><a href="./post2.php?id=' . $row['article_id'] . '">' . $row['title'] . '</a></h1>';
+                        echo '<h1><a href="./article.php?id=' . $row['article_id'] . '">' . $row['title'] . '</a></h1>';
                         echo '</div>';
                         echo '<p>sSubmitted on ' . $row['submit_date'] . '</p><br>';
                         echo '<p>' . $row['description'] . '</p>';
-                        echo '<p><a href="./post2.php?id=' . $row['article_id'] . '">Read More</a></p>';
+                        echo '<p><a href="./article.php?id=' . $row['article_id'] . '">Read More</a></p>';
                         echo '</div>';
                         echo "</td></center>";
 
@@ -138,7 +138,6 @@ include_once "../include/auth_editor.inc.php";
             <?php
                 }
             }
-            
             catch (PDOException $e) {
                 echo $e->getMessage();
             }
