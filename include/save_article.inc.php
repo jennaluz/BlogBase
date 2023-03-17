@@ -2,6 +2,9 @@
 require_once "./connect.inc.php";
 include_once "./user_info.inc.php";
 
+if (isset($_GET['return_page'])) {
+    $return_page = $_GET['return_page'];
+}
 if (isset($_GET['save_id'])) {
     // requesting to save an article
     $requested_id = $_GET['save_id'];
@@ -17,7 +20,13 @@ if (isset($_GET['save_id'])) {
 }
 
 if (mysqli_query($con, $update_saved)) {
-    header("Location: ../content/article.php?id=" . $requested_id . "");
+    //header("Location: ../content/article.php?id=" . $requested_id . "");
+    if (isset($_GET['return_page'])) {
+        $return_page = $_GET['return_page'];
+    } else {
+        $return_page = "article.php?id=" . $requested_id;
+    }
+    header("Location: ../content/$return_page");
 } else {
     echo "Error updating record: " . mysqli_error($con);
 }
