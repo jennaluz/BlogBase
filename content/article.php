@@ -1,9 +1,8 @@
 <?php
 require_once "../include/connect.inc.php";
-ob_start();
+include "../include/user_info.inc.php";
 
-// check if user has "editor" role using an included logic page
-$is_editor = true;
+ob_start();
 
 // get information about this article
 $requested_id = $_GET['id'];
@@ -44,50 +43,63 @@ if ($article_info == null) {
             <?php include "./views/sidebar.php" ?>
         </div>
 
-        <div class="col-10 col-lg-6 mx-auto mt-4">
-            <?php if ($is_editor == true) { ?>
-                <ul class="list-inline mb-1">
-                <?php if ($article_info['approved'] == 0) { ?>
+        <div class="col-10 col-lg-6 mx-auto mt-3">
+            <div id="article-head">
+                <?php if ($user_info['designer'] == true) { ?>
+                    <ul class="list-inline">
+                    <?php if ($article_info['approved'] == false) { ?>
+                        <li class="list-inline-item align-middle">
+                            <button class="px-2 py-1 btn btn-outline-primary" type="button">Approve</button>
+                        </li>
+                        <li class="list-inline-item align-middle">
+                            <button class="px-2 py-1 btn btn-outline-danger" type="button">Deny</button>
+                        </li>
+                    <?php } else { ?>
+                        <li class="list-inline-item align-middle">
+                            <button class="px-2 py-1 btn btn-outline-danger" type="button">Revoke</button>
+                        </li>
+                    <?php } ?>
+                    </ul>
+                <?php } ?>
+
+                <ul class="list-inline">
                     <li class="list-inline-item align-middle">
-                        <button class="px-2 py-1 btn btn-outline-primary mb-3" type="button">Approve</button>
+                    <!-- article author will go here -->
+                        <?php //echo date("M. d, Y", $article_info['author']) ?>
+                        Chad Flemmington
                     </li>
                     <li class="list-inline-item align-middle">
-                        <button class="px-2 py-1 btn btn-outline-danger mb-3" type="button">Deny</button>
+                        <?php echo date("M. d, Y", $article_info['submit_date']) ?>
                     </li>
-                <?php } else { ?>
                     <li class="list-inline-item align-middle">
-                        <button class="px-2 py-1 btn btn-outline-danger mb-3" type="button">Revoke</button>
+                        <i class="fa-solid fa-comment"></i>
+                    </li>
+                    <li class="list-inline-item align-middle">
+                        <i class="fa-regular fa-comment"></i>
+                    </li>
+                    <li class="list-inline-item align-middle">
+                        <i class="fa-solid fa-bookmark"></i>
+                    </li>
+                    <li class="list-inline-item align-middle">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </li>
+                    <li class="list-inline-item align-middle">
+                        <i class="fa-solid fa-newspaper"></i>
                     </li>
                 </ul>
-                <?php } ?>
-            <?php } ?>
 
-            <ul class="list-inline mb-1">
-                <li class="list-inline-item align-middle">Chad Flemmington</li>
-                <li class="list-inline-item align-middle"><?php echo date("M. d, Y", $article_info['submit_date']) ?></li>
-                <li class="list-inline-item align-middle">
-                    <i class="fa-solid fa-comment"></i>
-                </li>
-                <li class="list-inline-item align-middle">
-                    <i class="fa-solid fa-newspaper"></i>
-                </li>
-            </ul>
-
-            <ul class="list-inline">
-                <li class="list-inline-item align-middle">
-                    <h1 class="m-0"><?php echo $article_info['title']; ?></h1>
-                </li>
-                <li class="list-inline-item align-text-middle">
-                    <i class="fa-lg fa-solid fa-bookmark"></i>
-                </li>
-                <li class="list-inline-item align-text-middle">
-                    <i class="fa-lg fa-regular fa-bookmark"></i>
-                </li>
-            </ul>
+                <ul class="list-inline">
+                    <li class="list-inline-item align-middle">
+                        <h1 class="m-0"><?php echo $article_info['title']; ?></h1>
+                    </li>
+                </ul>
+            </div>
 
             <hr>
 
-            <?php echo $article_info['content']; ?>
+            <div id="article-body">
+                <?php echo $article_info['content']; ?>
+            </div>
         </div>
     </body>
 </html>
