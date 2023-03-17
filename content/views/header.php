@@ -41,7 +41,7 @@ if(isset($_SESSION["username"])){
 ?>
 <?php */ ?>
 
-<nav class="navbar navbar-expand-md bg-light">
+<nav class="navbar navbar-expand-md bg-light shadow-sm">
   <div class="container-fluid">
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
