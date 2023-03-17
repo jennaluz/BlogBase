@@ -1,18 +1,22 @@
 <?php
 require_once "./connect.inc.php";
 
-$realSaveID = $_GET["saveID"];
-$sql = "UPDATE `SavedArticles`
-        SET saved = 1
-        WHERE saved_id = '" . $_GET["saveID"] . "'";
+if (isset($_GET['save_id'])) {
+    // requesting to save an article
+    $requested_id = $_GET['save_id'];
+    $update_saved = "UPDATE SavedArticles
+                     SET saved = 1
+                     WHERE saved_id = '" . $requested_id . "'";
+} else {
+    // requesting to unsave an article
+    $requested_id = $_GET['unsave_id'];
+    $update_saved = "UPDATE SavedArticles
+                     SET saved = 0
+                     WHERE saved_id = '" . $requested_id . "'";
+}
 
-if (mysqli_query($con, $sql)) {
-    $info = "SELECT article_id FROM `SavedArticles`
-            WHERE saveID = '$realSaveID'";
-    $getInfo = $con->query($info);
-    $realPostID = $getInfo->fetch_assoc();
-
-    header("Location: ../content/post1.php?id=" . $realPostID["postID"] . "");
+if (mysqli_query($con, $update_saved)) {
+    header("Location: ../content/article.php?id=" . $requested_id . "");
 } else {
     echo "Error updating record: " . mysqli_error($con);
 }

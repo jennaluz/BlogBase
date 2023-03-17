@@ -6,7 +6,7 @@ ob_start();
 
 // get information about this article
 $requested_id = $_GET['id'];
-$article_query = "SELECT article_id, title, content, UNIX_TIMESTAMP(`submit_date`), approved
+$article_query = "SELECT article_id, title, content, UNIX_TIMESTAMP(submit_date), approved
                   FROM Articles
                   WHERE article_id = '" . $requested_id . "'";
 $article_result = mysqli_query($con, $article_query);
@@ -76,22 +76,35 @@ if ($article_info['approved'] == false && $user_info['designer'] == false) {
                     <li class="list-inline-item align-middle">
                         <?php echo date("M. d, Y", $article_info['submit_date']) ?>
                     </li>
-                    <li class="list-inline-item align-middle">
-                        <i class="fa-solid fa-comment"></i>
-                    </li>
-                    <li class="list-inline-item align-middle">
-                        <i class="fa-regular fa-comment"></i>
-                    </li>
-                    <li class="list-inline-item align-middle">
-                        <?php if (isset($_SESSION['user_info'])) { ?>
-                            <a class="fa-solid fa-bookmark text-reset" href="#"></a>
-                        <?php } else { ?>
-                            <a class="fa-regular fa-bookmark text-reset" href="./login.php"></a>
-                        <?php } ?>
-                    </li>
-                    <li class="list-inline-item align-middle">
-                        <i class="fa-solid fa-newspaper"></i>
-                    </li>
+                    <?php if ($article_info['approved'] == true) { ?>
+                        <li class="list-inline-item align-middle">
+                            <i class="fa-solid fa-comment"></i>
+                        </li>
+                        <li class="list-inline-item align-middle">
+                            <i class="fa-regular fa-comment"></i>
+                        </li>
+                        <li class="list-inline-item align-middle">
+                            <?php
+                            if (isset($_SESSION['user_info'])) {
+                                $saved_query = "SELECT saved_id, saved
+                                                FROM SavedArticles
+                                                WHERE user_id = '" . $user_info['user_id'] . "' AND article_id = '" . $article_info['article_id'] . "';";
+                                $saved_result = mysqli_query($con, $saved_query);
+                                $saved_info = $saved_result->fetch_assoc();
+                                if ($saved_info['saved'] == true) {
+                            ?>
+                                    <a class="fa-solid fa-bookmark text-reset" href="../include/save_article.inc.php?unsave_id=<?php echo $saved_info['saved_id']; ?>"></a>
+                                <?php } else { ?>
+                                    <a class="fa-regular fa-bookmark text-reset" href="../include/save_article.inc.php?save_id=<?php echo $saved_info['saved_id']; ?>"></a>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <a class="fa-regular fa-bookmark text-reset" href="./login.php"></a>
+                            <?php } ?>
+                        </li>
+                        <li class="list-inline-item align-middle">
+                            <i class="fa-solid fa-newspaper"></i>
+                        </li>
+                    <?php } ?>
                 </ul>
 
                 <ul class="list-inline">
