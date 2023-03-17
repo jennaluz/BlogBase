@@ -1,7 +1,13 @@
 <?php
 require_once "../include/connect.inc.php";
-include_once "../include/auth_create.inc.php";
+include_once "../include/user_info.inc.php";
 include "../include/create_post.php";
+
+// check if user is a writer
+if ($user_info['writer'] == false) {
+    // redirect to "You don't have access" page
+    echo "You don't have access to this page";
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,11 +17,12 @@ include "../include/create_post.php";
         <meta name="viewport" content="width=device-width, intitial-scale=1">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <link rel="stylesheet" href="./css/styles.css">
 
-        <title>BlogBase</title>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+        <title>BlogBase Writer</title>
 
         <script src="../external/ckeditor/ckeditor.js">
             CKEDITOR.editorConfig = function(config) {
@@ -80,50 +87,33 @@ include "../include/create_post.php";
 
     <body>
         <div class="header">
-            <?php include "./views/header.php" ?>
+            <?php include_once "./views/header.php" ?>
         </div>
         <div class="sidebar">
-            <?php include "./views/sidebar.php" ?>
+            <?php include_once "./views/sidebar.php" ?>
         </div>
 
-        <?php
-        // this is the place that sets up the authentification for the page in tandom with auth_session.php
-        $current_user = $_SESSION['username'];
+        <!--<h1 style='font-size: 24px; text-align: center; padding-top: 15px;'><strong>Blog Submission's </strong></h1>-->
 
-        $test_auth = "SELECT username
-                      FROM `Users`
-                      WHERE username ='$current_user' AND writer = 1";
-        $help = $con->query($test_auth);
-
-        if($help->num_rows > 0){
-            //the rest of the statement is at the bottom and applies if the user doesn't have the proper
-            //access to the page. If they dont they are not able to see any of the information
-        ?>
-            <h1 style='font-size: 24px; text-align: center; padding-top: 15px;'><strong>Blog Submission's </strong></h1>
-            <div style='align-items: center; text-align:center;'class="makePost">
-                <form method="post">
-                    <br>
-                    <br>
-                    <input style='color:black; background-color: white; height: 30px; text-align:center;' type="text" name="title" placeholder="POST TITLE" class="title-box">
-                    <br>
-                    <br>
-                    <textarea name="editor1"></textarea>
-                    <script>CKEDITOR.replace('editor1');</script>
-                    <br>
-                    <button name="new_post" class="btn">Save Post</button>
-                </form>
-            </div>
-        <?php
-        } else {
-        ?>
-            <center>
-                <p><h3>You do not have access to the writer page.</h3></p>
+        <div class="col-10 col-lg-6 mt-5 mx-auto">
+            <ul class="list-inline mb-0">
+                <li class="list-inline-item">
+                    <?php echo $user_info['first_name'] . " " . $user_info['last_name'] ?>
+                </li>
+                <li class="list-inline-item">
+                    <?php echo date("M. d, Y", time()) ?>
+                </li>
+            </ul>
+            <form method="post">
+                <div class="col-10 col-lg-8 mb-3">
+                    <input class="form-control form-control-lg border border-0 border-bottom border-2 rounded-0 px-0 title-box" type="text" placeholder="Title">
+                </div>
+                <textarea name="editor1"></textarea>
+                <script>CKEDITOR.replace('editor1');</script>
                 <br>
-                <p><h3>Return to <a href="./index.php">Home?</a></h3></p>
-            </center>
-        <?php
-        }
-        ?>
+                <button class="btn btn-outline-dark px-2 py-1" type="button">Submit</button>
+            </form>
+        </div>
 
         <script src="./js/script.js"></script>
     </body>
