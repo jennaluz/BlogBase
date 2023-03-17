@@ -6,7 +6,7 @@ ob_start();
 
 // get information about this article
 $requested_id = $_GET['id'];
-$article_query = "SELECT article_id, title, content, UNIX_TIMESTAMP(submit_date), approved
+$article_query = "SELECT article_id, title, content, UNIX_TIMESTAMP(submit_date) as submit_date, approved
                   FROM Articles
                   WHERE article_id = '" . $requested_id . "'";
 $article_result = mysqli_query($con, $article_query);
@@ -20,7 +20,7 @@ if ($article_info == null) {
 }
 
 // check if user is accessing unapproved article w/o designer role
-if ($article_info['approved'] == false && $user_info['designer'] == false) {
+if ($article_info['approved'] != true && $user_info['designer'] != true) {
     // send to "you don't have access" page
     echo "You don't have access";
 }
@@ -49,7 +49,7 @@ if ($article_info['approved'] == false && $user_info['designer'] == false) {
             <?php include "./views/sidebar.php" ?>
         </div>
 
-        <div class="col-10 col-lg-6 mx-auto mt-3">
+        <div class="col-10 col-lg-7 mx-auto mt-3">
             <div id="article-head">
                 <?php if ($user_info['designer'] == true) { ?>
                     <ul class="list-inline">
