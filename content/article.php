@@ -7,7 +7,7 @@ $is_editor = false;
 
 // get information about this article
 $requested_id = $_GET['id'];
-$article_query = "SELECT article_id, title, content, submit_date, approved
+$article_query = "SELECT article_id, title, content, UNIX_TIMESTAMP(`submit_date`), approved
                   FROM Articles
                   WHERE article_id = '" . $requested_id . "'";
 $article_result = mysqli_query($con, $article_query);
@@ -45,11 +45,8 @@ if ($article_info == null) {
             <?php include "./views/sidebar.php" ?>
         </div>
 
-        <div class="row text-center mt-4">
-            <h1><?php echo $article_info['title']; ?></h1>
+        <div class="row-auto mt-4 mb-4">
 <?php /* ?>
-            <h2><!-- author --></h2>
-            <h2><!-- date --></h2>
             <h2><!-- jump to comment section --></h2>
             <h2><!-- jump to newsletter --></h2>
             <h2><!-- save or unsave --></h2>
@@ -60,8 +57,32 @@ if ($article_info == null) {
 
         <div class="row">
             <div class="col"></div>
-            <div class="col-6">
-                <p><?php echo $article_info['content']; ?></p>
+            <div class="col-10 col-lg-6">
+                <button class="px-2 py-1 btn btn-outline-dark mb-3" type="button">Revoke</button>
+
+                <ul class="list-inline mb-1">
+                    <li class="list-inline-item align-middle">Chad Flemmington</li>
+                    <li class="list-inline-item align-middle"><?php echo date("M. d, Y", $article_info['submit_date']) ?></li>
+                    <li class="list-inline-item align-middle">
+                        <i class="fa-solid fa-comment"></i>
+                    </li>
+                    <li class="list-inline-item align-middle">
+                        <i class="fa-solid fa-newspaper"></i>
+                    </li>
+                </ul>
+
+                <ul class="list-inline">
+                        <li class="list-inline-item align-middle"><h1 class="m-0"><?php echo $article_info['title']; ?></h1></li>
+                        <li class="list-inline-item align-text-top">
+                            <h5><i class="fa-solid fa-bookmark"></i></h5>
+                        </li>
+                        <li class="list-inline-item align-text-top">
+                            <h5><i class="fa-regular fa-bookmark"></i></h5>
+                        </li>
+                </ul>
+
+                <hr>
+                <?php echo $article_info['content']; ?>
             </div>
             <div class="col"></div>
         </div>
