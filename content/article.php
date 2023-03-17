@@ -86,12 +86,11 @@ if ($article_info['approved'] == false && $user_info['designer'] == false) {
                         <li class="list-inline-item align-middle">
                             <?php
                             if (isset($_SESSION['user_info'])) {
-                                $saved_query = "SELECT saved_id, saved
+                                $saved_query = "SELECT article_id, user_id
                                                 FROM SavedArticles
                                                 WHERE user_id = '" . $user_info['user_id'] . "' AND article_id = '" . $article_info['article_id'] . "';";
                                 $saved_result = mysqli_query($con, $saved_query);
-                                $saved_info = $saved_result->fetch_assoc();
-                                if ($saved_info['saved'] == true) {
+                                if ($saved_result->num_rows == 1) {
                             ?>
                                     <a class="fa-solid fa-bookmark text-reset" href="../include/save_article.inc.php?unsave_id=<?php echo $article_info['article_id']; ?>"></a>
                                 <?php } else { ?>
