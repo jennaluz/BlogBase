@@ -54,14 +54,14 @@ if ($article_info['approved'] == false && $user_info['designer'] == false) {
                     <ul class="list-inline">
                     <?php if ($article_info['approved'] == false) { ?>
                         <li class="list-inline-item align-middle">
-                            <button class="px-2 py-1 btn btn-outline-primary" type="button">Approve</button>
+                            <a class="btn btn-outline-primary px-2 py-1" type="button" href="../include/article_approval.inc.php?approve_id=<?php echo $article_info['article_id']; ?>"">Approve</a>
                         </li>
                         <li class="list-inline-item align-middle">
-                            <button class="px-2 py-1 btn btn-outline-danger" type="button">Deny</button>
+                            <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?deny_id=<?php echo $article_info['article_id']; ?>">Deny</a>
                         </li>
                     <?php } else { ?>
                         <li class="list-inline-item align-middle">
-                            <button class="px-2 py-1 btn btn-outline-danger" type="button">Revoke</button>
+                            <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?revoke_id=<?php echo $article_info['article_id']; ?>">Revoke</a>
                         </li>
                     <?php } ?>
                     </ul>
@@ -93,9 +93,9 @@ if ($article_info['approved'] == false && $user_info['designer'] == false) {
                                 $saved_info = $saved_result->fetch_assoc();
                                 if ($saved_info['saved'] == true) {
                             ?>
-                                    <a class="fa-solid fa-bookmark text-reset" href="../include/save_article.inc.php?unsave_id=<?php echo $saved_info['saved_id']; ?>"></a>
+                                    <a class="fa-solid fa-bookmark text-reset" href="../include/save_article.inc.php?unsave_id=<?php echo $article_info['article_id']; ?>"></a>
                                 <?php } else { ?>
-                                    <a class="fa-regular fa-bookmark text-reset" href="../include/save_article.inc.php?save_id=<?php echo $saved_info['saved_id']; ?>"></a>
+                                    <a class="fa-regular fa-bookmark text-reset" href="../include/save_article.inc.php?save_id=<?php echo $article_info['article_id']; ?>"></a>
                                 <?php } ?>
                             <?php } else { ?>
                                 <a class="fa-regular fa-bookmark text-reset" href="./login.php"></a>
