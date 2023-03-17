@@ -39,7 +39,7 @@ include_once "../include/auth_session.inc.php";
             ?>
 
                 <div class="container mt-5 mb-3 text-center">
-                    <h1 class="display-3">Hello <?php echo $_SESSION['username'] ?>,</h1>
+                    <h1>Hello <?php echo $_SESSION['username'] ?>,</h1>
                 </div>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -60,7 +60,7 @@ include_once "../include/auth_session.inc.php";
                         $reg_users_result = mysqli_query($con, $reg_users_query);
                         $reg_users_array = $reg_users_result->fetch_all(MYSQLI_BOTH);
                         ?>
-                        <table class="table table-responsive">
+                        <table class="table text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
@@ -119,7 +119,7 @@ include_once "../include/auth_session.inc.php";
                         $unreg_users_result = mysqli_query($con, $unreg_users_query);
                         $unreg_users_array = $unreg_users_result->fetch_all(MYSQLI_BOTH);
                         ?>
-                        <table class="table">
+                        <table class="table text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
