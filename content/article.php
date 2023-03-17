@@ -83,10 +83,11 @@ if ($article_info['approved'] == false && $user_info['designer'] == false) {
                         <i class="fa-regular fa-comment"></i>
                     </li>
                     <li class="list-inline-item align-middle">
-                        <i class="fa-solid fa-bookmark"></i>
-                    </li>
-                    <li class="list-inline-item align-middle">
-                        <i class="fa-regular fa-bookmark"></i>
+                        <?php if (isset($_SESSION['user_info'])) { ?>
+                            <a class="fa-solid fa-bookmark text-reset" href="#"></a>
+                        <?php } else { ?>
+                            <a class="fa-regular fa-bookmark text-reset" href="./login.php"></a>
+                        <?php } ?>
                     </li>
                     <li class="list-inline-item align-middle">
                         <i class="fa-solid fa-newspaper"></i>
