@@ -12,6 +12,10 @@ if ($user_info['designer'] == true) {
     } else if (isset($_GET['deny_id'])) {
         // requesting to deny article
         // the designer should be able to send a message to the writer explaining why it was denied
+        $requested_id = $_GET['deny_id'];
+        $update_approval = "UPDATE Articles
+                            SET approved = 0
+                            WHERE article_id = '" . $requested_id . "'";
     } else if (isset($_GET['revoke_id'])) {
         // requesting to revoke the approval of an article
         // the designer should be able to send a message to the write explaining why it was revoked
