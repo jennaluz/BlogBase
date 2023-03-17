@@ -1,6 +1,6 @@
 <?php
 require_once "../include/connect.inc.php";
-include "../include/user_info.inc.php";
+include_once "../include/user_info.inc.php";
 
 ob_start();
 
@@ -19,6 +19,7 @@ if ($article_info == null) {
     echo "doesn't exist 404";
 }
 
+// check if user is accessing unapproved article w/o designer role
 if ($article_info['approved'] == false && $user_info['designer'] == false) {
     // send to "you don't have access" page
     echo "You don't have access";
