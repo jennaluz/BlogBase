@@ -42,74 +42,93 @@ if(isset($_SESSION["username"])){
 <?php */ ?>
 
 <nav class="navbar navbar-expand-md bg-light shadow-sm">
-  <div class="container-fluid">
+     <div class="container-fluid">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse order-1 order-md-0" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-            <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                <span class="fa-solid fa-bars"></span>
-            </a>
-        </li>
-        <li class="nav-item">
+        <div class="collapse navbar-collapse order-1 order-md-0 col-4" id="navbar-collapsed-menu">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="btn d-md-block d-none " data-bs-toggle="offcanvas" href="#offcanvas-sidebar" role="button" aria-controls="offcanvas-sidebar">
+                        <span class="fa-solid fa-bars"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <div class="input-group rounded">
+                        <a class="btn input-group-text rounded" href="./search.php" type="button">
+                            <i class="fa-solid fa-search"></i>
+                        </a>
+                        <input class="form-control rounded" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+                </li>
+<!--
+-->
 <!--
             <button class="btn" type="submit">
                 <span class="fa-solid fa-magnifying-glass"></span>
             </button>
 -->
-            <a class="btn" href="./search.php" role="button">
-                <span class="fa-solid fa-magnifying-glass"></span>
-            </a>
 <!--
-            <form action="./search.php" method="POST" id="searchForm">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn" type="submit">
-                    <span class="fa-solid fa-magnifying-glass"></span>
+            <form class="input-group rounded" action="./search.php" method="POST" id="searchForm">
+                <button class="btn input-group-text border-0" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
+                <input class="form-control rounded" type="search" placeholder="Search" aria-label="Search">
             </form>
+                </li>
+                <li class="nav-item">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                </li>
 -->
-        </li>
-        <li class="nav-item">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        </li>
-      </ul>
+            </ul>
+        </div>
+
+        <div class="col-4 p-0 d-md-none d-block ">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapsed-menu" aria-controls="navbar-collapsed-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+            <a class="navbar-brand col-4 mx-auto text-center order-0 order-md-1" href="./index.php">BlogBase</a>
+
+        <!-- necessary for center-spacing the logo on smaller screens -->
+        <div class="col-4 p-0 d-md-none d-block">
+        </div>
+
+        <div class="collapse navbar-collapse order-2 col-4" id="navbar-collapsed-menu">
+            <ul class="navbar-nav ms-auto">
+                <?php session_start() ?>
+                <?php if ($user_info['admin'] == true) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="./admin.php">admin</a>
+                </li>
+                <?php } ?>
+                <?php if ($user_info['advertiser'] == true) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="./ads.php">ads</a>
+                </li>
+                <?php } ?>
+                <?php if ($user_info['writer'] == true) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="./create.php">create</a>
+                </li>
+                <?php } ?>
+                <?php if ($user_info['designer'] == true) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="./design.php">design</a>
+                </li>
+                <?php } ?>
+                <?php if ($user_info['reader'] == true) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="../include/logout.inc.php">logout</a>
+                <?php } else {?>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./login.php">login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./register.php">register</a>
+                </li>
+                <?php } ?>
+            </ul>
+        </div>
     </div>
-
-    <a class="navbar-brand mx-auto text-center order-0 order-md-1" href="./index.php">BlogBase</a>
-
-    <div class="collapse navbar-collapse order-2" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="./admin.php">admin
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="./ads.php">ads
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="./create.php">create
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="./design.php">design
-            </a>
-        </li>
-        <li class="nav-item">
-        <?php
-        session_start();
-        if (isset($_SESSION["username"])) { ?>
-            <a class="nav-link" href="../include/logout.inc.php">logout</a>
-        <?php } else { ?>
-            <a class="nav-link" href="./login.php">login</a>
-        <?php } ?>
-        </li>
-      </ul>
-    </div>
-
-  </div>
 </nav>
