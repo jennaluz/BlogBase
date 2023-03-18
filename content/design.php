@@ -34,12 +34,12 @@ if ($user_info['designer'] == false) {
             <?php include "./views/sidebar.php" ?>
         </div>
 
-        <div class="mt-5 text-center">
+        <div class="mt-3 text-center">
             <h1>Article Approval</h1>
         </div>
 
-        <div class="col-10 col-lg-7 mt-5 mx-auto">
-            <ul class="nav nav-tabs" id="artical-approval-tabs" role="tablist">
+        <div class="col-10 col-lg-7 mt-3 mx-auto">
+            <ul class="nav nav-tabs" id="article-approval-tabs" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="unapproved-tab" data-bs-toggle="tab" data-bs-target="#unapproved-tab-pane" type="button" role="tab" aria-controls="unapproved-tab-pane" aria-selected="true">Unapproved</button>
                 </li>
