@@ -106,12 +106,12 @@ if ($user_info['writer'] == false) {
             </ul>
             <form method="post">
                 <div class="col-10 col-lg-8 mb-3">
-                    <input class="form-control form-control-lg border border-0 border-bottom border-2 rounded-0 px-0 title-box" type="text" placeholder="Title">
+                    <input class="form-control form-control-lg border border-0 border-bottom border-2 rounded-0 px-0 title-box" name="title" type="text" placeholder="Title">
                 </div>
                 <textarea name="editor1"></textarea>
                 <script>CKEDITOR.replace('editor1');</script>
                 <br>
-                <button class="btn btn-outline-dark px-2 py-1" type="button">Submit</button>
+                <button name ="new_post" class="btn btn-outline-dark px-2 py-1" type="submit">Submit</button>
             </form>
         </div>
     </body>
