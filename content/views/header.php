@@ -118,9 +118,12 @@ if(isset($_SESSION["username"])){
                 <?php } ?>
                 <?php if ($user_info['reader'] == true) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="../include/logout.inc.php">logout</a>
-                <?php } else {?>
+                    <a class="nav-link" href="./saved.php">saved</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../include/logout.inc.php">logout</a>
+                </li>
+                <?php } else {?>
                 <li class="nav-item">
                     <a class="nav-link" href="./login.php">login</a>
                 </li>
