@@ -21,7 +21,7 @@ We are building BlogBase with XAMPP in mind. Other server stacks may work, but h
         ```
         git clone https://github.com/jennaluz/BlogBase.git C:\xampp\htdocs\BlogBase
         ```
-2. Import the database to your local database server
+2. Import the database to your local database server.
     * phpmyadmin
     
         1. Ensure that both the MySQL Database Server and Apache Web Server are running
@@ -31,7 +31,7 @@ We are building BlogBase with XAMPP in mind. Other server stacks may work, but h
         5. On the left-hand side of the page, select "BlogBase"
         6. On the top of the page, select "Import"
         7. Select "Browse" and find the `BlogBase/database/BlogBase.sql` file on your computer
-        8. Once you've selected the BlogBase.sql file, click import.
+        8. Once you've selected the BlogBase.sql file, click import
 
 You should now be able to access BlogBase by navigating to `localhost/blogbase/content/` in your browser!
 
