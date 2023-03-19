@@ -41,6 +41,7 @@ if(isset($_SESSION["username"])){
 ?>
 <?php */ ?>
 
+<?php include_once "../include/user_info.inc.php"; ?>
 <nav class="navbar navbar-expand-md bg-light shadow-sm">
      <div class="container-fluid">
 
