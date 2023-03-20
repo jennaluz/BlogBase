@@ -6,8 +6,8 @@ ob_start();
 
 // get information about this article
 $requested_id = $_GET['id'];
-$article_query = "SELECT article_id, title, content, UNIX_TIMESTAMP(submit_date) as submit_date, approved
-                  FROM Articles
+$article_query = "SELECT Articles.article_id, Articles.title, Articles.content, UNIX_TIMESTAMP(Articles.submit_date) as submit_date, Articles.approved, Users.first_name, Users.last_name
+                  FROM Articles INNER JOIN Users on author_id = user_id
                   WHERE article_id = '" . $requested_id . "'";
 $article_result = mysqli_query($con, $article_query);
 $article_info = $article_result->fetch_assoc();
@@ -71,8 +71,7 @@ if ($article_info['approved'] != true && $user_info['designer'] != true) {
                 <ul class="list-inline">
                     <li class="list-inline-item align-middle">
                     <!-- article author will go here -->
-                        <?php //echo date("M. d, Y", $article_info['author']) ?>
-                        Chad Flemmington
+                        <?php echo $article_info['first_name'] . " " . $article_info['last_name'] ?>
                     </li>
                     <li class="list-inline-item align-middle">
                         <?php echo date("M. d, Y", $article_info['submit_date']) ?>
