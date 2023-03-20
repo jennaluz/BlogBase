@@ -1,7 +1,7 @@
 <?php
 require_once "../include/connect.inc.php";
 include_once "../include/user_info.inc.php";
-include "../include/create_post.php";
+include "../include/create_article.inc.php";
 
 // check if user is a writer
 if ($user_info['writer'] == false) {
