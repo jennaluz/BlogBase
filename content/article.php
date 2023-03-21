@@ -77,9 +77,11 @@ if ($article_info['approved'] != true && $user_info['designer'] != true) {
                         <?php echo date("M. d, Y", $article_info['submit_date']) ?>
                     </li>
                     <?php if ($article_info['approved'] == true) { ?>
+<?php /* ?>
                         <li class="list-inline-item align-middle">
                             <i class="fa-solid fa-comment"></i>
                         </li>
+<?php */ ?>
                         <li class="list-inline-item align-middle">
                             <i class="fa-regular fa-comment"></i>
                         </li>
