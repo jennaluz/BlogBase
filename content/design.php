@@ -51,9 +51,9 @@ if ($user_info['designer'] == false) {
             <div class="tab-content" id="article-approval-content">
                 <div class="tab-pane fade show active" id="unapproved-tab-pane" role="tabpanel" aria-labelledby="unapproved-tab" tabindex="0">
                     <?php
-                    $unapproved_query = "SELECT title, description, UNIX_TIMESTAMP(submit_date) as submit_date
-                                         FROM Articles
-                                         WHERE approved = 0";
+                    $unapproved_query = "SELECT first_name, last_name, article_id, title, description, UNIX_TIMESTAMP(submit_date) as submit_date
+                                         FROM Articles, Users
+                                         WHERE Articles.approved = 0 AND author_id = user_id";
                     $unapproved_result = mysqli_query($con, $unapproved_query);
                     $unapproved_articles = $unapproved_result->fetch_all(MYSQLI_BOTH);
                     ?>
@@ -72,11 +72,25 @@ if ($user_info['designer'] == false) {
                                         <?php echo date("M. d, Y", $unapproved_articles[$i]['submit_date']) ?>
                                     </td>
                                     <td>
-                                        <?php //echo $article_info['author']) ?>Chad Flemmington
+                                        <?php echo $unapproved_articles[$i]['first_name'] . " " . $unapproved_articles[$i]['last_name'] ?>
                                     </td>
                                     <td>
-                                        <h4><?php echo $unapproved_articles[$i]['title'] ?></h4>
+                                        <h4>
+                                            <a class="text-reset text-decoration-none" href="./article.php?id=<?php echo $unapproved_articles[$i]['article_id'] ?>">
+                                                <?php echo $unapproved_articles[$i]['title'] ?>
+                                            </a>
+                                        </h4>
                                         <?php echo $unapproved_articles[$i]['description'] ?>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item align-middle">
+                                                <a class="btn btn-outline-primary px-2 py-1" type="button" href="../include/article_approval.inc.php?approve_id=<?php echo $unapproved_articles[$i]['article_id']; ?>&return_page=design.php">Approve</a>
+                                            </li>
+                                            <li class="list-inline-item align-middle">
+                                                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?deny_id=<?php echo $unapproved_articles[$i]['article_id']; ?>&return_page=design.php">Deny</a>
+                                            </li>
+                                        </ul>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -85,9 +99,9 @@ if ($user_info['designer'] == false) {
                 </div>
                 <div class="tab-pane fade" id="approved-tab-pane" role="tabpanel" aria-labelledby="approved-tab" tabindex="1">
                     <?php
-                    $approved_query = "SELECT title, description, UNIX_TIMESTAMP(submit_date) as submit_date
-                                         FROM Articles
-                                         WHERE approved = 1";
+                    $approved_query = "SELECT first_name, last_name, article_id, title, description, UNIX_TIMESTAMP(submit_date) as submit_date
+                                         FROM Articles, Users
+                                         WHERE Articles.approved = 1 AND author_id = user_id";
                     $approved_result = mysqli_query($con, $approved_query);
                     $approved_articles = $approved_result->fetch_all(MYSQLI_BOTH);
                     ?>
@@ -106,11 +120,18 @@ if ($user_info['designer'] == false) {
                                         <?php echo date("M. d, Y", $approved_articles[$i]['submit_date']) ?>
                                     </td>
                                     <td>
-                                        <?php //echo $article_info['author']) ?>Chad Flemmington
+                                        <?php echo $approved_articles[$i]['first_name'] . " " . $approved_articles[$i]['last_name'] ?>
                                     </td>
                                     <td>
-                                        <h4><?php echo $approved_articles[$i]['title'] ?></h4>
+                                        <h4>
+                                            <a class="text-reset text-decoration-none" href="./article.php?id=<?php echo $approved_articles[$i]['article_id'] ?>">
+                                                <?php echo $approved_articles[$i]['title'] ?>
+                                            </a>
+                                        </h4>
                                         <?php echo $approved_articles[$i]['description'] ?>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?revoke_id=<?php echo $approved_articles[$i]['article_id']; ?>&return_page=design.php">Revoke</a>
                                     </td>
                                 </tr>
                             <?php } ?>

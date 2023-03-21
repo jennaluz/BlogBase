@@ -27,7 +27,13 @@ if ($user_info['designer'] == true) {
     }
 
     if (mysqli_query($con, $update_approval)) {
-        header("Location: ../content/article.php?id=" . $requested_id . "");
+        if (isset($_GET['return_page'])) {
+            $return_page = $_GET['return_page'];
+        } else {
+            $return_page = "article.php?id=" . $requested_id;
+        }
+
+        header("Location: ../content/$return_page");
     } else {
         echo "Error updating record: " . mysqli_error($con);
     }
