@@ -95,7 +95,7 @@ if ($user_info['writer'] == false) {
 
         <!--<h1 style='font-size: 24px; text-align: center; padding-top: 15px;'><strong>Blog Submission's </strong></h1>-->
 
-        <div class="col-10 col-lg-6 mt-3 mx-auto">
+        <div class="col-10 col-lg-7 mt-3 mx-auto">
             <ul class="list-inline mb-0">
                 <li class="list-inline-item">
                     <?php echo $user_info['first_name'] . " " . $user_info['last_name'] ?>
