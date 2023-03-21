@@ -1,5 +1,7 @@
 <?php
-require_once "../include/connect.inc.php"; 
+require_once "../include/connect.inc.php";
+include_once "../include/user_info.inc.php";
+
 ob_start();
 ?>
 
@@ -15,19 +17,16 @@ ob_start();
         <link rel="stylesheet" href="./css/styles.css">
         <link rel="stylesheet" href="./css/enter.css">
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
         <title>BlogBase Login</title>
     </head>
 
     <body>
-        <div class="header">
-            <?php include "./views/header.php" ?>
-        </div>
-        <div class="sidebar">
-            <?php include "./views/sidebar.php" ?>
-        </div>
-
         <div class="container mt-5 mb-3 text-center">
-            <h1 class="display-3">BlogBase</h1>
+            <h1>
+                <a class="text-decoration-none text-reset" href="./index.php">BlogBase</a>
+            </h1>
         </div>
 
         <?php
@@ -53,7 +52,7 @@ ob_start();
             }
         } else{ ?>
             <div class="row">
-                <div class="col-5 mx-auto">
+                <div class="col-10 col-lg-5  mx-auto">
                     <form method="post" name="login">
                         <div class="mt-2 mb-3">
                             <label for="username">Username</label>
@@ -78,7 +77,5 @@ ob_start();
         }
         ?>
 
-        <script src="./js/script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>
