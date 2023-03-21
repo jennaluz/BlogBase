@@ -108,7 +108,7 @@ if ($user_info['admin'] != true) {
                                     </td>
                                     <td>
                                         <a class="btn btn-outline-primary" href="#">Edit</a>
-                                        <a class="btn btn-outline-danger" href="../include/delete_user.inc.php?userid=<?php echo $current_row["userid"]; ?>">Delete</a>
+                                        <a class="btn btn-outline-danger" href="../include/delete_user.inc.php?id=<?php echo $current_row['user_id']; ?>">Delete</a>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -119,7 +119,7 @@ if ($user_info['admin'] != true) {
                 <div class="tab-pane fade" id="unregistered-tab-pane" role="tabpanel" aria-labelledby="unregistered-tab" tabindex="0">
                     <?php
                     $unreg_users_query = "SELECT *
-                                          FROM `Users`
+                                          FROM Users
                                           WHERE approved != 1";
                     $unreg_users_result = mysqli_query($con, $unreg_users_query);
                     ?>
@@ -155,26 +155,26 @@ if ($user_info['admin'] != true) {
                                     </td>
                                     <td>
                                         <?php
-                                        if ($current_row["admin"] == 1) {
+                                        if ($current_row['admin'] == 1) {
                                             echo "<a class='btn badge bg-success rounded-pill text-decoration-none' href='#'>admin</a>";
                                         }
-                                        if ($current_row["designer"] == 1) {
+                                        if ($current_row['designer'] == 1) {
                                             echo "<a class='btn badge bg-warning rounded-pill text-decoration-none' href='#'>designer</a>";
                                         }
-                                        if ($current_row["reader"] == 1) {
+                                        if ($current_row['reader'] == 1) {
                                             echo "<a class='btn badge bg-primary rounded-pill text-decoration-none' href='#'>reader</a>";
                                         }
-                                        if ($current_row["writer"] == 1) {
+                                        if ($current_row['writer'] == 1) {
                                             echo "<a class='btn badge bg-info rounded-pill text-decoration-none' href='#'>writer</a>";
                                         }
-                                        if ($current_row["advertiser"] == 1) {
+                                        if ($current_row['advertiser'] == 1) {
                                             echo "<a class='btn badge bg-danger rounded-pill text-decoration-none' href='#'>advertiser</a>";
                                         }
                                         ?>
                                     </td>
                                     <td>
-                                        <a class="btn btn-outline-primary" href="../include/approve_user.inc.php?userid=<?php echo $current_row["user_id"]; ?>">Approve</a>
-                                        <a class="btn btn-outline-danger" href="../include/delete_user.inc.php?userid=<?php echo $current_row["user_id"]; ?>">Deny</a>
+                                        <a class="btn btn-outline-primary" href="../include/approve_user.inc.php?userid=<?php echo $current_row['user_id']; ?>">Approve</a>
+                                        <a class="btn btn-outline-danger" href="../include/delete_user.inc.php?userid=<?php echo $current_row['user_id']; ?>">Deny</a>
                                     </td>
                                 </tr>
                             <?php } ?>
