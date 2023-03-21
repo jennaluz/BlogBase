@@ -51,27 +51,25 @@ ob_start();
                 ob_end_flush();
             }
         } else{ ?>
-            <div class="row">
-                <div class="col-10 col-lg-5  mx-auto">
-                    <form method="post" name="login">
-                        <div class="mt-2 mb-3">
-                            <label for="username">Username</label>
-                            <input class="form-control" type="text" id="username" name="username" required />
+            <div class="col-10 col-lg-5  mx-auto">
+                <form method="post" name="login">
+                    <div class="mt-2 mb-3">
+                        <label for="username">Username</label>
+                        <input class="form-control" type="text" id="username" name="username" required />
+                    </div>
+                    <div class="mt-2 mb-4">
+                        <label for="password">Password</label>
+                        <input class="form-control" type="password" id="password" name="password" required />
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <button class="btn btn-outline-dark mb-2" type="submit" name="submit">Login</button>
                         </div>
-                        <div class="mt-2 mb-4">
-                            <label for="password">Password</label>
-                            <input class="form-control" type="password" id="password" name="password" required />
+                        <div class="col-auto pt-2">
+                            <p>Don't have an account?&emsp;<a href="./register.php">Register Now</a></p>
                         </div>
-                        <div class="row">
-                            <div class="col-auto">
-                                <button class="btn btn-outline-dark mb-2" type="submit" name="submit">Login</button>
-                            </div>
-                            <div class="col-auto pt-2">
-                                <p>Don't have an account?&emsp;<a href="./register.php">Register Now</a></p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         <?php
         }

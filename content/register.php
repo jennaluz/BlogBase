@@ -91,7 +91,6 @@ ob_start();
         } else {
         ?>
 
-        <div class="row">
             <div class="col-10 col-lg-5 mx-auto">
                 <form class="container" method="post">
                     <div class="row mt-2 mb-3 align-items-center">
@@ -140,7 +139,6 @@ ob_start();
                     <p>Already have an account?&emsp;<a href="./login.php">Login to Account</a></p>
                 </form>
             </div>
-        </div>
         <?php
         }
         ?>
