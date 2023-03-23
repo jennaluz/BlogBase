@@ -53,7 +53,7 @@ if ($user_info['admin'] != true) {
                 <div class="tab-pane fade show active" id="registered-tab-pane" role="tabpanel" aria-labelledby="registered-tab" tabindex="0">
                     <?php
                     $reg_users_query = "SELECT *
-                                        FROM `Users`
+                                        FROM Users
                                         WHERE approved = 1";
                     $reg_users_result = mysqli_query($con, $reg_users_query);
                     ?>
@@ -89,19 +89,19 @@ if ($user_info['admin'] != true) {
                                     </td>
                                     <td>
                                         <?php
-                                        if ($current_row["admin"] == 1) {
+                                        if ($current_row['admin'] == 1) {
                                             echo "<a class='btn badge bg-success rounded-pill text-decoration-none' href='#'>admin</a>";
                                         }
-                                        if ($current_row["designer"] == 1) {
+                                        if ($current_row['designer'] == 1) {
                                             echo "<a class='btn badge bg-warning rounded-pill text-decoration-none' href='#'>designer</a>";
                                         }
-                                        if ($current_row["reader"] == 1) {
+                                        if ($current_row['reader'] == 1) {
                                             echo "<a class='btn badge bg-primary rounded-pill text-decoration-none' href='#'>reader</a>";
                                         }
-                                        if ($current_row["writer"] == 1) {
+                                        if ($current_row['writer'] == 1) {
                                             echo "<a class='btn badge bg-info rounded-pill text-decoration-none' href='#'>writer</a>";
                                         }
-                                        if ($current_row["advertiser"] == 1) {
+                                        if ($current_row['advertiser'] == 1) {
                                             echo "<a class='btn badge bg-danger rounded-pill text-decoration-none' href='#'>advertiser</a>";
                                         }
                                         ?>
