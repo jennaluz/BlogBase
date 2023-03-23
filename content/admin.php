@@ -173,8 +173,9 @@ if ($user_info['admin'] != true) {
                                         ?>
                                     </td>
                                     <td>
-                                        <a class="btn btn-outline-primary" href="../include/approve_user.inc.php?userid=<?php echo $current_row['user_id']; ?>">Approve</a>
-                                        <a class="btn btn-outline-danger" href="../include/delete_user.inc.php?userid=<?php echo $current_row['user_id']; ?>">Deny</a>
+                                        <a class="btn btn-outline-primary" href="../include/approve_user.inc.php?id=<?php echo $current_row['user_id']; ?>">Approve</a>
+                                        <a class="btn btn-outline-danger" href="../include/delete_user.inc.php?id=<?php echo $current_row['user_id']; ?>">Deny</a>
+                                        <a class="btn btn-outline-danger" href="../include/delete_user.inc.php?id=<?php echo $current_row['user_id']; ?>">Delete</a>
                                     </td>
                                 </tr>
                             <?php } ?>
