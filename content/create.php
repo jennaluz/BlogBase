@@ -24,65 +24,7 @@ if ($user_info['writer'] == false) {
 
         <title>BlogBase Writer</title>
 
-        <script src="../external/ckeditor/ckeditor.js">
-            CKEDITOR.editorConfig = function(config) {
-                config.toolbarGroups = [{
-                        name: 'document',
-                        groups: ['mode', 'document', 'doctools']
-                    },
-                    {
-                        name: 'clipboard',
-                        groups: ['clipboard', 'undo']
-                    },
-                    {
-                        name: 'editing',
-                        groups: ['find', 'selection', 'spellchecker', 'editing']
-                    },
-                    {
-                        name: 'forms',
-                        groups: ['forms']
-                    },
-                    {
-                        name: 'basicstyles',
-                        groups: ['basicstyles', 'cleanup']
-                    },
-                    {
-                        name: 'paragraph',
-                        groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph']
-                    },
-                    {
-                        name: 'links',
-                        groups: ['links']
-                    },
-                    {
-                        name: 'insert',
-                        groups: ['insert']
-                    },
-                    {
-                        name: 'styles',
-                        groups: ['styles']
-                    },
-                    {
-                        name: 'colors',
-                        groups: ['colors']
-                    },
-                    {
-                        name: 'tools',
-                        groups: ['tools']
-                    },
-                    {
-                        name: 'others',
-                        groups: ['others']
-                    },
-                    {
-                        name: 'about',
-                        groups: ['about']
-                    }
-                ];
-
-                config.removeButtons = 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript';
-            };
-        </script>
+        <script src="../external/ckeditor/ckeditor.js"></script>
     </head>
 
     <body>
@@ -109,7 +51,26 @@ if ($user_info['writer'] == false) {
                     <input class="form-control form-control-lg border border-0 border-bottom border-2 rounded-0 px-0 title-box" name="title" type="text" placeholder="Title">
                 </div>
                 <textarea name="article_draft"></textarea>
-                <script>CKEDITOR.replace('article_draft');</script>
+                <script>
+                    CKEDITOR.replace('article_draft', {
+                        toolbarGroups: [
+                            { name: 'tools', groups: ['tools'] },
+                            { name: 'document', groups: ['mode', 'document'] },
+                            { name: 'links', groups: ['links'] },
+                            { name: 'forms', groups: ['forms'] },
+                            { name: 'insert', groups: ['insert'] },
+                            '/',
+                            { name: 'clipboard', groups: ['undo', 'clipboard'] },
+                            { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
+                            { name: 'editing', groups: ['find', 'spellchecker', 'editing'] },
+                            '/',
+                            { name: 'colors', groups: ['colors'] },
+                            { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+                            { name: 'styles', groups: ['styles'] },
+                        ],
+                        toolbarCanCollapse: true,
+                    });
+                </script>
                 <button name ="new_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit</button>
             </form>
         </div>
