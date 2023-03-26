@@ -6,7 +6,7 @@
 <div class="nav-mid flex-div">
     <div class="search-box flex-div">
             <form action="./search.php" method="POST" id="searchForm">
-            <input type="text/submit" name="search" placeholder="search"/> <img src="./images/search.png">
+                <input type="text/submit" name="search" placeholder="search"/> <img src="./images/search.png">
             </form>
     </div>
 </div>
@@ -41,7 +41,9 @@ if(isset($_SESSION["username"])){
 ?>
 <?php */ ?>
 
-<?php include_once "../include/user_info.inc.php"; ?>
+<?php
+include_once "../include/user_info.inc.php";
+?>
 <nav class="navbar navbar-expand-md bg-light shadow-sm">
      <div class="container-fluid">
 
@@ -53,32 +55,13 @@ if(isset($_SESSION["username"])){
                     </a>
                 </li>
                 <li class="nav-item">
-                    <div class="input-group rounded">
-                        <a class="btn input-group-text rounded" href="./search.php" type="button">
+                    <form method="post" action="./search.php" class="input-group rounded">
+                        <button class="btn input-group-text rounded" type="submit">
                             <i class="fa-solid fa-search"></i>
-                        </a>
-                        <input class="form-control rounded" type="search" placeholder="Search" aria-label="Search">
-                    </div>
+                        </button>
+                        <input class="form-control rounded" name="search_query" type="search" placeholder="Search" aria-label="Search">
+                    </form >
                 </li>
-<!--
--->
-<!--
-            <button class="btn" type="submit">
-                <span class="fa-solid fa-magnifying-glass"></span>
-            </button>
--->
-<!--
-            <form class="input-group rounded" action="./search.php" method="POST" id="searchForm">
-                <button class="btn input-group-text border-0" type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <input class="form-control rounded" type="search" placeholder="Search" aria-label="Search">
-            </form>
-                </li>
-                <li class="nav-item">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                </li>
--->
             </ul>
         </div>
 
