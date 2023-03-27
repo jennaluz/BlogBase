@@ -71,7 +71,7 @@ if ($user_info['writer'] == false) {
                         toolbarCanCollapse: true,
                     });
                 </script>
-                <button name ="new_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit</button>
+                <button name ="create_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit</button>
             </form>
         </div>
     </body>

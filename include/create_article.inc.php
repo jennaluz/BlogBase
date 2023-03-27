@@ -1,7 +1,7 @@
 <?php
 include_once "../include/user_info.inc.php";
 
-if (isset($_REQUEST['new_article'])) {
+if (isset($_REQUEST['create_article'])) {
     $title = $_REQUEST['title'];
     $content = $_REQUEST['article_draft'];
     $description = substr($content, 0, 253);
