@@ -4,7 +4,7 @@ require "./connect.inc.php";
 $statusMsg = '';
 
 // File upload path
-$targetDir = "uploads/";
+$targetDir = "../content/uploads/";
 $fileName = basename($_FILES["file"]["name"]);
 $targetFilePath = $targetDir . $fileName;
 $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
@@ -16,7 +16,7 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
         // Upload file to server
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
             // Insert image file name into database
-            $insert = $con->query("INSERT into ad_displays (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
+            $insert = $con->query("INSERT into Ads (ad_file, submit_date) VALUES ('".$fileName."', NOW())");
 
             if ($insert) {
                 $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
