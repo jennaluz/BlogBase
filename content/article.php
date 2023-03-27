@@ -48,6 +48,9 @@ if ($article_info['approved'] != true && $user_info['designer'] != true) {
         <div class="sidebar">
             <?php include "./views/sidebar.php" ?>
         </div>
+        <div class="comment-bar">
+            <?php include "./views/comment-bar.php" ?>
+        </div>
 
         <div class="col-10 col-lg-7 mx-auto mt-3">
             <div id="article-head">
@@ -83,7 +86,7 @@ if ($article_info['approved'] != true && $user_info['designer'] != true) {
                         </li>
 <?php */ ?>
                         <li class="list-inline-item align-middle">
-                            <i class="fa-regular fa-comment"></i>
+                            <a class="fa-regular fa-comment text-reset text-decoration-none" data-bs-toggle="offcanvas" href="#offcanvas-comments" aria-controls="offcanvas-sidebar"> </a>
                         </li>
                         <li class="list-inline-item align-middle">
                             <?php
