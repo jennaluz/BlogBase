@@ -49,7 +49,7 @@ include_once "../include/user_info.inc.php";
                 <?php } ?>
                 <?php if ($user_info['writer'] == true) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="./create.php">create</a>
+                    <a class="nav-link" href="./writer.php">writer</a>
                 </li>
                 <?php } ?>
                 <?php if ($user_info['designer'] == true) { ?>
