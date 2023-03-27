@@ -7,8 +7,8 @@ if (isset($_REQUEST['create_article'])) {
     $description = substr($content, 0, 253);
     $author_id = $user_info['user_id'];
 
-    $sql = "INSERT INTO Articles (author_id, title, description, content)
+    $query = "INSERT INTO Articles (author_id, title, description, content)
             VALUES ('$author_id', '$title', '$description', '$content')";
-    mysqli_query($con, $sql);
+    mysqli_query($con, $query);
 }
 ?>
