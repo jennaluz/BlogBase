@@ -6,27 +6,28 @@ if ($user_info['designer'] == true) {
     if (isset($_GET['approve_id'])) {
         // requesting to approve article
         $requested_id = $_GET['approve_id'];
-        $update_approval = "UPDATE Articles
-                            SET approved = 1
-                            WHERE article_id = '" . $requested_id . "'";
+        $approval_query = "UPDATE Articles
+                           SET approved = 1
+                           WHERE article_id = '" . $requested_id . "'";
     } else if (isset($_GET['deny_id'])) {
         // requesting to deny article
         // the designer should be able to send a message to the writer explaining why it was denied
         $requested_id = $_GET['deny_id'];
-        $update_approval = "UPDATE Articles
-                            SET approved = 0
-                            WHERE article_id = '" . $requested_id . "'";
+        $approval_query = "UPDATE Articles
+                           SET approved = 0
+                           WHERE article_id = '" . $requested_id . "'";
     } else if (isset($_GET['revoke_id'])) {
         // requesting to revoke the approval of an article
         // the designer should be able to send a message to the write explaining why it was revoked
         $requested_id = $_GET['revoke_id'];
-        $update_approval = "UPDATE Articles
-                            SET approved = 0
-                            WHERE article_id = '" . $requested_id . "'";
-    } else {
-    }
+        $approval_query = "UPDATE Articles
+                           SET approved = 0
+                           WHERE article_id = '" . $requested_id . "'";
+    } else {}
 
-    if (mysqli_query($con, $update_approval)) {
+    $approval_result = mysqli_query($con, $approval_query);
+
+    if ($approval_result) {
         if (isset($_GET['return_page'])) {
             $return_page = $_GET['return_page'];
         } else {
