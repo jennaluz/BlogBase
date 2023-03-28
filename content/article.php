@@ -6,9 +6,10 @@ ob_start();
 
 // get information about this article
 $requested_id = $_GET['id'];
-$article_query = "SELECT Articles.article_id, Articles.title, Articles.content, UNIX_TIMESTAMP(Articles.submit_date) as submit_date, Articles.approved, Users.first_name, Users.last_name
-                  FROM Articles INNER JOIN Users on author_id = user_id
-                  WHERE article_id = '" . $requested_id . "'";
+$article_query = "SELECT Articles.article_id, Articles.title, Articles.content, UNIX_TIMESTAMP(Articles.submit_date) as submit_date, Articles.approved, Articles.author_id,
+                         Users.first_name, Users.last_name
+                  FROM Articles INNER JOIN Users ON Article.author_id = Users.user_id
+                  WHERE Articles.article_id = '" . $requested_id . "'";
 $article_result = mysqli_query($con, $article_query);
 $article_info = $article_result->fetch_assoc();
 
@@ -23,6 +24,10 @@ if ($article_info == null) {
 if ($article_info['approved'] != true && $user_info['designer'] != true) {
     // send to "you don't have access" page
     echo "You don't have access";
+}
+
+if ($user_info['user_id'] == $article_info['author_id']) {
+    $writer = true;
 }
 ?>
 
@@ -54,6 +59,13 @@ if ($article_info['approved'] != true && $user_info['designer'] != true) {
 
         <div class="col-10 col-lg-7 mx-auto mt-3">
             <div id="article-head">
+                <?php if ($writer && $article_info['submitted'] == false) { ?>
+                    <ul class="list-inline">
+                        <li class="list-inline-item align-middle">
+                            <a class="btn btn-outline-primary px-2 py-1" type="button" href="./create.php?id=<?php echo $article_info['article_id']; ?>">Edit</a>
+                        </li>
+                    </ul>
+                <?php } ?>
                 <?php if ($user_info['designer'] == true) { ?>
                     <ul class="list-inline">
                     <?php if ($article_info['approved'] == false) { ?>

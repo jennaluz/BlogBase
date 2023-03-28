@@ -8,6 +8,28 @@ if ($user_info['writer'] == false) {
     // redirect to "You don't have access" page
     echo "You don't have access to this page";
 }
+
+$title = "";
+$description = "";
+$content = "";
+
+if (isset($_GET['id'])) {
+    $requested_id = $_GET['id'];
+    $user_id = $user_info['user_id'];
+
+    $article_query = "SELECT article_id, author_id, title, description, lead_image, content
+                      FROM Articles
+                      WHERE article_id = $requested_id AND author_id = $user_id";
+    $article_result = mysqli_query($con, $article_query);
+    $article_info = $article_result->fetch_assoc();
+
+    if ($article_info == null) {
+        echo "does not exist";
+    } else {
+        $title = $article_info['title'];
+        $content = $article_info['content'];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,9 +70,9 @@ if ($user_info['writer'] == false) {
             </ul>
             <form method="post">
                 <div class="col-10 col-lg-8 mb-3">
-                    <input class="form-control form-control-lg border border-0 border-bottom border-2 rounded-0 px-0 title-box" name="title" type="text" placeholder="Title">
+                <input class="form-control form-control-lg border border-0 border-bottom border-2 rounded-0 px-0 title-box" name="title" type="text" placeholder="Title" value="<?php echo $title; ?>">
                 </div>
-                <textarea name="article_draft"></textarea>
+                <textarea name="article_draft"><?php echo $content; ?></textarea>
                 <script>
                     CKEDITOR.replace('article_draft', {
                         toolbarGroups: [
@@ -71,7 +93,11 @@ if ($user_info['writer'] == false) {
                         toolbarCanCollapse: true,
                     });
                 </script>
+                <!--
+                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php">Save for Later</a>
+                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php">Submit for Approval</a>
                 <button name ="save_article" class="btn btn-outline-dark px-2 py-1 mt-3 me-2" type="submit">Save for Later</button>
+                -->
                 <button name ="create_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit for Approval</button>
             </form>
         </div>

@@ -8,7 +8,7 @@ if (isset($_REQUEST['create_article'])) {
     $author_id = $user_info['user_id'];
 
     $query = "INSERT INTO Articles (author_id, title, description, content)
-            VALUES ('$author_id', '$title', '$description', '$content')";
+              VALUES ('$author_id', '$title', '$description', '$content')";
     mysqli_query($con, $query);
 }
 ?>

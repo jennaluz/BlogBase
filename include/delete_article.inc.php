@@ -1,12 +1,21 @@
 <?php
 require_once "./connect.inc.php";
+include_once "./user_info.inc.php";
 
-$sql = "DELETE FROM `Articles`
-        WHERE article_id = '" . $_GET["postID"] . "'";
+if ($user_info['writer'] == false) {
+    echo "You can't delete this!";
+}
 
-if (mysqli_query($con, $sql)) {
-    header("Location: ../content/design.php");
+$requested_id = $_GET['id'];
+$query = "DELETE FROM Articles
+          WHERE article_id = $requested_id";
+$result = mysqli_query($con, $query);
+
+if ($result) {
+    $return_page = $_GET['return_page'];
+
+    header("Location: ../content/$return_page");
 } else {
-    echo "Error deleting record: " . mysqli_error($con);
+    echo "Error deleting article" . mysqli_error($con);
 }
 ?>
