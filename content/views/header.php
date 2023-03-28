@@ -12,11 +12,11 @@ include_once "../include/user_info.inc.php";
                     </a>
                 </li>
                 <li class="nav-item">
-                    <form method="post" action="./search.php" class="input-group rounded">
+                    <form method="get" action="./search.php" class="input-group rounded">
                         <button class="btn input-group-text rounded" type="submit">
                             <i class="fa-solid fa-search"></i>
                         </button>
-                        <input class="form-control rounded" name="search_query" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control rounded" name="query" type="search" placeholder="Search" aria-label="Search">
                     </form >
                 </li>
             </ul>
