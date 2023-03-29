@@ -29,6 +29,7 @@ if (isset($_GET['id'])) {
         echo "does not exist";
     } else {
         $title = $article_info['title'];
+        $description = $article_info['description'];
         $content = $article_info['content'];
     }
 }
@@ -61,8 +62,8 @@ if (isset($_GET['id'])) {
 
         <!--<h1 style='font-size: 24px; text-align: center; padding-top: 15px;'><strong>Blog Submission's </strong></h1>-->
 
-        <div class="col-10 col-lg-7 mt-3 mx-auto">
-            <ul class="list-inline mb-0">
+        <div class="col-10 col-lg-7 mt-5 mx-auto">
+            <ul class="list-inline mb-0 text-center">
                 <li class="list-inline-item">
                     <?php echo $user_info['first_name'] . " " . $user_info['last_name'] ?>
                 </li>
@@ -70,37 +71,44 @@ if (isset($_GET['id'])) {
                     <?php echo date("M. d, Y", time()) ?>
                 </li>
             </ul>
+
             <form method="post" action="../include/create_article.inc.php?id=<?php echo $requested_id; ?>&return_page=writer.php">
-                <div class="col-10 col-lg-8 mb-3">
-                <input class="form-control form-control-lg border border-0 border-bottom border-2 rounded-0 px-0 title-box" name="title" type="text" placeholder="Title" value="<?php echo $title; ?>">
+                <div class="col-10 mb-3" id="article-head">
+                    <input class="form-control form-control-lg border-0 ounded-0 px-0 title-box mb-1" name="title" type="text" placeholder="Title" value="<?php echo $title; ?>">
+                    <textarea class="form-control border-0 rounded-0 px-0" name="description" type="text" placeholder="Description"><?php echo $description; ?></textarea>
+                    <div class="input-group my-2">
+                        <button class="btn btn-outline-dark" type="button" id="upload-lead-image">Upload</button>
+                        <input type="file" class="form-control" id="lead-image" aria-describedby="upload-lead-image" aria-label="Upload">
+                    </div>
                 </div>
-                <textarea name="article_draft"><?php echo $content; ?></textarea>
-                <script>
-                    CKEDITOR.replace('article_draft', {
-                        toolbarGroups: [
-                            { name: 'tools', groups: ['tools'] },
-                            { name: 'document', groups: ['mode', 'document'] },
-                            { name: 'links', groups: ['links'] },
-                            { name: 'forms', groups: ['forms'] },
-                            { name: 'insert', groups: ['insert'] },
-                            '/',
-                            { name: 'clipboard', groups: ['undo', 'clipboard'] },
-                            { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
-                            { name: 'editing', groups: ['find', 'spellchecker', 'editing'] },
-                            '/',
-                            { name: 'colors', groups: ['colors'] },
-                            { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
-                            { name: 'styles', groups: ['styles'] },
-                        ],
-                        toolbarCanCollapse: true,
-                    });
-                </script>
-                <!--
-                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php?save_id=<?php echo $requested_id; ?>">Save for Later</a>
-                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php?submit_id=<?php echo $requested_id; ?>">Submit for Approval</a>
-                -->
-                <button name ="save_article" class="btn btn-outline-dark px-2 py-1 mt-3 me-2" type="submit">Save for Later</button>
-                <button name ="create_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit for Approval</button>
+
+                <hr>
+                <div class="article-body">
+                    <textarea name="article_draft"><?php echo $content; ?></textarea>
+                    <script>
+                        CKEDITOR.replace('article_draft', {
+                            toolbarGroups: [
+                                { name: 'tools', groups: ['tools'] },
+                                { name: 'document', groups: ['mode', 'document'] },
+                                { name: 'links', groups: ['links'] },
+                                { name: 'forms', groups: ['forms'] },
+                                { name: 'insert', groups: ['insert'] },
+                                '/',
+                                { name: 'clipboard', groups: ['undo', 'clipboard'] },
+                                { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
+                                { name: 'editing', groups: ['find', 'spellchecker', 'editing'] },
+                                '/',
+                                { name: 'colors', groups: ['colors'] },
+                                { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+                                { name: 'styles', groups: ['styles'] },
+                            ],
+                            toolbarCanCollapse: true,
+                        });
+                    </script>
+
+                    <button name ="save_article" class="btn btn-outline-dark px-2 py-1 mt-3 me-2" type="submit">Save for Later</button>
+                    <button name ="create_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit for Approval</button>
+                </div>
             </form>
         </div>
     </body>
