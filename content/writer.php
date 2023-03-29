@@ -35,9 +35,14 @@ if ($user_info['writer'] == false) {
         </div>
 
         <div class="col-10 col-lg-7 mt-3 mx-auto">
-            <div class="my-5">
-                <p class="display-6">Written by <?php echo $user_first_name . " " . $user_last_name . ","; ?></p>
-            </div>
+            <ul class="list-inline my-5">
+                <li class="list-inline-item align-middle">
+                    <a class="fa-regular fa-square-plus fa-2xl text-reset text-decoration-none" href="./create.php"></a>
+                </li>
+                <li class="list-inline-item align-middle">
+                    <span class="display-6">Written by <?php echo $user_first_name . " " . $user_last_name . ","; ?></span>
+                </li>
+            </ul>
 
             <ul class="nav nav-tabs" id="writer-article-tabs" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -83,7 +88,10 @@ if ($user_info['writer'] == false) {
                                                 <a class="btn btn-outline-primary px-2 py-1" type="button" href="./create.php?id=<?php echo $in_progress_articles[$i]['article_id']; ?>">Edit</a>
                                             </li>
                                             <li class="list-inline-item align-middle">
-                                                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/delete_article.inc.php?id=<?php echo $in_progress_articles[$i]['article_id']; ?>&return_page=writer.php">Delete</a>
+                                                <a class="btn btn-outline-success px-2 py-1" type="button" href="../include/create_article.inc.php?submit_article=<?php echo $in_progress_articles[$i]['article_id']; ?>">Submit</a>
+                                            </li>
+                                            <li class="list-inline-item align-middle">
+                                                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/delete_article.inc.php?id=<?php echo $in_progress_articles[$i]['article_id']; ?>">Delete</a>
                                             </li>
                                         </ul>
                                     </td>
@@ -123,14 +131,7 @@ if ($user_info['writer'] == false) {
                                         <?php echo $unapproved_articles[$i]['description'] ?>
                                     </td>
                                     <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item align-middle">
-                                                <a class="btn btn-outline-primary px-2 py-1" type="button" href="../include/article_approval.inc.php?approve_id=<?php echo $unapproved_articles[$i]['article_id']; ?>&return_page=design.php">Approve</a>
-                                            </li>
-                                            <li class="list-inline-item align-middle">
-                                                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?deny_id=<?php echo $unapproved_articles[$i]['article_id']; ?>&return_page=design.php">Deny</a>
-                                            </li>
-                                        </ul>
+                                        <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php?withdraw_article=<?php echo $unapproved_articles[$i]['article_id']; ?>">Withdraw</a>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -150,18 +151,14 @@ if ($user_info['writer'] == false) {
                     <table class="table text-start">
                         <thead>
                             <th scope="col">Date</th>
-                            <th scope="col">Author</th>
                             <th scope="col">Article</th>
-                            <th scope="col">Action</th>
+                            <!--<th scope="col">Action</th>-->
                         </thead>
                         <tbody>
                             <?php for ($i = 0; $i < $approved_result->num_rows; $i++) { ?>
                                 <tr>
                                     <td class="text-nowrap">
                                         <?php echo date("M. d, Y", $approved_articles[$i]['submit_date']) ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $approved_articles[$i]['first_name'] . " " . $approved_articles[$i]['last_name'] ?>
                                     </td>
                                     <td>
                                         <h4>
@@ -171,9 +168,11 @@ if ($user_info['writer'] == false) {
                                         </h4>
                                         <?php echo $approved_articles[$i]['description'] ?>
                                     </td>
+                                    <!--
                                     <td>
-                                        <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?revoke_id=<?php echo $approved_articles[$i]['article_id']; ?>&return_page=design.php">Revoke</a>
+                                        <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?revoke_id=<?php //echo $approved_articles[$i]['article_id']; ?>&return_page=design.php">Revoke</a>
                                     </td>
+                                    -->
                                 </tr>
                             <?php } ?>
                         </tbody> 

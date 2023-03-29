@@ -107,7 +107,7 @@ if (isset($_GET['id'])) {
                     </script>
 
                     <button name ="save_article" class="btn btn-outline-dark px-2 py-1 mt-3 me-2" type="submit">Save for Later</button>
-                    <button name ="create_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit for Approval</button>
+                    <button name ="submit_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit for Approval</button>
                 </div>
             </form>
         </div>

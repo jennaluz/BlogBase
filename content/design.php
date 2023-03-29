@@ -97,12 +97,11 @@ if ($user_info['designer'] == false) {
                         </tbody> 
                     </table>
                 </div>
-
                 <div class="tab-pane fade" id="approved-tab-pane" role="tabpanel" aria-labelledby="approved-tab" tabindex="1">
                     <?php
                     $approved_query = "SELECT first_name, last_name, article_id, title, description, UNIX_TIMESTAMP(submit_date) as submit_date
                                          FROM Articles, Users
-                                         WHERE Articles.approved = 1 AND Articles.author_id = Users.user_id";
+                                         WHERE Articles.approved = 1 AND author_id = user_id";
                     $approved_result = mysqli_query($con, $approved_query);
                     $approved_articles = $approved_result->fetch_all(MYSQLI_BOTH);
                     ?>
