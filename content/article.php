@@ -8,7 +8,7 @@ ob_start();
 $requested_id = $_GET['id'];
 $article_query = "SELECT Articles.article_id, Articles.title, Articles.content, UNIX_TIMESTAMP(Articles.submit_date) as submit_date, Articles.approved, Articles.author_id,
                          Users.first_name, Users.last_name
-                  FROM Articles INNER JOIN Users ON Article.author_id = Users.user_id
+                  FROM Articles INNER JOIN Users ON Articles.author_id = Users.user_id
                   WHERE Articles.article_id = '" . $requested_id . "'";
 $article_result = mysqli_query($con, $article_query);
 $article_info = $article_result->fetch_assoc();
