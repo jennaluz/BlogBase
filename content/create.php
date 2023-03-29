@@ -1,7 +1,8 @@
 <?php
+//$requested_id = 100;
 require_once "../include/connect.inc.php";
 include_once "../include/user_info.inc.php";
-include "../include/create_article.inc.php";
+//include "../include/create_article.inc.php";
 
 // check if user is a writer
 if ($user_info['writer'] == false) {
@@ -9,6 +10,7 @@ if ($user_info['writer'] == false) {
     echo "You don't have access to this page";
 }
 
+$requested_id = -1;
 $title = "";
 $description = "";
 $content = "";
@@ -68,7 +70,7 @@ if (isset($_GET['id'])) {
                     <?php echo date("M. d, Y", time()) ?>
                 </li>
             </ul>
-            <form method="post">
+            <form method="post" action="../include/create_article.inc.php?id=<?php echo $requested_id; ?>&return_page=writer.php">
                 <div class="col-10 col-lg-8 mb-3">
                 <input class="form-control form-control-lg border border-0 border-bottom border-2 rounded-0 px-0 title-box" name="title" type="text" placeholder="Title" value="<?php echo $title; ?>">
                 </div>
@@ -94,10 +96,10 @@ if (isset($_GET['id'])) {
                     });
                 </script>
                 <!--
-                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php">Save for Later</a>
-                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php">Submit for Approval</a>
-                <button name ="save_article" class="btn btn-outline-dark px-2 py-1 mt-3 me-2" type="submit">Save for Later</button>
+                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php?save_id=<?php echo $requested_id; ?>">Save for Later</a>
+                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php?submit_id=<?php echo $requested_id; ?>">Submit for Approval</a>
                 -->
+                <button name ="save_article" class="btn btn-outline-dark px-2 py-1 mt-3 me-2" type="submit">Save for Later</button>
                 <button name ="create_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit for Approval</button>
             </form>
         </div>
