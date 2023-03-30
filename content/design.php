@@ -97,6 +97,7 @@ if ($user_info['designer'] == false) {
                         </tbody> 
                     </table>
                 </div>
+
                 <div class="tab-pane fade" id="approved-tab-pane" role="tabpanel" aria-labelledby="approved-tab" tabindex="1">
                     <?php
                     $approved_query = "SELECT first_name, last_name, article_id, title, description, UNIX_TIMESTAMP(submit_date) as submit_date
