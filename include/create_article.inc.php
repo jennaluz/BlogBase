@@ -14,7 +14,7 @@ if (isset($_POST['submit_article'])) {
 
     $title = $_POST['title'];
     $content = $_POST['article_draft'];
-    $description = substr($content, 0, 253);
+    $description = $_POST['description'];
     $submitted = 1;
 
     if ($article_id == -1) {
@@ -34,7 +34,7 @@ if (isset($_POST['submit_article'])) {
 
     $title = $_POST['title'];
     $content = $_POST['article_draft'];
-    $description = substr($content, 0, 253);
+    $description = $_POST['description'];
     $submitted = 0;
 
     if ($article_id == -1) {

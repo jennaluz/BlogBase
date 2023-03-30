@@ -46,7 +46,7 @@ if ($user_info['writer'] == false) {
 
             <ul class="nav nav-tabs" id="writer-article-tabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="in-progress-tab" data-bs-toggle="tab" data-bs-target="#in-progress-tab-pane" type="button" role="tab" aria-controls="unapproved-tab-pane" aria-selected="true">In Progress</button>
+                    <button class="nav-link active" id="in-progress-tab" data-bs-toggle="tab" data-bs-target="#in-progress-tab-pane" type="button" role="tab" aria-controls="in-progress-tab-pane" aria-selected="true">In Progress</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="unapproved-tab" data-bs-toggle="tab" data-bs-target="#unapproved-tab-pane" type="button" role="tab" aria-controls="unapproved-tab-pane" aria-selected="true">Unapproved</button>
@@ -101,13 +101,13 @@ if ($user_info['writer'] == false) {
                     </table>
                 </div>
 
-                <div class="tab-pane fade" id="unapproved-tab-pane" role="tabpanel" aria-labelledby="unapproved-tab" tabindex="0">
+                <div class="tab-pane fade" id="submitted-tab-pane" role="tabpanel" aria-labelledby="submitted-tab" tabindex="0">
                     <?php
-                    $unapproved_query = "SELECT article_id, title, description
-                                         FROM Articles
-                                         WHERE approved = 0 AND submitted = 1 AND author_id = $user_id";
-                    $unapproved_result = mysqli_query($con, $unapproved_query);
-                    $unapproved_articles = $unapproved_result->fetch_all(MYSQLI_BOTH);
+                    $submitted_query = "SELECT article_id, title, description
+                                        FROM Articles
+                                        WHERE approved = 0 AND submitted = 1 AND author_id = $user_id";
+                    $submitted_result = mysqli_query($con, $submitted_query);
+                    $submitted_articles = $submitted_result->fetch_all(MYSQLI_BOTH);
                     ?>
 
                     <table class="table text-start">
@@ -117,21 +117,21 @@ if ($user_info['writer'] == false) {
                             <th scope="col">Action</th>
                         </thead>
                         <tbody>
-                            <?php for ($i = 0; $i < $unapproved_result->num_rows; $i++) { ?>
+                            <?php for ($i = 0; $i < $submitted_result->num_rows; $i++) { ?>
                                 <tr>
                                     <td class="text-nowrap">
-                                        <?php echo date("M. d, Y", $unapproved_articles[$i]['submit_date']) ?>
+                                        <?php echo date("M. d, Y", $submitted_articles[$i]['submit_date']) ?>
                                     </td>
                                     <td>
                                         <h4>
-                                            <a class="text-reset text-decoration-none" href="./article.php?id=<?php echo $unapproved_articles[$i]['article_id'] ?>">
-                                                <?php echo $unapproved_articles[$i]['title'] ?>
+                                            <a class="text-reset text-decoration-none" href="./article.php?id=<?php echo $submitted_articles[$i]['article_id'] ?>">
+                                                <?php echo $submitted_articles[$i]['title'] ?>
                                             </a>
                                         </h4>
-                                        <?php echo $unapproved_articles[$i]['description'] ?>
+                                        <?php echo $submitted_articles[$i]['description'] ?>
                                     </td>
                                     <td>
-                                        <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php?withdraw_article=<?php echo $unapproved_articles[$i]['article_id']; ?>">Withdraw</a>
+                                        <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php?withdraw_article=<?php echo $submitted_articles[$i]['article_id']; ?>">Withdraw</a>
                                     </td>
                                 </tr>
                             <?php } ?>
