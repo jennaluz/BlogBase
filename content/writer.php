@@ -49,7 +49,7 @@ if ($user_info['writer'] == false) {
                     <button class="nav-link active" id="in-progress-tab" data-bs-toggle="tab" data-bs-target="#in-progress-tab-pane" type="button" role="tab" aria-controls="in-progress-tab-pane" aria-selected="true">In Progress</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="unapproved-tab" data-bs-toggle="tab" data-bs-target="#unapproved-tab-pane" type="button" role="tab" aria-controls="unapproved-tab-pane" aria-selected="true">Unapproved</button>
+                    <button class="nav-link" id="submitted-tab" data-bs-toggle="tab" data-bs-target="#submitted-tab-pane" type="button" role="tab" aria-controls="submitted-tab-pane" aria-selected="true">Submitted</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="approved-tab" data-bs-toggle="tab" data-bs-target="#approved-tab-pane" type="button" role="tab" aria-controls="approved-tab-pane" aria-selected="true">Approved</button>
