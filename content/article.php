@@ -43,6 +43,7 @@ if ($user_info['user_id'] == $article_info['author_id']) {
         <link rel="stylesheet" href="./css/styles.css">
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="./js/article.js" type="text/javascript"></script>
 
         <title><?php echo $article_info['title']; ?></title>
     </head>
@@ -61,13 +62,13 @@ if ($user_info['user_id'] == $article_info['author_id']) {
         <div class="col-10 col-lg-7 mx-auto mt-3">
             <div class="px-3" id="article-head">
                 <div class="dropdown mb-3">
-                    <button onclick="role_options()" class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button onclick="role_options()" class="btn btn-light dropdown-toggle" id="role_btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Reader
                     </button>
                     <ul class="dropdown-menu" id="role-options">
-                        <li><a class="dropdown-item" href="#" id="reader-option">Reader</a></li>
-                        <li><a class="dropdown-item" href="#" id="writer-option">Writer</a></li>
-                        <li><a class="dropdown-item" href="#" id="designer-option">Designer</a></li>
+                        <li><a class="dropdown-item" href="javascript:change_role('Reader')" id="reader-option">Reader</a></li>
+                        <li><a class="dropdown-item" href="javascript:change_role('Writer')" id="writer-option">Writer</a></li>
+                        <li><a class="dropdown-item" href="javascript:change_role('Designer')" id="designer-option">Designer</a></li>
                     </ul>
                 </div>
 
