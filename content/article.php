@@ -6,10 +6,11 @@ ob_start();
 
 // get information about this article
 $requested_id = $_GET['id'];
-$article_query = "SELECT Articles.article_id, Articles.title, Articles.content, UNIX_TIMESTAMP(Articles.submit_date) as submit_date, Articles.approved, Articles.author_id,
-                         Users.first_name, Users.last_name
+$article_query = "SELECT Articles.article_id, Articles.title, Articles.description,
+                         Articles.content, UNIX_TIMESTAMP(Articles.submit_date) as submit_date,
+                         Articles.approved, Articles.author_id, Users.first_name, Users.last_name
                   FROM Articles INNER JOIN Users ON Articles.author_id = Users.user_id
-                  WHERE Articles.article_id = '" . $requested_id . "'";
+                  WHERE Articles.article_id = $requested_id";
 $article_result = mysqli_query($con, $article_query);
 $article_info = $article_result->fetch_assoc();
 
@@ -35,7 +36,7 @@ if ($user_info['user_id'] == $article_info['author_id']) {
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, intitial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -58,7 +59,18 @@ if ($user_info['user_id'] == $article_info['author_id']) {
         </div>
 
         <div class="col-10 col-lg-7 mx-auto mt-3">
-            <div id="article-head">
+            <div class="px-3" id="article-head">
+                <div class="dropdown mb-3">
+                    <button onclick="role_options()" class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Reader
+                    </button>
+                    <ul class="dropdown-menu" id="role-options">
+                        <li><a class="dropdown-item" href="#" id="reader-option">Reader</a></li>
+                        <li><a class="dropdown-item" href="#" id="writer-option">Writer</a></li>
+                        <li><a class="dropdown-item" href="#" id="designer-option">Designer</a></li>
+                    </ul>
+                </div>
+
                 <?php if ($writer && $article_info['submitted'] == false) { ?>
                     <ul class="list-inline">
                         <li class="list-inline-item align-middle">
@@ -92,11 +104,11 @@ if ($user_info['user_id'] == $article_info['author_id']) {
                         <?php echo date("M. d, Y", $article_info['submit_date']) ?>
                     </li>
                     <?php if ($article_info['approved'] == true) { ?>
-<?php /* ?>
+                        <?php /* ?>
                         <li class="list-inline-item align-middle">
                             <i class="fa-solid fa-comment"></i>
                         </li>
-<?php */ ?>
+                        <?php */ ?>
                         <li class="list-inline-item align-middle">
                             <a class="fa-regular fa-comment text-reset text-decoration-none" data-bs-toggle="offcanvas" href="#offcanvas-comments" aria-controls="offcanvas-sidebar"> </a>
                         </li>
@@ -123,18 +135,41 @@ if ($user_info['user_id'] == $article_info['author_id']) {
                     <?php } ?>
                 </ul>
 
-                <ul class="list-inline">
-                    <li class="list-inline-item align-middle">
-                        <h1 class="m-0"><?php echo $article_info['title']; ?></h1>
-                    </li>
-                </ul>
+                <h1 class="m-0"><?php echo $article_info['title']; ?></h1>
+                <p><?php echo $article_info['description']; ?></p>
             </div>
 
             <hr>
-
             <div id="article-body">
                 <?php echo $article_info['content']; ?>
             </div>
         </div>
+
+        <script>
+            function role_options()
+            {
+                var user_roles = <?php echo json_encode($user_info); ?>;
+                var writer = 0;
+                var designer = 0;
+
+                if (user_roles != null) {
+                    if (user_roles.writer == 1) {
+                        writer = 1;
+                    }
+
+                    if (user_roles.designer == 1) {
+                        designer = 1;
+                    }
+                }
+
+                if (writer == 0) {
+                    document.getElementById("writer-option").style.display = "none";
+                }
+
+                if (designer == 0) {
+                    document.getElementById("designer-option").style.display = "none";
+                }
+            }
+        </script>
     </body>
 </html>
