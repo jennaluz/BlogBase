@@ -61,40 +61,36 @@ if ($user_info['user_id'] == $article_info['author_id']) {
 
         <div class="col-10 col-lg-7 mx-auto mt-3">
             <div class="px-3" id="article-head">
-                <div class="dropdown mb-3">
-                    <button onclick="role_options()" class="btn btn-light dropdown-toggle" id="role_btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Reader
-                    </button>
-                    <ul class="dropdown-menu" id="role-options">
-                        <li><a class="dropdown-item" href="javascript:change_role('Reader')" id="reader-option">Reader</a></li>
-                        <li><a class="dropdown-item" href="javascript:change_role('Writer')" id="writer-option">Writer</a></li>
-                        <li><a class="dropdown-item" href="javascript:change_role('Designer')" id="designer-option">Designer</a></li>
-                    </ul>
-                </div>
+                <ul class="list-inline">
+                    <li class="list-inline-item dropdown">
+                        <button onclick="role_options('<?php echo $article_info['author_id']; ?>', '<?php echo $user_info['user_id']; ?>', '<?php echo $user_info['writer']; ?>', '<?php echo $user_info['designer']; ?>')" class="btn btn-light dropdown-toggle" id="role-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reader
+                        </button>
+                        <ul class="dropdown-menu" id="role-options">
+                            <li><a class="dropdown-item active" href="javascript:change_role('Reader ')" id="reader-option">Reader</a></li>
+                            <li><a class="dropdown-item" href="javascript:change_role('Writer ')" id="writer-option">Writer</a></li>
+                            <li><a class="dropdown-item" href="javascript:change_role('Designer ')" id="designer-option">Designer</a></li>
+                        </ul>
+                    </li>
 
-                <?php if ($writer && $article_info['submitted'] == false) { ?>
-                    <ul class="list-inline">
-                        <li class="list-inline-item align-middle">
+                    <?php if ($writer && $article_info['submitted'] == false) { ?>
+                        <li class="list-inline-item align-middle writer-btn">
                             <a class="btn btn-outline-primary px-2 py-1" type="button" href="./create.php?id=<?php echo $article_info['article_id']; ?>">Edit</a>
                         </li>
-                    </ul>
-                <?php } ?>
-                <?php if ($user_info['designer'] == true) { ?>
-                    <ul class="list-inline">
+                    <?php } ?>
                     <?php if ($article_info['approved'] == false) { ?>
-                        <li class="list-inline-item align-middle">
+                        <li class="list-inline-item align-middle designer-btn">
                             <a class="btn btn-outline-primary px-2 py-1" type="button" href="../include/article_approval.inc.php?approve_id=<?php echo $article_info['article_id']; ?>">Approve</a>
                         </li>
-                        <li class="list-inline-item align-middle">
+                        <li class="list-inline-item align-middle designer-btn">
                             <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?deny_id=<?php echo $article_info['article_id']; ?>">Deny</a>
                         </li>
                     <?php } else { ?>
-                        <li class="list-inline-item align-middle">
+                        <li class="list-inline-item align-middle designer-btn">
                             <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?revoke_id=<?php echo $article_info['article_id']; ?>">Revoke</a>
                         </li>
                     <?php } ?>
-                    </ul>
-                <?php } ?>
+                </ul>
 
                 <ul class="list-inline">
                     <li class="list-inline-item align-middle">
@@ -114,14 +110,12 @@ if ($user_info['user_id'] == $article_info['author_id']) {
                             <a class="fa-regular fa-comment text-reset text-decoration-none" data-bs-toggle="offcanvas" href="#offcanvas-comments" aria-controls="offcanvas-sidebar"> </a>
                         </li>
                         <li class="list-inline-item align-middle">
-                            <?php
-                            if (isset($_SESSION['user_info'])) {
+                            <?php if (isset($_SESSION['user_info'])) {
                                 $saved_query = "SELECT article_id, user_id
                                                 FROM SavedArticles
                                                 WHERE user_id = '" . $user_info['user_id'] . "' AND article_id = '" . $article_info['article_id'] . "';";
                                 $saved_result = mysqli_query($con, $saved_query);
-                                if ($saved_result->num_rows == 1) {
-                            ?>
+                                if ($saved_result->num_rows == 1) { ?>
                                     <a class="fa-solid fa-bookmark text-reset" href="../include/save_article.inc.php?unsave_id=<?php echo $article_info['article_id']; ?>"></a>
                                 <?php } else { ?>
                                     <a class="fa-regular fa-bookmark text-reset" href="../include/save_article.inc.php?save_id=<?php echo $article_info['article_id']; ?>"></a>
@@ -145,32 +139,5 @@ if ($user_info['user_id'] == $article_info['author_id']) {
                 <?php echo $article_info['content']; ?>
             </div>
         </div>
-
-        <script>
-            function role_options()
-            {
-                var user_roles = <?php echo json_encode($user_info); ?>;
-                var writer = 0;
-                var designer = 0;
-
-                if (user_roles != null) {
-                    if (user_roles.writer == 1) {
-                        writer = 1;
-                    }
-
-                    if (user_roles.designer == 1) {
-                        designer = 1;
-                    }
-                }
-
-                if (writer == 0) {
-                    document.getElementById("writer-option").style.display = "none";
-                }
-
-                if (designer == 0) {
-                    document.getElementById("designer-option").style.display = "none";
-                }
-            }
-        </script>
     </body>
 </html>
