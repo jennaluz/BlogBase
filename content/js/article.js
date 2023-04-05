@@ -1,3 +1,7 @@
+
+/*
+ * Hide appropriate dropdown menu options based on user roles.
+ */
 function role_options(author_id, user_id, writer, designer)
 {
     var show_writer = 0;
@@ -14,13 +18,14 @@ function role_options(author_id, user_id, writer, designer)
     }
 
     if (show_writer == 0) {
-        document.getElementById("writer-option").style.display = "none";
+        document.getElementById("writer-option").hidden = true;
     }
 
     if (show_designer == 0) {
-        document.getElementById("designer-option").style.display = "none";
+        document.getElementById("designer-option").hidden = true;
     }
 }
+
 
 /*
  * Change the text value of the dropdown menu and hides role buttons based on role.
@@ -36,31 +41,31 @@ function change_role(role) {
     // hide and show buttons based on role.
     if (role == "Reader ") {
         for (var i = 0; i < writer_btn.length; i++) {
-            writer_btn[i].style.display = "none";
+            writer_btn[i].hidden = true;
         }
 
         for (var i = 0; i < designer_btn.length; i++) {
-            designer_btn[i].style.display = "none";
+            designer_btn[i].hidden = true;
         }
     }
 
     if (role == "Writer ") {
         for (var i = 0; i < writer_btn.length; i++) {
-            writer_btn[i].style.display = "inline";
+            writer_btn[i].hidden = false;
         }
 
         for (var i = 0; i < designer_btn.length; i++) {
-            designer_btn[i].style.display = "none";
+            designer_btn[i].hidden = true;
         }
     }
 
     if (role == "Designer ") {
         for (var i = 0; i < designer_btn.length; i++) {
-            designer_btn[i].style.display = "inline";
+            designer_btn[i].hidden = false;
         }
 
         for (var i = 0; i < writer_btn.length; i++) {
-            writer_btn[i].style.display = "none";
+            writer_btn[i].hidden = true;
         }
     }
 }

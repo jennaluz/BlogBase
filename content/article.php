@@ -74,19 +74,19 @@ if ($user_info['user_id'] == $article_info['author_id']) {
                     </li>
 
                     <?php if ($writer && $article_info['submitted'] == false) { ?>
-                        <li class="list-inline-item align-middle writer-btn">
+                        <li class="list-inline-item align-middle writer-btn" hidden>
                             <a class="btn btn-outline-primary px-2 py-1" type="button" href="./create.php?id=<?php echo $article_info['article_id']; ?>">Edit</a>
                         </li>
                     <?php } ?>
                     <?php if ($article_info['approved'] == false) { ?>
-                        <li class="list-inline-item align-middle designer-btn">
+                        <li class="list-inline-item align-middle designer-btn" hidden>
                             <a class="btn btn-outline-primary px-2 py-1" type="button" href="../include/article_approval.inc.php?approve_id=<?php echo $article_info['article_id']; ?>">Approve</a>
                         </li>
-                        <li class="list-inline-item align-middle designer-btn">
+                        <li class="list-inline-item align-middle designer-btn" hidden>
                             <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?deny_id=<?php echo $article_info['article_id']; ?>">Deny</a>
                         </li>
                     <?php } else { ?>
-                        <li class="list-inline-item align-middle designer-btn">
+                        <li class="list-inline-item align-middle designer-btn" hidden>
                             <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/article_approval.inc.php?revoke_id=<?php echo $article_info['article_id']; ?>">Revoke</a>
                         </li>
                     <?php } ?>
