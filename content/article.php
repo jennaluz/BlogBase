@@ -30,6 +30,19 @@ if ($article_info['approved'] != true && $user_info['designer'] != true) {
 if ($user_info['user_id'] == $article_info['author_id']) {
     $writer = true;
 }
+
+$roles_arr = array(
+    'author_id' => $article_info['author_id'],
+    'user_id' => $user_info['user_id'],
+    'writer' => $user_info['writer'],
+    'designer' => $user_info['designer'],
+    );
+
+// convert array into a json string
+$roles_str = json_encode($roles_arr);
+
+// create a js object using the json string
+echo "<script>var roles_str = JSON.parse('" . $roles_str . "');</script>"
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +76,7 @@ if ($user_info['user_id'] == $article_info['author_id']) {
             <div class="px-3" id="article-head">
                 <ul class="list-inline">
                     <li class="list-inline-item dropdown">
-                        <button onclick="role_options('<?php echo $article_info['author_id']; ?>', '<?php echo $user_info['user_id']; ?>', '<?php echo $user_info['writer']; ?>', '<?php echo $user_info['designer']; ?>')" class="btn btn-light dropdown-toggle" id="role-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button onclick="role_options(roles_str)" class="btn btn-light dropdown-toggle" id="role-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Reader
                         </button>
                         <ul class="dropdown-menu" id="role-options">
