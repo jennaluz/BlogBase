@@ -16,13 +16,14 @@ if ($user_info['admin'] != true) {
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, intitial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <link rel="stylesheet" href="./css/styles.css">
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="./js/admin.js" type="text/javascript"></script>
 
         <title>BlogBase</title>
     </head>
@@ -71,46 +72,52 @@ if ($user_info['admin'] != true) {
                         </thead>
                         <tbody>
                             <?php while ($current_row = $reg_users_result->fetch_assoc()) { ?>
-                                <tr>
-                                    <td>
-                                        <?php echo $current_row['user_id'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $current_row['username'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $current_row['first_name'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $current_row['last_name'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $current_row['email'] ?>
-                                    </td>
-                                    <td>
-                                        <?php
-                                        if ($current_row['admin'] == 1) {
-                                            echo "<a class='btn badge bg-success rounded-pill text-decoration-none' href='#'>admin</a>";
-                                        }
-                                        if ($current_row['designer'] == 1) {
-                                            echo "<a class='btn badge bg-warning rounded-pill text-decoration-none' href='#'>designer</a>";
-                                        }
-                                        if ($current_row['reader'] == 1) {
-                                            echo "<a class='btn badge bg-primary rounded-pill text-decoration-none' href='#'>reader</a>";
-                                        }
-                                        if ($current_row['writer'] == 1) {
-                                            echo "<a class='btn badge bg-info rounded-pill text-decoration-none' href='#'>writer</a>";
-                                        }
-                                        if ($current_row['advertiser'] == 1) {
-                                            echo "<a class='btn badge bg-danger rounded-pill text-decoration-none' href='#'>advertiser</a>";
-                                        }
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-outline-primary" href="#">Edit</a>
-                                        <a class="btn btn-outline-danger" href="../include/delete_user.inc.php?id=<?php echo $current_row['user_id']; ?>">Delete</a>
-                                    </td>
-                                </tr>
+                                <form method="post">
+                                    <tr>
+                                        <td>
+                                            <span class="user-info"><?php echo $current_row['user_id'] ?></span>
+                                        </td>
+                                        <td>
+                                            <span class="user-info"><?php echo $current_row['username'] ?></span>
+                                            <input class="form-control user-info-form" type="text" id="username" name="username" value="<?php echo $current_row['username']; ?>" required hidden>
+                                        </td>
+                                        <td>
+                                            <span class="user-info"><?php echo $current_row['first_name'] ?></span>
+                                            <input class="form-control user-info-form" type="text" id="first_name" name="first_name" value="<?php echo $current_row['first_name']; ?>" required hidden>
+                                        </td>
+                                        <td>
+                                            <span class="user-info"><?php echo $current_row['last_name'] ?></span>
+                                            <input class="form-control user-info-form" type="text" id="last_name" name="last_name" value="<?php echo $current_row['last_name']; ?>" required hidden>
+                                        </td>
+                                        <td>
+                                            <span class="user-info"><?php echo $current_row['email'] ?></span>
+                                            <input class="form-control user-info-form" type="text" id="email" name="email" value="<?php echo $current_row['email']; ?>" required hidden>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            if ($current_row['admin'] == 1) {
+                                                echo "<a class='btn badge bg-success rounded-pill text-decoration-none' href='#'>admin</a>";
+                                            }
+                                            if ($current_row['designer'] == 1) {
+                                                echo "<a class='btn badge bg-warning rounded-pill text-decoration-none' href='#'>designer</a>";
+                                            }
+                                            if ($current_row['reader'] == 1) {
+                                                echo "<a class='btn badge bg-primary rounded-pill text-decoration-none' href='#'>reader</a>";
+                                            }
+                                            if ($current_row['writer'] == 1) {
+                                                echo "<a class='btn badge bg-info rounded-pill text-decoration-none' href='#'>writer</a>";
+                                            }
+                                            if ($current_row['advertiser'] == 1) {
+                                                echo "<a class='btn badge bg-danger rounded-pill text-decoration-none' href='#'>advertiser</a>";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-outline-primary" id="edit-btn" href="#" onclick="edit_user()">Edit</a>
+                                            <a class="btn btn-outline-danger" href="../include/delete_user.inc.php?id=<?php echo $current_row['user_id']; ?>">Delete</a>
+                                        </td>
+                                    </tr>
+                                </form>
                             <?php } ?>
                         </tbody>
                     </table>
