@@ -2,12 +2,18 @@
 /*
  * Hide appropriate dropdown menu options based on user roles.
  */
-function role_options(author_id, user_id, writer, designer)
+function role_options(roles_json)
 {
+    // parse json
+    var author_id = roles_json.author_id;
+    var user_id = roles_json.user_id;
+    var writer = roles_json.writer;
+    var designer = roles_json.designer;
+
     var show_writer = 0;
     var show_designer = 0;
 
-    if (writer != "" && designer != "") {
+    if (writer != null && designer != null) {
         if (writer == 1 && author_id == user_id) {
             show_writer = 1;
         }
