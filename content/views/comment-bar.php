@@ -15,8 +15,10 @@
                 </div>
                 <button class="m-3 ms-auto col-2 btn btn-outline-dark rounded-pill py-1 p-2">Submit</button>
             </div>
+
             <hr>
-            <div class="d-flex">
+
+            <div class="d-flex my-3">
                 <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                 <div class="body">
                     <h5 class="fw-bold">
@@ -32,6 +34,93 @@
                         </button>
                         <button class="btn p-1">Reply</button>
                     </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="d-flex my-3">
+                <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
+                <div class="body">
+                    <h5 class="fw-bold">
+                        Anonymous
+                        <small class="text-muted">April 14, 2023</small>
+                    </h5>
+                    <p class="mb-0">
+                        Wow, this is an awesome article!
+                    </p>
+                    <div class="mb-1">
+                        <button class="btn p-1">
+                            <span class="fa-regular fa-heart">
+                        </button>
+                        <button class="btn p-1">Reply</button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex my-3">
+                <div class="mx-3 ps-1 vr"></div>
+                <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
+                <div class="body">
+                    <h5 class="fw-bold">
+                        Anonymous
+                        <small class="text-muted">April 14, 2023</small>
+                    </h5>
+                    <p class="mb-0">
+                        You're right about that!
+                    </p>
+                    <div class="mb-1">
+                        <button class="btn p-1">
+                            <span class="fa-regular fa-heart">
+                        </button>
+                        <button class="btn p-1">Reply</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="d-flex my-3">
+                <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
+                <div class="body">
+                    <h5 class="fw-bold">
+                        Anonymous
+                        <small class="text-muted">April 14, 2023</small>
+                    </h5>
+                    <p class="mb-0">
+                        Wow, this is an awesome article!
+                    </p>
+                    <div class="mb-1">
+                        <button class="btn p-1">
+                            <span class="fa-regular fa-heart">
+                        </button>
+                        <button class="btn p-1">Reply</button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex my-3 flex-wrap">
+                <div class="mx-3 ps-1 vr"></div>
+                <div>
+                    <div class="d-flex mb-3">
+                        <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
+                        <div class="body">
+                            <h5 class="fw-bold">
+                                Anonymous
+                                <small class="text-muted">April 14, 2023</small>
+                            </h5>
+                            <p class="mb-0">
+                                You're right about that!
+                            </p>
+                            <div class="mb-1">
+                                <button class="btn p-1">
+                                    <span class="fa-regular fa-heart">
+                                </button>
+                                <button class="btn p-1">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="w-100">
+
                     <div class="d-flex">
                         <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                         <div class="body">
@@ -40,7 +129,28 @@
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
-                                You got that right!
+                                You're right about that!
+                            </p>
+                            <div class="mb-1">
+                                <button class="btn p-1">
+                                    <span class="fa-regular fa-heart">
+                                </button>
+                                <button class="btn p-1">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="w-100">
+
+                    <div class="d-flex mb-3">
+                        <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
+                        <div class="body">
+                            <h5 class="fw-bold">
+                                Anonymous
+                                <small class="text-muted">April 14, 2023</small>
+                            </h5>
+                            <p class="mb-0">
+                                You're right about that!
                             </p>
                             <div class="mb-1">
                                 <button class="btn p-1">
@@ -51,80 +161,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex my-2">
-                <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
-                <div class="body">
-                    <h5 class="fw-bold">
-                        Anonymous
-                        <small class="text-muted">April 14, 2023</small>
-                    </h5>
-                    <p class="mb-0">
-                        Wow, this is an awesome article!
-                    </p>
-                    <div class="mb-1">
-                        <button class="btn p-1">
-                            <span class="fa-regular fa-heart">
-                        </button>
-                        <button class="btn p-1">Reply</button>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex">
-                <div class="mx-3 ps-1 vr"></div>
-                <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
-                <div class="body">
-                    <h5 class="fw-bold">
-                        Anonymous
-                        <small class="text-muted">April 14, 2023</small>
-                    </h5>
-                    <p class="mb-0">
-                        You're right about that!
-                    </p>
-                    <div class="mb-1">
-                        <button class="btn p-1">
-                            <span class="fa-regular fa-heart">
-                        </button>
-                        <button class="btn p-1">Reply</button>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex my-2">
-                <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
-                <div class="body">
-                    <h5 class="fw-bold">
-                        Anonymous
-                        <small class="text-muted">April 14, 2023</small>
-                    </h5>
-                    <p class="mb-0">
-                        Wow, this is an awesome article!
-                    </p>
-                    <div class="mb-1">
-                        <button class="btn p-1">
-                            <span class="fa-regular fa-heart">
-                        </button>
-                        <button class="btn p-1">Reply</button>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex">
-                <div class="mx-3 ps-1 vr"></div>
-                <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
-                <div class="body">
-                    <h5 class="fw-bold">
-                        Anonymous
-                        <small class="text-muted">April 14, 2023</small>
-                    </h5>
-                    <p class="mb-0">
-                        You're right about that!
-                    </p>
-                    <div class="mb-1">
-                        <button class="btn p-1">
-                            <span class="fa-regular fa-heart">
-                        </button>
-                        <button class="btn p-1">Reply</button>
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </div>
