@@ -41,8 +41,6 @@ $roles_arr = array(
 // convert array into a json string
 $roles_str = json_encode($roles_arr);
 
-// create a js object using the json string
-echo "<script>var roles_str = JSON.parse('" . $roles_str . "');</script>"
 ?>
 
 <!DOCTYPE html>
@@ -55,11 +53,18 @@ echo "<script>var roles_str = JSON.parse('" . $roles_str . "');</script>"
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <link rel="stylesheet" href="./css/styles.css">
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <script src="./js/article.js" type="text/javascript"></script>
+        <script src="./js/save_article.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
         <title><?php echo $article_info['title']; ?></title>
     </head>
+
+    <?php
+    // create a js object using the json string
+    echo "<script>var roles_str = JSON.parse('" . $roles_str . "');</script>"
+    ?>
 
     <body>
         <div class="header">
@@ -110,7 +115,7 @@ echo "<script>var roles_str = JSON.parse('" . $roles_str . "');</script>"
                     <!-- article author will go here -->
                         <?php echo $article_info['first_name'] . " " . $article_info['last_name'] ?>
                     </li>
-                    <li class="list-inline-item align-middle">
+                    <li class="mx-0 list-inline-item align-middle">
                         <?php echo date("M. d, Y", $article_info['submit_date']) ?>
                     </li>
                     <?php if ($article_info['approved'] == true) { ?>
@@ -119,26 +124,30 @@ echo "<script>var roles_str = JSON.parse('" . $roles_str . "');</script>"
                             <i class="fa-solid fa-comment"></i>
                         </li>
                         <?php */ ?>
-                        <li class="list-inline-item align-middle">
-                            <a class="fa-regular fa-comment text-reset text-decoration-none" data-bs-toggle="offcanvas" href="#offcanvas-comments" aria-controls="offcanvas-sidebar"> </a>
+                        <li class="mx-0 list-inline-item align-middle">
+                            <a class="btn p-1 fa-regular fa-comment text-reset text-decoration-none" data-bs-toggle="offcanvas" href="#offcanvas-comments" aria-controls="offcanvas-sidebar"> </a>
                         </li>
-                        <li class="list-inline-item align-middle">
+                        <li class="mx-0 list-inline-item align-middle">
                             <?php if (isset($_SESSION['user_info'])) {
                                 $saved_query = "SELECT article_id, user_id
                                                 FROM SavedArticles
                                                 WHERE user_id = '" . $user_info['user_id'] . "' AND article_id = '" . $article_info['article_id'] . "';";
-                                $saved_result = mysqli_query($con, $saved_query);
-                                if ($saved_result->num_rows == 1) { ?>
-                                    <a class="fa-solid fa-bookmark text-reset" href="../include/save_article.inc.php?unsave_id=<?php echo $article_info['article_id']; ?>"></a>
+                                $saved_result = mysqli_query($con, $saved_query); ?>
+                                    <button onclick="change_bookmark_icon(<?php echo $article_info['article_id'] ?>)" id="bookmark-<?php echo $article_info['article_id'] ?>" class="btn p-1">
+                                    <?php if ($saved_result->num_rows == 1) { ?>
+                                        <span id="bookmark-icon-<?php echo $article_info['article_id'] ?>" class="fa-solid fa-bookmark">
                                 <?php } else { ?>
-                                    <a class="fa-regular fa-bookmark text-reset" href="../include/save_article.inc.php?save_id=<?php echo $article_info['article_id']; ?>"></a>
+                                        <span id="bookmark-icon-<?php echo $article_info['article_id'] ?>" class="fa-regular fa-bookmark">
                                 <?php } ?>
+                                    </button>
                             <?php } else { ?>
-                                <a class="fa-regular fa-bookmark text-reset" href="./login.php"></a>
+                                    <a href="./login.php" id="bookmark" class="btn p-1">
+                                        <span id="bookmark-icon" class="fa-regular fa-bookmark">
+                                    </a>
                             <?php } ?>
                         </li>
-                        <li class="list-inline-item align-middle">
-                            <i class="fa-solid fa-newspaper"></i>
+                        <li class="mx-0 list-inline-item align-middle">
+                            <i class="btn p-1 fa-solid fa-newspaper"></i>
                         </li>
                     <?php } ?>
                 </ul>

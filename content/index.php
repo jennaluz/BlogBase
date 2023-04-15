@@ -21,9 +21,37 @@ $approved_articles_result = mysqli_query($con, $approved_articles_query);
         <link rel="stylesheet" href="./css/styles.css">
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+        <script src="./js/save_article.js"></script>
 
         <title>BlogBase</title>
     </head>
+
+    <script>
+        function change_bookmark_icon(article_id) {
+            var bookmark_icon = $('#bookmark-icon-' + article_id);
+
+            if (bookmark_icon.hasClass("fa-solid")) {
+                save = false;
+                remove_class = "fa-solid";
+                add_class = "fa-regular";
+            } else if (bookmark_icon.hasClass("fa-regular")) {
+                save = true;
+                remove_class = "fa-regular";
+                add_class = "fa-solid";
+            } else {
+                return false;
+            }
+
+            save_article(article_id, save, function(result) {
+                if (result == true) {
+                    bookmark_icon.removeClass(remove_class).addClass(add_class);
+                    return true;
+                }
+                return false;
+            });
+        }
+    </script>
 
     <body>
         <div class="header">
@@ -61,15 +89,18 @@ $approved_articles_result = mysqli_query($con, $approved_articles_query);
                                 $saved_query = "SELECT article_id, user_id
                                                 FROM SavedArticles
                                                 WHERE user_id = '" . $user_info['user_id'] . "' AND article_id = '" . $current_row['article_id'] . "';";
-                                $saved_result = mysqli_query($con, $saved_query);
-                                if ($saved_result->num_rows == 1) {
-                            ?>
-                                    <a class="fa-solid fa-bookmark text-reset" href="../include/save_article.inc.php?unsave_id=<?php echo $current_row['article_id']; ?>&return_page=index.php"></a>
+                                $saved_result = mysqli_query($con, $saved_query); ?>
+                                <button onclick="change_bookmark_icon(<?php echo $current_row['article_id'] ?>)" id="bookmark-<?php echo $current_row['article_id'] ?>" class="btn p-1">
+                                <?php if ($saved_result->num_rows == 1) { ?>
+                                    <span id="bookmark-icon-<?php echo $current_row['article_id'] ?>" class="fa-solid fa-bookmark">
                                 <?php } else { ?>
-                                    <a class="fa-regular fa-bookmark text-reset" href="../include/save_article.inc.php?save_id=<?php echo $current_row['article_id']; ?>&return_page=index.php"></a>
+                                    <span id="bookmark-icon-<?php echo $current_row['article_id'] ?>" class="fa-regular fa-bookmark">
                                 <?php } ?>
+                                </button>
                             <?php } else { ?>
-                                <a class="fa-regular fa-bookmark text-reset" href="./login.php"></a>
+                                <a href="./login.php" id="bookmark" class="btn p-1">
+                                    <span id="bookmark-icon" class="fa-regular fa-bookmark">
+                                </a>
                             <?php } ?>
                             </td>
                         </tr>
