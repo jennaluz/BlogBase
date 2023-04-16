@@ -25,4 +25,5 @@ if ($action == "save") {
         echo false;
     }
 } else {
+    echo false;
 }

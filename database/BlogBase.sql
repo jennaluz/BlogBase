@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 15, 2023 at 05:39 AM
+-- Generation Time: Apr 16, 2023 at 06:47 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -76,11 +76,64 @@ INSERT INTO `Articles` (`article_id`, `author_id`, `title`, `description`, `lead
 CREATE TABLE `Comments` (
   `comment_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
-  `parent_id` int(11) NOT NULL DEFAULT -1,
-  `username` varchar(255) NOT NULL,
-  `content` text NOT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `submitter_id` int(11) DEFAULT NULL,
+  `content` blob NOT NULL,
   `submit_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `Comments`
+--
+
+INSERT INTO `Comments` (`comment_id`, `article_id`, `parent_id`, `submitter_id`, `content`, `submit_date`) VALUES
+(3, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 13:41:49'),
+(4, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 13:46:22'),
+(5, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 13:47:20'),
+(6, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 13:51:27'),
+(7, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 13:51:53'),
+(8, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 13:52:01'),
+(9, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 14:05:50'),
+(10, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 14:06:12'),
+(11, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 14:06:16'),
+(12, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 14:06:26'),
+(13, 1, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 14:12:55'),
+(14, 4, NULL, 1, 0x7465737420636f6d6d656e74, '2023-04-15 14:13:21'),
+(15, 4, NULL, 1, 0x66726f6d206a7320636f6d6d656e74, '2023-04-15 14:13:37'),
+(16, 4, NULL, 3, 0x66726f6d206a7320636f6d6d656e74, '2023-04-15 14:13:53'),
+(17, 4, NULL, 3, 0x66726f6d206a7320636f6d6d656e74, '2023-04-15 14:14:14'),
+(18, 21, NULL, 3, 0x66726f6d206a7320636f6d6d656e74, '2023-04-15 14:15:21'),
+(19, 21, NULL, 3, '', '2023-04-15 14:19:59'),
+(20, 21, NULL, 3, 0x5468697320697320736f6d657468696e67207468617420492077616e7420746f2073617921, '2023-04-15 14:20:22'),
+(21, 21, NULL, 3, 0x5468697320697320736f6d657468696e67207468617420492077616e7420746f2073617921, '2023-04-15 14:21:08'),
+(22, 21, NULL, 3, 0x68656c6c6f207468657265, '2023-04-15 14:21:17'),
+(23, 21, NULL, 3, 0x68656c6c6f207468657265, '2023-04-15 14:21:50'),
+(24, 21, NULL, 3, 0x77696c6c207468697320776f726b3f, '2023-04-15 14:21:59'),
+(25, 21, NULL, 3, 0x77696c6c207468697320776f726b3f, '2023-04-15 14:22:04'),
+(26, 4, NULL, NULL, 0x636f6d6d656e742066726f6d2061206e756c6c2075736572, '2023-04-15 19:34:01'),
+(27, 4, NULL, 3, 0x7465737420636f6d6d656e74, '2023-04-15 19:56:17'),
+(28, 4, NULL, 3, 0x736466, '2023-04-15 20:02:32'),
+(29, 4, NULL, 3, 0x73646666, '2023-04-15 20:02:40'),
+(30, 4, NULL, 3, '', '2023-04-15 20:02:40'),
+(31, 4, NULL, 3, 0x736466, '2023-04-15 20:02:42'),
+(32, 4, NULL, 3, 0x736466, '2023-04-15 20:02:43'),
+(33, 4, NULL, 3, 0x48656c6c6f3f, '2023-04-15 20:03:48'),
+(34, 4, NULL, 3, 0x6865726573206120636f6d6d656e7420666f7220796f75, '2023-04-15 20:07:29'),
+(35, 4, NULL, 3, 0x21, '2023-04-15 20:07:35'),
+(36, 4, NULL, NULL, 0x27, '2023-04-15 20:09:16'),
+(37, 4, NULL, 3, 0x736466, '2023-04-15 20:11:12'),
+(38, 4, NULL, 3, 0x74657374, '2023-04-15 20:49:57'),
+(39, 4, NULL, 3, 0x74657374, '2023-04-15 20:50:35'),
+(40, 4, NULL, 3, 0x74657374, '2023-04-15 20:51:25'),
+(41, 4, NULL, 3, 0x24636f6e74656e74, '2023-04-15 20:51:57'),
+(42, 4, NULL, 3, 0x24636f6e74656e74, '2023-04-15 20:52:34'),
+(43, 4, NULL, 3, 0x24636f6e74656e74, '2023-04-15 20:52:37'),
+(44, 4, NULL, 3, '', '2023-04-15 20:52:55'),
+(45, 4, NULL, 3, 0x27, '2023-04-15 20:53:05'),
+(46, 4, NULL, 3, 0x686572652773206120636f6d6d656e7420666f7220796f752120796f752059656c6c6f772042656c6c696564206d6172626c6521, '2023-04-15 20:53:53'),
+(47, 4, NULL, 3, 0x594f552048414420424554544552204e4f5421, '2023-04-15 20:55:24'),
+(48, 4, NULL, 3, 0x486572652773206120636f6d6d656e7420666f7220796f7521, '2023-04-15 20:56:11'),
+(49, 4, NULL, 3, 0x436f6f6c206e657720706572737065637469766521, '2023-04-15 21:39:58');
 
 -- --------------------------------------------------------
 
@@ -96,6 +149,33 @@ CREATE TABLE `Followers` (
   `followed_username` varchar(50) NOT NULL,
   `unique_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `LikedComments`
+--
+
+CREATE TABLE `LikedComments` (
+  `comment_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `liked_date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `LikedComments`
+--
+
+INSERT INTO `LikedComments` (`comment_id`, `user_id`, `liked_date`) VALUES
+(7, 4, '2023-04-15'),
+(8, 3, '2023-04-15'),
+(8, 4, '2023-04-15'),
+(26, 3, '2023-04-15'),
+(43, 3, '2023-04-15'),
+(45, 3, '2023-04-15'),
+(46, 3, '2023-04-15'),
+(47, 3, '2023-04-15'),
+(49, 3, '2023-04-15');
 
 -- --------------------------------------------------------
 
@@ -117,6 +197,7 @@ INSERT INTO `SavedArticles` (`article_id`, `user_id`, `saved_date`) VALUES
 (1, 1, '2023-03-23'),
 (1, 5, '2023-03-21'),
 (2, 2, '2023-03-17'),
+(4, 3, '2023-04-15'),
 (4, 4, '2023-03-18');
 
 -- --------------------------------------------------------
@@ -174,7 +255,9 @@ ALTER TABLE `Articles`
 -- Indexes for table `Comments`
 --
 ALTER TABLE `Comments`
-  ADD PRIMARY KEY (`comment_id`);
+  ADD PRIMARY KEY (`comment_id`),
+  ADD KEY `submitted_id_fk` (`submitter_id`),
+  ADD KEY `article_id_fk` (`article_id`);
 
 --
 -- Indexes for table `Followers`
@@ -182,6 +265,13 @@ ALTER TABLE `Comments`
 ALTER TABLE `Followers`
   ADD PRIMARY KEY (`follower_username`,`followed_username`),
   ADD KEY `unique_number` (`unique_id`);
+
+--
+-- Indexes for table `LikedComments`
+--
+ALTER TABLE `LikedComments`
+  ADD PRIMARY KEY (`comment_id`,`user_id`),
+  ADD KEY `user_id_fk_liked_comments` (`user_id`);
 
 --
 -- Indexes for table `SavedArticles`
@@ -215,7 +305,7 @@ ALTER TABLE `Articles`
 -- AUTO_INCREMENT for table `Comments`
 --
 ALTER TABLE `Comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `Followers`
@@ -238,6 +328,20 @@ ALTER TABLE `Users`
 --
 ALTER TABLE `Articles`
   ADD CONSTRAINT `user_id_fk` FOREIGN KEY (`author_id`) REFERENCES `Users` (`user_id`);
+
+--
+-- Constraints for table `Comments`
+--
+ALTER TABLE `Comments`
+  ADD CONSTRAINT `article_id_fk` FOREIGN KEY (`article_id`) REFERENCES `Articles` (`article_id`),
+  ADD CONSTRAINT `submitted_id_fk` FOREIGN KEY (`submitter_id`) REFERENCES `Users` (`user_id`);
+
+--
+-- Constraints for table `LikedComments`
+--
+ALTER TABLE `LikedComments`
+  ADD CONSTRAINT `comment_id_fk_liked_comments` FOREIGN KEY (`comment_id`) REFERENCES `Comments` (`comment_id`),
+  ADD CONSTRAINT `user_id_fk_liked_comments` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -128,12 +128,13 @@ $roles_str = json_encode($roles_arr);
                             <a class="btn p-1 fa-regular fa-comment text-reset text-decoration-none" data-bs-toggle="offcanvas" href="#offcanvas-comments" aria-controls="offcanvas-sidebar"> </a>
                         </li>
                         <li class="mx-0 list-inline-item align-middle">
-                            <?php if (isset($_SESSION['user_info'])) {
+                            <?php
+                            if (isset($_SESSION['user_info'])) {
                                 $saved_query = "SELECT article_id, user_id
                                                 FROM SavedArticles
                                                 WHERE user_id = '" . $user_info['user_id'] . "' AND article_id = '" . $article_info['article_id'] . "';";
                                 $saved_result = mysqli_query($con, $saved_query); ?>
-                                    <button onclick="change_bookmark_icon(<?php echo $article_info['article_id'] ?>)" id="bookmark-<?php echo $article_info['article_id'] ?>" class="btn p-1">
+                                <button onclick="change_bookmark_icon(<?php echo $article_info['article_id'] ?>)" id="bookmark-<?php echo $article_info['article_id'] ?>" class="btn p-1">
                                     <?php if ($saved_result->num_rows == 1) { ?>
                                         <span id="bookmark-icon-<?php echo $article_info['article_id'] ?>" class="fa-solid fa-bookmark">
                                 <?php } else { ?>
