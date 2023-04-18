@@ -92,7 +92,7 @@ if ($user_info['writer'] == false) {
                                                 <a class="btn btn-outline-success px-2 py-1" type="button" href="../include/create_article.inc.php?submit_article=<?php echo $in_progress_articles[$i]['article_id']; ?>">Submit</a>
                                             </li>
                                             <li class="list-inline-item align-middle">
-                                                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/delete_article.inc.php?id=<?php echo $in_progress_articles[$i]['article_id']; ?>">Delete</a>
+                                                <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/delete_article.inc.php?id=<?php echo $in_progress_articles[$i]['article_id']; ?>&return_page=writer.php">Delete</a>
                                             </li>
                                         </ul>
                                     </td>
