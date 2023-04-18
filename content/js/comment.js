@@ -16,13 +16,35 @@ function upload_comment(a_id, p_id, text, callback) {
 }
 
 function root_comment(a_id) {
+    username = $('#username');
+    console.log(username.text());
     text = $('#user-comment-box').val();
     upload_comment(a_id, null, text, function(result) {
         if (result == true) {
             $('#user-comment-box').val('');
+            $('#new-comment').after(
+                `<hr>
+                <div class="d-flex my-3">
+                    <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
+                    <div class="body">
+                        <h5 class="fw-bold">
+                            ` + username.text() + `
+                            <small class="text-muted">Just now</small>
+                        </h5>
+                        <p class="mb-0">
+                            ` + text + `
+                        </p>
+                        <div class="mb-1">
+                            <button class="btn p-1">
+                                <span id="like-icon-<?php echo $row['comment_id']?>" class="fa-regular fa-heart">
+                            </button>
+                            <button class="btn p-1">Reply</button>
+                        </div>
+                    </div>
+                </div>`
+            );
             return true;
         }
-        alert(result);
         return false;
     });
 }
