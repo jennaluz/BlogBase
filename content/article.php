@@ -8,7 +8,7 @@ ob_start();
 $requested_id = $_GET['id'];
 $article_query = "SELECT Articles.article_id, Articles.title, Articles.description,
                          Articles.content, UNIX_TIMESTAMP(Articles.submit_date) as submit_date,
-                         Articles.approved, Articles.author_id, Users.first_name, Users.last_name
+                         Articles.approved, Articles.submitted, Articles.author_id, Users.first_name, Users.last_name
                   FROM Articles INNER JOIN Users ON Articles.author_id = Users.user_id
                   WHERE Articles.article_id = $requested_id";
 $article_result = mysqli_query($con, $article_query);
@@ -33,6 +33,7 @@ if ($user_info['user_id'] == $article_info['author_id']) {
 
 $roles_arr = array(
     'author_id' => $article_info['author_id'],
+    'submitted' => $article_info['submitted'],
     'user_id' => $user_info['user_id'],
     'writer' => $user_info['writer'],
     'designer' => $user_info['designer'],
@@ -91,10 +92,16 @@ $roles_str = json_encode($roles_arr);
                         </ul>
                     </li>
 
-                    <?php if ($writer && $article_info['submitted'] == false) { ?>
-                        <li class="list-inline-item align-middle writer-btn" hidden>
-                            <a class="btn btn-outline-primary px-2 py-1" type="button" href="./create.php?id=<?php echo $article_info['article_id']; ?>">Edit</a>
-                        </li>
+                    <?php if ($writer) {
+                            if ($article_info['submitted']) { ?>
+                                <li class="list-inline-item align-middle writer-btn" hidden>
+                                    <a class="btn btn-outline-danger px-2 py-1" type="button" href="../include/create_article.inc.php?withdraw_article=<?php echo $article_info['article_id']; ?>">Withdraw</a>
+                                </li>
+                            <?php } else { ?>
+                                <li class="list-inline-item align-middle writer-btn" hidden>
+                                    <a class="btn btn-outline-primary px-2 py-1" type="button" href="./create.php?id=<?php echo $article_info['article_id']; ?>">Edit</a>
+                                </li>
+                            <?php } ?>
                     <?php } ?>
                     <?php if ($article_info['approved'] == false) { ?>
                         <li class="list-inline-item align-middle designer-btn" hidden>

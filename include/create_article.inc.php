@@ -63,7 +63,7 @@ if (isset($_POST['submit_article'])) {
     $user_id = $user_info['user_id'];
 
     $withdraw_query = "UPDATE Articles
-                       SET submitted = 0
+                       SET submitted = 0, approved = 0
                        WHERE article_id = $article_id AND author_id = $user_id";
 
     mysqli_query($con, $withdraw_query);

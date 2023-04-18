@@ -6,10 +6,12 @@ function role_options(roles_json)
 {
     // parse json
     var author_id = roles_json.author_id;
+    var submitted = roles_json.submitted;
     var user_id = roles_json.user_id;
     var writer = roles_json.writer;
     var designer = roles_json.designer;
 
+    console.log(submitted);
     var show_writer = 0;
     var show_designer = 0;
 
@@ -18,7 +20,7 @@ function role_options(roles_json)
             show_writer = 1;
         }
 
-        if (designer == 1) {
+        if (designer == 1 && submitted == 1) {
             show_designer = 1;
         }
     }
