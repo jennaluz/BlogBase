@@ -22,11 +22,11 @@ $num_comments = $comments_result->num_rows;
     </div>
     <div class="offcanvas-body">
         <div>
-            <div class="card mb-2">
+            <div id="new-comment" class="card mb-2">
                 <div class="d-flex m-3">
                     <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                     <div class="body">
-                        <h5 class="fw-bold"><?php echo $user_info['username'] ?></h5>
+                        <h5 id="username" class="fw-bold"><?php echo isset($user_info['username']) ? $user_info['username'] : "anonymous"; ?></h5>
                         <textarea class="form-control border-0 p-0" id="user-comment-box" placeholder="Add a comment..." style="resize: none; box-shadow: none"></textarea>
                     </div>
                 </div>
@@ -85,7 +85,6 @@ $num_comments = $comments_result->num_rows;
                     </div>
                 </div>
             <?php } ?>
-
 
             <hr>
 
