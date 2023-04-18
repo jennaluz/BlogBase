@@ -30,17 +30,24 @@ ob_start();
 
         <?php
         if (isset($_REQUEST['username'])) {
+            $user_info_array = array();
             $username = stripslashes($_REQUEST['username']);
             $username = mysqli_real_escape_string($con, $username);
+            // all usernames must be lowercase
+            $username = strtolower($username);
+            array_push($user_info_array, $username);
 
             $fname = stripslashes($_REQUEST['fname']);
             $fname = mysqli_real_escape_string($con, $fname);
+            array_push($user_info_array, $fname);
 
             $lname = stripslashes($_REQUEST['lname']);
             $lname = mysqli_real_escape_string($con, $lname);
+            array_push($user_info_array, $lname);
 
             $email = stripslashes($_REQUEST['email']);
             $email = mysqli_real_escape_string($con, $email);
+            array_push($user_info_array, $email);
 
             $password = stripslashes($_REQUEST['password']);
             $password = mysqli_escape_string($con, $password);
@@ -66,19 +73,20 @@ ob_start();
                 $admin = 1;
             }
 
+            // check for existing username
             $check = "SELECT *
                       FROM `Users`
-                      WHERE username = '$username'";
-            $check_select = mysqli_query($con, $check);
+                      WHERE username = ?";
+            $check_select = mysqli_execute_query($con, $check, [$user_info_array[0]]);
             $random_name = mysqli_num_rows($check_select);
 
             if ($random_name > 0) {
                 //echo "test";
-                header("Location: ./username_wrong.php");
+                echo "<h5 class='mx-auto'> That username has been taken!</h5>";
             } else {
                 $query = "INSERT INTO `Users` (username, first_name, last_name, email, password, admin, designer, writer, advertiser)
-                          VALUES ('$username', '$fname', '$lname', '$email', '" . md5($password) . "', '$admin', '$designer', '$writer', '$advertiser')";
-                $result = mysqli_query($con, $query);
+                          VALUES (?, ?, ?, ?, '" . md5($password) . "', '$admin', '$designer', '$writer', '$advertiser')";
+                $result = mysqli_execute_query($con, $query, $user_info_array);
 
                 if ($result) {
                     //echo "<div><h3>Successfully Registered</h3></div>";
