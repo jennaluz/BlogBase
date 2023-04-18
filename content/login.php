@@ -36,10 +36,10 @@ ob_start();
             $password = stripslashes($_REQUEST['password']);
             $password = mysqli_real_escape_string($con, $password);
 
-            $query = "SELECT * 
-                      FROM `Users` 
-                      WHERE username = '$username' AND password = '" .md5($password) . "' AND approved != 0";
-            $result = mysqli_query($con, $query) or die(mysql_error());
+            $query = "SELECT *
+                      FROM `Users`
+                      WHERE username = ? AND password = '" .md5($password) . "' AND approved != 0";
+            $result = mysqli_execute_query($con, $query, [$username]);
             $rows = mysqli_num_rows($result);
 
             if ($rows == 1) {
