@@ -38,8 +38,8 @@ if ($user_info['advertiser'] == false) {
             </div>
 
             <div class="my-5 text-center">
-                <form method="post" action="../include/upload_ad.inc.php" enctype="multipart/form-data">
-                    <input type="file" name="ad">
+                <form method="post" action="../include/upload_img.inc.php?img=ad" enctype="multipart/form-data">
+                    <input type="file" name="file">
                     <input type="submit" name="submit" value="Upload">
                 </form>
             </div>
@@ -61,7 +61,7 @@ if ($user_info['advertiser'] == false) {
                 while ($row = $result->fetch_assoc()) {
                     $image_file = "./uploads/" . $row['ad_file'];
             ?>
-                <!--<img class="ad_images" src="<?php echo $image_file; ?>" alt="">-->
+                <!--<img class="ad_images" src="<?//php echo $image_file; ?>" alt="">-->
             <?php }
             } else { ?>
                 <p>No images found...</p>

@@ -1,19 +1,30 @@
+<!--
+Modified: Jenna-Luz Pura
+Purpose: Upload ads based on their image type (ad, lead image, profile pic)
+Notes: Must use input type "file" with name "file". Must also send ?img=img_type in url
+-->
 <?php
 require_once "./connect.inc.php";
 include_once "./user_info.inc.php";
 
 ob_start();
 
+$img = $_GET['img'];
 $dest_dir = "../content/uploads/";
 $accepted_types = array('jpg','png','jpeg','gif');
 
+if ($img == "ad") {
+    $dest_dir .= "ads/";
+    $accepted_types = array('jpg','png','jpeg','gif');
+}
+
 // extract file information
-$filename = basename($_FILES['ad']['name']);
-$tmp_filename = $_FILES['ad']['tmp_name'];
+$filename = basename($_FILES['file']['name']);
+$tmp_filename = $_FILES['file']['tmp_name'];
 $dest_filepath = $dest_dir . $filename;
 $file_type = pathinfo($dest_filepath, PATHINFO_EXTENSION);
 
-if (isset($_POST['submit']) && !empty($_FILES['ad']['name'])) {
+if (isset($_POST['submit']) && !empty($_FILES['file']['name'])) {
     // check file formatting
     if (in_array($file_type, $accepted_types)) {
         // upload file to server
