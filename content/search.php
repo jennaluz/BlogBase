@@ -2,6 +2,7 @@
 require_once "../include/connect.inc.php";
 include "../include/user_info.inc.php";
 
+// when no search term is given, return all articles organized by most recent
 if ($_GET['query'] == "") {
     $search_query = "SELECT title, article_id, description, UNIX_TIMESTAMP(submit_date) as submit_date
                      FROM Articles
@@ -11,27 +12,6 @@ if ($_GET['query'] == "") {
     $matches = $search_result->fetch_all(MYSQLI_BOTH);
 
 } else {
-/*
-    // soundex fuzzy search
-    $search_query = "select title, article_id, description, UNIX_TIMESTAMP(submit_date) as submit_date
-                     from Articles
-                     where soundex(title) like soundex(?)";
-    $search_result = mysqli_execute_query($con, $search_query, [$search_term]);
-*/
-/*
-    // return all articles that contain the individual words from the search
-    $search_query = "SELECT title, article_id, description, UNIX_TIMESTAMP(submit_date) as submit_date
-                     FROM Articles
-                     WHERE title like ?";
-    foreach(array_slice($tokens, 1) as $token) {
-        $search_query = $search_query . " or title like ?";
-    }
-    foreach($tokens as &$token) {
-        $token = "%" . $token . "%";
-    }
-    $search_result = mysqli_execute_query($con, $search_query, $tokens);
-*/
-
     $search_term = $_GET['query'];
     $tokens = explode(" ", $search_term);
 
@@ -42,32 +22,8 @@ if ($_GET['query'] == "") {
     $sql_arr = $search_result->fetch_all(MYSQLI_BOTH);
 
     $matches = array();
-/*
-    // Fuzzy searching using only the levenshtein algorithm.
-    foreach($sql_arr as $key) {
-        $lev = levenshtein($key['title'],$search_term);
-        $similarity = 1 - ($lev / max(strlen($key['title']), strlen($search_term)));
-        echo $similarity . " ";
-        if ($similarity > 0.3) {
-            array_push($matches, $key);
-        }
-    }
-*/
-/*
     // Fuzzy searching using levenshtein and metaphone algorithms.
-    // The difference between this and the other is the way that
-    // percent similarity is calculated.
-    foreach($sql_arr as $key) {
-        $lev = levenshtein($key['title'],$search_term);
-        $bigger = max(strlen(metaphone($key['title'])), strlen(metaphone($search_term)));
-        $similarity = ($bigger - $lev) / $bigger;
-        if ($similarity > 0.3) {
-            array_push($matches, $key);
-        }
-    }
-*/
-    // Fuzzy searching using levenshtein and metaphone algorithms.
-    // The difference between this and the other is the way that
+    // The difference between this and the other way is the way that
     // percent similarity is calculated.
     foreach($sql_arr as $key) {
         $lev = levenshtein(metaphone($key['title']), metaphone($search_term));
