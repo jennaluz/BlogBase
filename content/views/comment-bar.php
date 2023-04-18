@@ -92,7 +92,7 @@ $num_comments = $comments_result->num_rows;
                 <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                 <div class="body">
                     <h5 class="fw-bold">
-                        Anonymous
+                        anonymous
                         <small class="text-muted">April 14, 2023</small>
                     </h5>
                     <p class="mb-0">
@@ -111,7 +111,7 @@ $num_comments = $comments_result->num_rows;
                 <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                 <div class="body">
                     <h5 class="fw-bold">
-                        Anonymous
+                        anonymous
                         <small class="text-muted">April 14, 2023</small>
                     </h5>
                     <p class="mb-0">
@@ -132,7 +132,7 @@ $num_comments = $comments_result->num_rows;
                 <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                 <div class="body">
                     <h5 class="fw-bold">
-                        Anonymous
+                        anonymous
                         <small class="text-muted">April 14, 2023</small>
                     </h5>
                     <p class="mb-0">
@@ -153,7 +153,7 @@ $num_comments = $comments_result->num_rows;
                         <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                         <div class="body">
                             <h5 class="fw-bold">
-                                Anonymous
+                                anonymous
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
@@ -174,7 +174,7 @@ $num_comments = $comments_result->num_rows;
                         <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                         <div class="body">
                             <h5 class="fw-bold">
-                                Anonymous
+                                anonymous
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
@@ -195,7 +195,7 @@ $num_comments = $comments_result->num_rows;
                         <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                         <div class="body">
                             <h5 class="fw-bold">
-                                Anonymous
+                                anonymous
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
@@ -218,7 +218,7 @@ $num_comments = $comments_result->num_rows;
                 <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                 <div class="body">
                     <h5 class="fw-bold">
-                        Anonymous
+                        anonymous
                         <small class="text-muted">April 14, 2023</small>
                     </h5>
                     <p class="mb-0">
@@ -239,7 +239,7 @@ $num_comments = $comments_result->num_rows;
                         <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                         <div class="body">
                             <h5 class="fw-bold">
-                                Anonymous
+                                anonymous
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
@@ -260,7 +260,7 @@ $num_comments = $comments_result->num_rows;
                             <div class="d-flex m-3">
                                 <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                                 <div class="body">
-                                    <h5 class="fw-bold">Anonymous</h5>
+                                    <h5 class="fw-bold">anonymous</h5>
                                     <textarea class="form-control border-0 p-0" id="user-comment-box" placeholder="Add a comment..." style="resize: none; box-shadow: none"></textarea>
                                 </div>
                             </div>
@@ -273,7 +273,7 @@ $num_comments = $comments_result->num_rows;
                         <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                         <div class="body">
                             <h5 class="fw-bold">
-                                Anonymous
+                                anonymous
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
@@ -294,7 +294,7 @@ $num_comments = $comments_result->num_rows;
                         <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                         <div class="body">
                             <h5 class="fw-bold">
-                                Anonymous
+                                anonymous
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
