@@ -1,5 +1,5 @@
 var maxlength = 250;
-$('#char-count').html('0/' + maxlength)
+//$('#char-count').html('0/' + maxlength)
 /*
  * Display a preview of an image when file is selected.
  */
