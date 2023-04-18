@@ -17,7 +17,7 @@ $num_comments = $comments_result->num_rows;
 
 <div class="offcanvas offcanvas-end bg-light" data-bs-scroll="true" tabindex="-1" id="offcanvas-comments" aria-labelledby="offcanvas-comments-label">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvas-comments-label">Comments (<?php echo $num_comments ?>)</h5>
+        <h5 class="offcanvas-title" id="offcanvas-comments-label">Comments (<?php echo $num_comments + 10 ?>)</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -136,7 +136,7 @@ $num_comments = $comments_result->num_rows;
                         <small class="text-muted">April 14, 2023</small>
                     </h5>
                     <p class="mb-0">
-                        Wow, this is an awesome article!
+                        This has changed my life!
                     </p>
                     <div class="mb-1">
                         <button class="btn p-1">
@@ -157,7 +157,7 @@ $num_comments = $comments_result->num_rows;
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
-                                You're right about that!
+                                Mine too!
                             </p>
                             <div class="mb-1">
                                 <button class="btn p-1">
@@ -178,7 +178,7 @@ $num_comments = $comments_result->num_rows;
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
-                                You're right about that!
+                                You thought so too?
                             </p>
                             <div class="mb-1">
                                 <button class="btn p-1">
@@ -199,7 +199,7 @@ $num_comments = $comments_result->num_rows;
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
-                                You're right about that!
+                                It was alright.
                             </p>
                             <div class="mb-1">
                                 <button class="btn p-1">
@@ -222,7 +222,7 @@ $num_comments = $comments_result->num_rows;
                         <small class="text-muted">April 14, 2023</small>
                     </h5>
                     <p class="mb-0">
-                        Wow, this is an awesome article!
+                        You have no idea what you're talking about.
                     </p>
                     <div class="mb-1">
                         <button class="btn p-1">
@@ -243,7 +243,7 @@ $num_comments = $comments_result->num_rows;
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
-                                You're right about that!
+                                Hey, be kind.
                             </p>
                             <div class="mb-1">
                                 <button class="btn p-1">
@@ -277,7 +277,7 @@ $num_comments = $comments_result->num_rows;
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
-                                You're right about that!
+                                Why don't you try to do better?
                             </p>
                             <div class="mb-1">
                                 <button class="btn p-1">
@@ -298,7 +298,7 @@ $num_comments = $comments_result->num_rows;
                                 <small class="text-muted">April 14, 2023</small>
                             </h5>
                             <p class="mb-0">
-                                You're right about that!
+                                There's no room on BlogBase for naysayers!
                             </p>
                             <div class="mb-1">
                                 <button class="btn p-1">
