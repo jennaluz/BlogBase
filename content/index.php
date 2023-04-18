@@ -6,7 +6,8 @@ ob_start();
 
 $approved_articles_query = "SELECT UNIX_TIMESTAMP(submit_date) as submit_date, title, article_id, description
                             FROM Articles
-                            WHERE approved = true";
+                            WHERE approved = true
+                            ORDER BY submit_date DESC";
 $approved_articles_result = mysqli_query($con, $approved_articles_query);
 ?>
 
