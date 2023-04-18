@@ -21,6 +21,7 @@ if ($user_info['writer'] == false) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <link rel="stylesheet" href="./css/styles.css">
 
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
         <title>BlogBase Writer</title>
@@ -180,5 +181,19 @@ if ($user_info['writer'] == false) {
                 </div>
             </div>
         </div>
+        <script>
+        $(document).ready(function() {
+            $('button[data-bs-toggle="tab"]').on('click', function(e) {
+                localStorage.setItem('activeTab', e.target.dataset.bsTarget);
+            });
+            var activeTab = localStorage.getItem('activeTab');
+            if (activeTab) {
+                const triggerEl = document.querySelector(`button[data-bs-target="${activeTab}"]`);
+                if (triggerEl) {
+                    bootstrap.Tab.getOrCreateInstance(triggerEl).show()
+                }
+            }
+        });
+        </script>
     </body>
 </html>
