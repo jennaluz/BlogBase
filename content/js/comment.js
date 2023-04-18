@@ -61,15 +61,23 @@ function update_like(c_id, like, callback) {
 
 function change_like_icon(c_id) {
     var like_icon = $('#like-icon-' + c_id);
+    var num_likes = $('#num-likes-' + c_id);
+    var current_likes = Number(num_likes.text());
 
     if (like_icon.hasClass("fa-solid")) {
         like = false;
         remove_class = "fa-solid";
         add_class = "fa-regular";
+        if (current_likes < 2) {
+            new_text = "";
+        } else {
+            new_text = current_likes - 1;
+        }
     } else if (like_icon.hasClass("fa-regular")) {
         like = true;
         remove_class = "fa-regular";
         add_class = "fa-solid";
+        new_text = current_likes + 1;
     } else {
         return false;
     }
@@ -77,6 +85,7 @@ function change_like_icon(c_id) {
     update_like(c_id, like, function(result) {
         if (result == true) {
             like_icon.removeClass(remove_class).addClass(add_class);
+            num_likes.text(new_text);
             return true;
         }
         return false;

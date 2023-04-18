@@ -67,12 +67,19 @@ $num_comments = $comments_result->num_rows;
                                 <?php } else { ?>
                                     <span id="like-icon-<?php echo $row['comment_id']?>" class="fa-regular fa-heart">
                                 <?php } ?>
+                                <?php echo "<span id='num-likes-" . $row['comment_id'] . "' class=''>" . $row['num_likes'] . "</span>"; ?>
+                                    </span>
                             </button>
                             <?php } else { ?>
                                 <a href="./login.php" class="btn p-1">
                                     <span id="like-icon" class="fa-regular fa-heart">
+                                    <?php echo "<span class=''>" . $row['num_likes'] . "</span>"; ?>
                                 </a>
                             <?php } ?>
+                            <?php
+                                if ($row['num_likes'] > 0) {
+                                }
+                            ?>
                             <button class="btn p-1">Reply</button>
                         </div>
                     </div>
