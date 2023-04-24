@@ -20,13 +20,17 @@ if (isset($_POST['submit_article'])) {
     if ($article_id == -1) {
         $submit_query = "INSERT INTO Articles (author_id, title, description, content, submitted)
                          VALUES ('$user_id', '$title', '$description', '$content', '$submitted')";
+
+        mysqli_query($con, $submit_query);
+        $article_id = mysqli_insert_id($con);
     } else {
         $submit_query = "UPDATE Articles
                          SET title = '$title', description = '$description', content = '$content', submitted = '$submitted'
                          WHERE author_id = $user_id AND article_id = $article_id";
+
+        mysqli_query($con, $submit_query);
     }
 
-    mysqli_query($con, $submit_query);
     $return_page = "article.php?id=$article_id";
 } else if (isset($_POST['save_article'])) {
     $article_id = $_GET['id'];
