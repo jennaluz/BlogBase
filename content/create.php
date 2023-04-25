@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
         <script src="../external/ckeditor/ckeditor.js"></script>
     </head>
 
-    <body>
+    <body onload="lead_image(<?php echo $article_info['lead_image']?>)">
         <div class="header">
             <?php include_once "./views/header.php" ?>
         </div>
@@ -73,19 +73,20 @@ if (isset($_GET['id'])) {
                 </li>
             </ul>
 
-            <form method="post" action="../include/create_article.inc.php?id=<?php echo $requested_id; ?>&return_page=writer.php">
+            <form method="post" enctype="multipart/form-data" action="../include/create_article.inc.php?id=<?php echo $requested_id; ?>&return_page=writer.php">
                 <div class="mb-3" id="article-head">
                     <input class="form-control form-control-lg border-0 ounded-0 px-0 title-box mb-1" name="title" type="text" placeholder="Title" value="<?php echo $title; ?>">
 
                     <textarea class="form-control border-0 rounded-0 px-0" name="description" type="text" placeholder="Description" maxlength="250"><?php echo $description; ?></textarea>
                     <span class="text-end pull-right badge bg-secondary" id="char-count"></span>
 
-                    <div class="input-group my-2">
-                        <button class="btn btn-outline-dark" type="button" id="upload-lead-image">Upload</button>
-                        <input type="file" class="form-control" id="lead-image" aria-describedby="upload-lead-image" aria-label="Upload" onchange="preview_lead(event)">
+                    <div class="input-group mt-2">
+                        <label class="input-group-text" for="lead-image" id="lead-image-label">Add Lead</label>
+                        <input type="file" class="form-control" id="lead-image" name="file" aria-describedby="upload-lead-image" aria-label="Upload" placeholder="img.png">
                     </div>
+
                     <div class="preview">
-                        <img id="lead-image-preview">
+                        <img id="lead-image-preview" src="./uploads/leads/<?php echo $article_info['lead_image'];?>">
                     </div>
                 </div>
 

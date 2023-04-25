@@ -1,4 +1,17 @@
-var maxlength = 250;
+function lead_image(img) {
+    const img_label = document.getElementById("lead-image-label");
+    const img_preview = document.getElementById("lead-image-preview");
+
+    if (img == null) {
+        img_label.innerHTML = "Add Lead";
+        img_preview.hidden = true;
+    } else {
+        img_label.innerHTML = "Change Lead";
+        img_preview.hidden = false;
+    }
+}
+
+//var maxlength = 250;
 //$('#char-count').html('0/' + maxlength)
 /*
  * Display a preview of an image when file is selected.
