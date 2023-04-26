@@ -101,6 +101,9 @@ $roles_str = json_encode($roles_arr);
                                 <li class="list-inline-item align-middle writer-btn" hidden>
                                     <a class="btn btn-outline-primary px-2 py-1" type="button" href="./create.php?id=<?php echo $article_info['article_id']; ?>">Edit</a>
                                 </li>
+                                <li class="list-inline-item align-middle writer-btn" hidden>
+                                    <a class="btn btn-outline-success px-2 py-1" type="button" href="../include/create_article.inc.php?submit_article=<?php echo $article_info['article_id']; ?>">Submit</a>
+                                </li>
                             <?php } ?>
                     <?php } ?>
                     <?php if ($article_info['approved'] == false) { ?>
@@ -159,12 +162,12 @@ $roles_str = json_encode($roles_arr);
                     <?php } ?>
                 </ul>
 
-                <h1 class="m-0"><?php echo $article_info['title']; ?></h1>
+                <h1 class="mb-2"><?php echo $article_info['title']; ?></h1>
                 <p><?php echo $article_info['description']; ?></p>
 
                 <?php if ($article_info['lead_image'] != null) { ?>
                     <div class="justify-content-center">
-                        <img src="./uploads/leads/<?php echo $article_info['lead_image']; ?>" alt="<?php echo $article_info['lead_image']; ?>">
+                        <img class="lead-img" src="./uploads/leads/<?php echo $article_info['lead_image']; ?>" alt="<?php echo $article_info['lead_image']; ?>">
                     </div>
                 <?php } ?>
             </div>
