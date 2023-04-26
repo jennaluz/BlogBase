@@ -167,7 +167,7 @@ $roles_str = json_encode($roles_arr);
 
                 <?php if ($article_info['lead_image'] != null) { ?>
                     <div class="justify-content-center">
-                        <img class="lead-img" src="./uploads/leads/<?php echo $article_info['lead_image']; ?>" alt="<?php echo $article_info['lead_image']; ?>">
+                        <img class="lead-img img-fluid" src="./uploads/leads/<?php echo $article_info['lead_image']; ?>" alt="<?php echo $article_info['lead_image']; ?>">
                     </div>
                 <?php } ?>
             </div>

@@ -87,7 +87,7 @@ if (isset($_GET['id'])) {
                     </div>
 
                     <div class="preview mt-3">
-                        <img id="lead-image-preview" class="lead-img" src="./uploads/leads/<?php echo $article_info['lead_image'];?>">
+                        <img id="lead-image-preview" class="lead-img img-fluid" src="./uploads/leads/<?php echo $article_info['lead_image'];?>">
                         <input type="hidden" id="lead" name="lead" value="1">
                     </div>
                 </div>

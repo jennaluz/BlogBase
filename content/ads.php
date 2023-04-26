@@ -62,7 +62,7 @@ if ($user_info['advertiser'] == false) {
                 while ($row = $result->fetch_assoc()) {
                     $ad_file = "./uploads/ads/" . $row['ad_file'];
             ?>
-                    <img class="ad-img" src="<?php echo $ad_file; ?>" alt="">
+                    <img class="ad-img img-fluid" src="<?php echo $ad_file; ?>" alt="">
             <?php }
             } else { ?>
                 <p>No images found...</p>
