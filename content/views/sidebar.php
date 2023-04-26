@@ -44,6 +44,7 @@ if(isset($_SESSION["username"])){
     </div>
 <?php */ ?>
 
+<?php /*
 <div class="offcanvas offcanvas-start bg-light" data-bs-scroll="true" tabindex="-1" id="offcanvas-sidebar" aria-labelledby="offcanvas-sidebar-label">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvas-sidebar-label">Navigate</h5>
@@ -55,3 +56,5 @@ if(isset($_SESSION["username"])){
     </div>
   </div>
 </div>
+
+*/ ?>

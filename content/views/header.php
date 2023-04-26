@@ -6,11 +6,13 @@ include_once "../include/user_info.inc.php";
 
         <div class="collapse navbar-collapse order-1 order-md-0 col-4" id="navbar-collapsed-menu">
             <ul class="navbar-nav me-auto">
+                <?php /*
                 <li class="nav-item">
                     <a class="btn d-md-block d-none " data-bs-toggle="offcanvas" href="#offcanvas-sidebar" role="button" aria-controls="offcanvas-sidebar">
                         <span class="fa-solid fa-bars"></span>
                     </a>
                 </li>
+                */ ?>
                 <li class="nav-item">
                     <form method="get" action="./search.php" class="input-group rounded">
                         <button class="btn input-group-text rounded" type="submit">
