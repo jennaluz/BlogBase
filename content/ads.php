@@ -11,7 +11,7 @@ if ($user_info['advertiser'] == false) {
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, intitial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -55,19 +55,19 @@ if ($user_info['advertiser'] == false) {
             $query = "SELECT *
                       FROM Ads
                       WHERE advertiser_id = $user_id";
+
             $result = mysqli_query($con, $query);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    $image_file = "./uploads/" . $row['ad_file'];
+                    $ad_file = "./uploads/ads/" . $row['ad_file'];
             ?>
-                <!--<img class="ad_images" src="<?//php echo $image_file; ?>" alt="">-->
+                    <img class="ad-img" src="<?php echo $ad_file; ?>" alt="">
             <?php }
             } else { ?>
                 <p>No images found...</p>
             <?php } ?>
         </div>
 
-        <script src="./js/script.js"></script>
     </body>
 </html>

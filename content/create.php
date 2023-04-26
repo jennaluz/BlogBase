@@ -86,8 +86,8 @@ if (isset($_GET['id'])) {
                         <button type="button" id="remove-lead-btn" class="btn btn-outline-danger" onclick="remove_lead()">Remove Lead</button>
                     </div>
 
-                    <div class="preview mt-3 text-center">
-                        <img id="lead-image-preview" src="./uploads/leads/<?php echo $article_info['lead_image'];?>">
+                    <div class="preview mt-3">
+                        <img id="lead-image-preview" class="lead-img" src="./uploads/leads/<?php echo $article_info['lead_image'];?>">
                         <input type="hidden" id="lead" name="lead" value="1">
                     </div>
                 </div>
