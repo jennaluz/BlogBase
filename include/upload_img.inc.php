@@ -3,6 +3,7 @@ Modified: Jenna-Luz Pura
 Purpose: Upload ads based on their image type (ad, lead image, profile pic)
 Notes: Must use input type "file" with name "file". Must also send ?img=img_type in url
 -->
+
 <?php
 require_once "./connect.inc.php";
 include_once "./user_info.inc.php";

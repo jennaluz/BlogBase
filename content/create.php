@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
         <script src="../external/ckeditor/ckeditor.js"></script>
     </head>
 
-    <body onload="lead_image(<?php echo $article_info['lead_image']?>)">
+    <body onload="lead_image('<?php echo $article_info['lead_image']?>')">
         <div class="header">
             <?php include_once "./views/header.php" ?>
         </div>
@@ -80,18 +80,20 @@ if (isset($_GET['id'])) {
                     <textarea class="form-control border-0 rounded-0 px-0" name="description" type="text" placeholder="Description" maxlength="250"><?php echo $description; ?></textarea>
                     <span class="text-end pull-right badge bg-secondary" id="char-count"></span>
 
-                    <div class="input-group mt-2">
+                    <div class="input-group mt-3">
                         <label class="input-group-text" for="lead-image" id="lead-image-label">Add Lead</label>
-                        <input type="file" class="form-control" id="lead-image" name="file" aria-describedby="upload-lead-image" aria-label="Upload" placeholder="img.png">
+                        <input type="file" class="form-control" id="lead-image" name="file" aria-describedby="upload-lead-image" aria-label="Upload" onchange="preview_lead(event, '<?php echo $article_info['lead_image']; ?>')">
+                        <button type="button" id="remove-lead-btn" class="btn btn-outline-danger" onclick="remove_lead()">Remove Lead</button>
                     </div>
 
-                    <div class="preview">
+                    <div class="preview mt-3 text-center">
                         <img id="lead-image-preview" src="./uploads/leads/<?php echo $article_info['lead_image'];?>">
+                        <input type="hidden" id="lead" name="lead" value="1">
                     </div>
                 </div>
 
                 <hr>
-                <div class="article-body">
+                <div class="mb-5 article-body">
                     <textarea name="article_draft"><?php echo $content; ?></textarea>
                     <script>
                         CKEDITOR.replace('article_draft', {
@@ -114,8 +116,8 @@ if (isset($_GET['id'])) {
                         });
                     </script>
 
-                    <button name ="save_article" class="btn btn-outline-dark px-2 py-1 mt-3 me-2" type="submit">Save for Later</button>
-                    <button name ="submit_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit for Approval</button>
+                    <button name="save_article" class="btn btn-outline-dark px-2 py-1 mt-3 me-2" type="submit">Save for Later</button>
+                    <button name="submit_article" class="btn btn-outline-dark px-2 py-1 mt-3" type="submit">Submit for Approval</button>
                 </div>
             </form>
         </div>

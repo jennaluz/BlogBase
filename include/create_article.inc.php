@@ -13,6 +13,7 @@ if ($user_info['writer'] == false) {
     echo "You can't do this!";
 }
 
+
 if (isset($_POST['submit_article']) || isset($_POST['save_article'])) {  // create.php
     $article_id = $_GET['id'];
     $user_id = $user_info['user_id'];
@@ -20,6 +21,7 @@ if (isset($_POST['submit_article']) || isset($_POST['save_article'])) {  // crea
     $title = $_POST['title'];
     $content = $_POST['article_draft'];
     $description = $_POST['description'];
+    $btn = $_POST['remove_lead'];
 
     if (isset($_POST['submit_article'])) {
         $submitted = 1;
@@ -62,6 +64,12 @@ if (isset($_POST['submit_article']) || isset($_POST['save_article'])) {  // crea
                 $result = mysqli_query($con, $lead_query);
             }
         }
+    } else if($_POST['lead'] == 0) {
+        $remove_lead_query = "UPDATE Articles
+                              SET lead_image = NULL
+                              WHERE article_id = $article_id";
+
+        $result = mysqli_query($con, $remove_lead_query);
     }
 } else if (isset($_GET['submit_article'])) {  // writer.php
     $article_id = $_GET['submit_article'];

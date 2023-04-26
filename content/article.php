@@ -6,7 +6,7 @@ ob_start();
 
 // get information about this article
 $requested_id = $_GET['id'];
-$article_query = "SELECT Articles.article_id, Articles.title, Articles.description,
+$article_query = "SELECT Articles.article_id, Articles.title, Articles.description, Articles.lead_image,
                          Articles.content, UNIX_TIMESTAMP(Articles.submit_date) as submit_date,
                          Articles.approved, Articles.submitted, Articles.author_id, Users.first_name, Users.last_name
                   FROM Articles INNER JOIN Users ON Articles.author_id = Users.user_id
@@ -119,7 +119,6 @@ $roles_str = json_encode($roles_arr);
 
                 <ul class="list-inline">
                     <li class="list-inline-item align-middle">
-                    <!-- article author will go here -->
                         <?php echo $article_info['first_name'] . " " . $article_info['last_name'] ?>
                     </li>
                     <li class="mx-0 list-inline-item align-middle">
@@ -162,6 +161,12 @@ $roles_str = json_encode($roles_arr);
 
                 <h1 class="m-0"><?php echo $article_info['title']; ?></h1>
                 <p><?php echo $article_info['description']; ?></p>
+
+                <?php if ($article_info['lead_image'] != null) { ?>
+                    <div class="justify-content-center">
+                        <img src="./uploads/leads/<?php echo $article_info['lead_image']; ?>" alt="<?php echo $article_info['lead_image']; ?>">
+                    </div>
+                <?php } ?>
             </div>
 
             <hr>
