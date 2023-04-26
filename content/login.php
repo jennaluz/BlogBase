@@ -38,7 +38,8 @@ ob_start();
 
             $query = "SELECT *
                       FROM `Users`
-                      WHERE username = ? AND password = '" .md5($password) . "' AND approved != 0";
+                      WHERE username = ? AND password = '" . md5($password) . "' AND approved != 0";
+                      /*WHERE username = ? AND password = '" . password_hash($password, PASSWORD_DEFAULT) . "' AND approved != 0";*/
             $result = mysqli_execute_query($con, $query, [$username]);
             $rows = mysqli_num_rows($result);
 
@@ -67,6 +68,7 @@ ob_start();
                         </div>
                         <div class="col-auto pt-2">
                             <p>Don't have an account?&emsp;<a href="./register.php">Register Now</a></p>
+                            <p> Forgot your password? <a href="#">Reset Password</a></p>
                         </div>
                     </div>
                 </form>
