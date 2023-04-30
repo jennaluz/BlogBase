@@ -30,7 +30,7 @@
                     <li class="nav-item">
                         <div class="dropdown">
                             <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="./uploads/profile_pictures/anonymous.jpg" class="rounded-circle" style="width:35px; height:35px;">
+                                <img src="./uploads/profile_pictures/<?php echo $user_info['profile_picture']; ?>" class="rounded-circle" style="width:35px; height:35px;">
                             </button>
 
                             <ul class="dropdown-menu dropdown-menu-end">
