@@ -44,7 +44,8 @@ if(isset($_SESSION["username"])){
     </div>
 <?php */ ?>
 
-<?php /*
+<?php include_once "../include/user_info.inc.php"; ?>
+
 <div class="offcanvas offcanvas-start bg-light" data-bs-scroll="true" tabindex="-1" id="offcanvas-sidebar" aria-labelledby="offcanvas-sidebar-label">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvas-sidebar-label">Navigate</h5>
@@ -52,9 +53,20 @@ if(isset($_SESSION["username"])){
   </div>
   <div class="offcanvas-body">
     <div>
-        Page links will appear here
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item d-md-none mb-2">
+                <form method="get" action="./search.php" class="input-group rounded">
+                    <button class="btn input-group-text rounded" type="submit">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                    <input class="form-control rounded" name="query" type="search" placeholder="Search" aria-label="Search">
+                </form>
+            <hr>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="./index.php" aria-current="page">Home</a>
+            </li
+        </ul>
     </div>
   </div>
 </div>
-
-*/ ?>
