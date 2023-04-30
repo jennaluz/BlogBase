@@ -72,14 +72,14 @@ include_once "../include/user_info.inc.php";
                                 <a class="dropdown-item" href="./ads.php">Advertiser Dashboard</a>
                             </li>
                             <?php } ?>
-                            <?php if ($user_info['writer'] == true) { ?>
-                            <li>
-                                <a class="dropdown-item" href="./writer.php">Writer Dashboard</a>
-                            </li>
-                            <?php } ?>
                             <?php if ($user_info['designer'] == true) { ?>
                             <li>
                                 <a class="dropdown-item" href="./design.php">Designer Dashboard</a>
+                            </li>
+                            <?php } ?>
+                            <?php if ($user_info['writer'] == true) { ?>
+                            <li>
+                                <a class="dropdown-item" href="./writer.php">Writer Dashboard</a>
                             </li>
                             <?php } ?>
                             <hr>
