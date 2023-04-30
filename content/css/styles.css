@@ -5,6 +5,16 @@
    font-family: 'Outfit', sans-serif;
 }
 
+.profile-label {
+    font-weight: bold;
+}
+
+.profile-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
 .ad-img {
     width: 50%;
     height:50%;
