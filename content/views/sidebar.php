@@ -47,35 +47,35 @@ if(isset($_SESSION["username"])){
 <?php include_once "../include/user_info.inc.php"; ?>
 
 <div class="offcanvas offcanvas-start bg-light" data-bs-scroll="true" tabindex="-1" id="offcanvas-sidebar" aria-labelledby="offcanvas-sidebar-label">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvas-sidebar-label">Navigate</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div>
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item d-md-none mb-2">
-                <form method="get" action="./search.php" class="input-group rounded">
-                    <button class="btn input-group-text rounded" type="submit">
-                        <i class="fa-solid fa-search"></i>
-                    </button>
-                    <input class="form-control rounded" name="query" type="search" placeholder="Search" aria-label="Search">
-                </form>
-            <hr>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="./index.php" aria-current="page">
-                    <i class="fa-solid fa-house"></i>
-                     Home
-                </a>
-            </li
-            <li class="nav-item">
-                <a class="nav-link link-dark" href="#">
-                    <i class="fa-solid fa-tag"></i>
-                    Tags
-                </a>
-            </li
-        </ul>
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvas-sidebar-label">Navigate</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-  </div>
+    <div class="offcanvas-body">
+        <div>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item d-md-none mb-2">
+                    <form method="get" action="./search.php" class="input-group rounded">
+                        <button class="btn input-group-text rounded" type="submit">
+                            <i class="fa-solid fa-search"></i>
+                        </button>
+                        <input class="form-control rounded" name="query" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                    <hr>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="./index.php" aria-current="page">
+                        <i class="fa-solid fa-house"></i>
+                         Home
+                    </a>
+                </li
+                <li class="nav-item">
+                    <a class="nav-link link-dark" href="#">
+                        <i class="fa-solid fa-tag"></i>
+                        Tags
+                    </a>
+                </li
+            </ul>
+        </div>
+    </div>
 </div>
