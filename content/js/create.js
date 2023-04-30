@@ -21,12 +21,10 @@ function preview_lead(event, img) {
     var preview = document.getElementById("lead-image-preview");
 
     if (event.target.files.length > 0) {
-        var src = URL.createObjectURL(event.target.files[0]);
-
+        src = URL.createObjectURL(event.target.files[0]);
         preview.src = src;
-        //preview.style.display = "block";
         preview.hidden = false;
-    } else if (event.target.files.length == 0 && img != "") {
+    } else if (img != "") {
         preview.src = src;
         preview.hidden = false;
     } else {

@@ -5,6 +5,14 @@ include_once "../include/user_info.inc.php";
 if ($user_info['advertiser'] == false) {
     echo "You don't have access to this page";
 }
+
+$user_id = $user_info['user_id'];
+
+$ad_query = "SELECT *
+             FROM Ads
+             WHERE advertiser_id = $user_id";
+
+$result = mysqli_query($con, $ad_query);
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +26,7 @@ if ($user_info['advertiser'] == false) {
         <link rel="stylesheet" href="css/styles.css">
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="./js/ads.js"></script>
 
         <title>BlogBase Advertiser</title>
     </head>
@@ -31,42 +40,38 @@ if ($user_info['advertiser'] == false) {
             <?php include "./views/sidebar.php" ?>
         </div>
 
-        <div class="col-10 col-lg-7 mt-3 mx-auto">
+        <div class="col-10 col-lg-7 mt-5 mx-auto">
             <div class="text-center">
                 <p class="display-3 mt-3">Spread the Word!</p>
                 <p>Upload your ads to BlogBase to show to our viewers!</p>
             </div>
 
-            <div class="my-5 text-center">
+            <div class="col-10 col-lg-7 my-5 mx-auto text-center">
                 <form method="post" action="../include/upload_img.inc.php?img=ad" enctype="multipart/form-data">
-                    <input type="file" name="file">
-                    <input type="submit" name="submit" value="Upload">
+                    <div class="input-group">
+                        <input class="form-control" type="file" name="file" onchange="preview_ad(event)">
+                        <button class="btn btn-outline-dark" type="submit" name="submit">Upload</button>
+                    </div>
                 </form>
+
+                <div class="preview mt-3">
+                    <img id="ad-preview" class="ad-img img-fluid" src="#" hidden>
+                </div>
             </div>
 
-            <hr>
-            <div>
-                <p class="display-6 text-center">Previously Uploaded Ads</p>
-            </div>
+            <?php if ($result->num_rows > 0) { ?>
+                <hr>
+                <div>
+                    <p class="display-6 text-center m-3">Previously Uploaded Ads</p>
+                </div>
 
-            <?php
-            $user_id = $user_info['user_id'];
-
-            $query = "SELECT *
-                      FROM Ads
-                      WHERE advertiser_id = $user_id";
-
-            $result = mysqli_query($con, $query);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
+                <?php while ($row = $result->fetch_assoc()) {
                     $ad_file = "./uploads/ads/" . $row['ad_file'];
-            ?>
+                ?>
+
                     <img class="ad-img img-fluid" src="<?php echo $ad_file; ?>" alt="">
-            <?php }
-            } else { ?>
-                <p>No images found...</p>
-            <?php } ?>
+                <?php }
+            } ?>
         </div>
 
     </body>
