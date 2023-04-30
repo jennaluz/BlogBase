@@ -45,6 +45,7 @@ if(isset($_SESSION["username"])){
 <?php */ ?>
 
 <?php include_once "../include/user_info.inc.php"; ?>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
 <div class="offcanvas offcanvas-start bg-light" data-bs-scroll="true" tabindex="-1" id="offcanvas-sidebar" aria-labelledby="offcanvas-sidebar-label">
     <div class="offcanvas-header">
@@ -64,14 +65,14 @@ if(isset($_SESSION["username"])){
                     <hr>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="./index.php" aria-current="page">
-                        <i class="fa-solid fa-house"></i>
+                    <a class="nav-link link-dark" href="./index.php">
+                        <i class="fa-solid fa-house me-2"></i>
                          Home
                     </a>
                 </li
                 <li class="nav-item">
                     <a class="nav-link link-dark" href="#">
-                        <i class="fa-solid fa-tag"></i>
+                        <i class="fa-solid fa-tag me-2"></i>
                         Tags
                     </a>
                 </li
@@ -79,3 +80,14 @@ if(isset($_SESSION["username"])){
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $('.nav a').each(function(){
+        if ($(this).prop('href') == window.location.href) {
+            $(this).addClass('active');
+            $(this).removeClass("link-dark");
+        }
+    });
+});
+</script>
