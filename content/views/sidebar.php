@@ -64,7 +64,16 @@ if(isset($_SESSION["username"])){
             <hr>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="./index.php" aria-current="page">Home</a>
+                <a class="nav-link active" href="./index.php" aria-current="page">
+                    <i class="fa-solid fa-house"></i>
+                     Home
+                </a>
+            </li
+            <li class="nav-item">
+                <a class="nav-link link-dark" href="#">
+                    <i class="fa-solid fa-tag"></i>
+                    Tags
+                </a>
             </li
         </ul>
     </div>
