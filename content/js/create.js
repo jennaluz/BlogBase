@@ -24,9 +24,13 @@ function preview_lead(event, img) {
         var src = URL.createObjectURL(event.target.files[0]);
 
         preview.src = src;
-        preview.style.display = "block";
-    } else if (event.target.files.length == 0) {
+        //preview.style.display = "block";
+        preview.hidden = false;
+    } else if (event.target.files.length == 0 && img != "") {
         preview.src = src;
+        preview.hidden = false;
+    } else {
+        preview.hidden = true;
     }
 }
 
