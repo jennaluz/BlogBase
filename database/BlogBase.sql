@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 26, 2023 at 06:22 PM
+-- Generation Time: May 01, 2023 at 12:39 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -34,6 +34,13 @@ CREATE TABLE `Ads` (
   `submit_date` date NOT NULL DEFAULT current_timestamp(),
   `price_paid` int(11) NOT NULL DEFAULT 50
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `Ads`
+--
+
+INSERT INTO `Ads` (`ad_id`, `advertiser_id`, `ad_file`, `submit_date`, `price_paid`) VALUES
+(1, 1, 'house_model.jpg', '2023-04-29', 50);
 
 -- --------------------------------------------------------
 
@@ -78,6 +85,13 @@ CREATE TABLE `Comments` (
   `content` blob NOT NULL,
   `submit_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `Comments`
+--
+
+INSERT INTO `Comments` (`comment_id`, `article_id`, `parent_id`, `submitter_id`, `content`, `submit_date`) VALUES
+(1, 3, NULL, 8, 0x49206c6f76652077696e746572, '2023-04-26 09:49:11');
 
 -- --------------------------------------------------------
 
@@ -126,6 +140,7 @@ CREATE TABLE `SavedArticles` (
 
 CREATE TABLE `Users` (
   `user_id` int(11) NOT NULL,
+  `profile_picture` varchar(255) NOT NULL DEFAULT 'anonymous.jpg',
   `username` varchar(50) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
@@ -143,13 +158,12 @@ CREATE TABLE `Users` (
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`user_id`, `username`, `first_name`, `last_name`, `email`, `password`, `approved`, `reader`, `writer`, `designer`, `advertiser`, `admin`) VALUES
-(1, 'chad_flemmington', 'Chad', 'Flemmington', 'chad.flemmington@gmail.com', '7494dc318aa9772ec3fe1c507c4e2be5', 1, 1, 1, 1, 1, 1),
-(2, 'rodrick_henry', 'Rodrick', 'Henry', 'rodrick.henry@gmail.com', 'bb795fe9516be8a6b6e91f1e68ec68fa', 1, 1, 1, 1, 0, 0),
-(3, 'chii_robinson', 'Chii', 'Robinson', 'chii.robinson@gmail.com', 'fcb98ce75506ba63e4476a57998810c9', 1, 1, 1, 1, 1, 1),
-(4, 'rebecca_ross', 'Rebecca', 'Ross', 'rebecca.ross@gmail.com', 'a25d40c2e2be71e10fe7778758a28029', 1, 1, 1, 0, 0, 0),
-(8, 'lily_thomas', 'Lily', 'Thomas', 'lily.thomas@gmail.com', '0629f74874800264534a6cb903d796f5', 1, 1, 0, 0, 0, 0),
-(9, 'erin_block', 'Erin', 'Block', 'erin.block@gmail.com', '9e90273a6a0607dfc7039a0a34eff03e', 1, 1, 0, 0, 0, 0);
+INSERT INTO `Users` (`user_id`, `profile_picture`, `username`, `first_name`, `last_name`, `email`, `password`, `approved`, `reader`, `writer`, `designer`, `advertiser`, `admin`) VALUES
+(1, 'anonymous.jpg', 'chad_flemmington', 'Chad', 'Flemmington', 'chad.flemmington@gmail.com', '7494dc318aa9772ec3fe1c507c4e2be5', 1, 1, 1, 1, 1, 1),
+(2, 'anonymous.jpg', 'rodrick_henry', 'Rodrick', 'Henry', 'rodrick.henry@gmail.com', 'bb795fe9516be8a6b6e91f1e68ec68fa', 1, 1, 1, 1, 0, 0),
+(3, 'anonymous.jpg', 'chii_robinson', 'Chii', 'Robinson', 'chii.robinson@gmail.com', 'fcb98ce75506ba63e4476a57998810c9', 1, 1, 1, 1, 1, 1),
+(4, 'anonymous.jpg', 'rebecca_ross', 'Rebecca', 'Ross', 'rebecca.ross@gmail.com', 'a25d40c2e2be71e10fe7778758a28029', 1, 1, 1, 0, 0, 0),
+(9, 'anonymous.jpg', 'erin_block', 'Erin', 'Block', 'erin.block@gmail.com', '9e90273a6a0607dfc7039a0a34eff03e', 1, 1, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -208,7 +222,7 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT for table `Ads`
 --
 ALTER TABLE `Ads`
-  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Articles`
@@ -220,7 +234,7 @@ ALTER TABLE `Articles`
 -- AUTO_INCREMENT for table `Comments`
 --
 ALTER TABLE `Comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Followers`
@@ -232,7 +246,7 @@ ALTER TABLE `Followers`
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
