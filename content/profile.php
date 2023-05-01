@@ -2,6 +2,13 @@
 ob_start();
 require_once "../include/connect.inc.php";
 include_once "../include/user_info.inc.php";
+
+$username = $_GET['username'];
+
+if (($user_info == null) || ($user_info['username'] != $username)) {
+    echo "You can't be here";
+    // redirect to login page?
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +35,46 @@ include_once "../include/user_info.inc.php";
             <?php include "./views/sidebar.php" ?>
         </div>
 
-        <script src="./js/script.js"></script>
+        <div class="container">
+            <div class="row mt-3 gx-xl-5">
+                <div class="col-10 col-lg mx-auto text-center">
+                    <img class="profile-img rounded-circle" id="profile-picture" src="./uploads/profile_pictures/<?php echo $user_info['profile_picture']; ?>">
+                </div>
+
+                <div class="col-9 mx-auto">
+                    <ul class="list-inline text-xxl-start text-center">
+                        <li class="list-inline-item m-0">
+                            <div class="display-6"><?php echo $user_info['username']; ?></div>
+                        </li>
+                        <?php if ($username != $user_info['username']) { ?>
+                            <li class="list-inline-item align-text-bottom">
+                                <button type="button" class="btn btn-outline-dark btn-sm">Follow</button>
+                            </li>
+                        <?php }?>
+                        <li class="list-inline align-text-middle" id="role-list">
+                            <ul class="list-inline">
+                                <li class="list-inline-item me-0">
+                                    <button class="btn badge bg-primary rounded-pill role-badge">reader</button>
+                                </li>
+                                <li class="list-inline-item me-0">
+                                    <button class="btn badge bg-success rounded-pill role-badge">admin</button>
+                                </li>
+                                <li class="list-inline-item me-0">
+                                    <button class="btn badge bg-danger rounded-pill role-badge">advertiser</button>
+                                </li>
+                                <li class="list-inline-item me-0">
+                                    <button class="btn badge bg-warning rounded-pill role-badge">designer</button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button class="btn badge bg-info rounded-pill role-badge">writer</button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <hr>
+                </div>
+            </div>
+        </div>
     </body>
-</html>
+</html/>

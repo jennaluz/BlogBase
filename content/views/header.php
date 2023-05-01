@@ -35,7 +35,7 @@
 
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <a class="dropdown-item" href="./profile.php">
+                                    <a class="dropdown-item" href="./profile.php?username=<?php echo $user_info['username']; ?>">
                                         <?php echo $user_info['first_name'] . " " . $user_info['last_name'] ?><br>
                                         <?php echo "@" . $user_info['username'] ?>
                                     </a>
@@ -65,6 +65,9 @@
                                 </li>
                                 <?php } ?>
                                 <hr>
+                                <li>
+                                    <a class="dropdown-item" href="./settings.php?username=<?php echo $user_info['username']; ?>">Settings</a>
+                                </li>
                                 <li>
                                     <a class="dropdown-item" href="../include/logout.inc.php">Logout</a>
                                 </li>

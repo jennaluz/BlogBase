@@ -4,7 +4,9 @@ require_once "../include/connect.inc.php";
 include_once "../include/user_info.inc.php";
 //include_once "../include/auth_profile.inc.php"
 
-if ($user_info == null) {
+$username = $_GET['username'];
+
+if (($user_info == null) || ($user_info['username'] != $username)) {
     echo "You can't be here";
     // redirect to login page?
 }
@@ -57,12 +59,12 @@ $roles_str = json_encode($roles_arr);
                     <img class="profile-img rounded-circle" id="profile-picture" src="./uploads/profile_pictures/<?php echo $user_info['profile_picture']; ?>">
                 </div>
 
-                <div class="col-9 pe-5 mx-auto">
-                    <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <div class="display-6 text-xxl-start text-center"><?php echo $user_info['username']; ?></div>
+                <div class="col-9 mx-auto">
+                    <ul class="list-inline text-xxl-start text-center">
+                        <li class="list-inline-item m-0">
+                            <div class="display-6"><?php echo $user_info['username']; ?></div>
                         </li>
-                        <li class="list-inline-item align-text-bottom">
+                        <li class="list-inline-item align-text-bottom" id="role-list">
                             <ul class="list-inline">
                                 <li class="list-inline-item me-0">
                                     <button class="btn badge bg-primary rounded-pill role-badge">reader</button>
@@ -84,7 +86,7 @@ $roles_str = json_encode($roles_arr);
                     </ul>
 
                     <form method="post" enctype="multipart/form-data" class="mt-3 profile-form" action="../include/update_account.inc.php">
-                        <input name="user-id" type="hidden" value="<?php echo $user_info['user_id']; ?>">
+                        <input name="username" value="<?php echo $username; ?>" type="hidden">
                         <input name="profile-picture" id="profile-picture-input" type="hidden" value="1">
 
                         <hr>
@@ -156,7 +158,7 @@ $roles_str = json_encode($roles_arr);
                                             <button class="btn btn-outline-dark" name="update_account" type="submit">Update</button>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a href="./settings.php" class="text-decoration-none">
+                                            <a href="./settings.php?username=<?php echo $user_info['username']; ?>" class="text-decoration-none">
                                                 <button class="btn btn-outline-primary" type="button">Cancel</button>
                                             </a>
                                         </li>

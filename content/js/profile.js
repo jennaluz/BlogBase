@@ -1,3 +1,21 @@
+$(document).ready(xxl);
+$(window).resize(xxl);
+
+function xxl() {
+    var width = $(document).width();
+    const roles = document.getElementById("role-list");
+
+    if (roles != null) {
+        if (width < 1400) {
+            roles.classList.remove("list-inline-item");
+            roles.classList.add("list-inline");
+        } else {
+            roles.classList.remove("list-inline");
+            roles.classList.add("list-inline-item");
+        }
+    }
+}
+
 function load_profile(prof_pic_file, roles) {
     const input_file = document.getElementById("profile-image-input");
     const remove_btn = document.getElementById("remove-profile-picture-btn");

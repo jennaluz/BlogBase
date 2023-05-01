@@ -4,9 +4,9 @@ require_once "./connect.inc.php";
 include_once "./user_info.inc.php";
 
 if (isset($_POST['update_account'])) {
-    $user_id = $_POST['user-id'];
+    $username = $_POST['username'];
 
-    if ($user_id != $user_info['user_id']) {
+    if ($user_info['username'] != $username) {
         echo "cannot update";
     }
 
