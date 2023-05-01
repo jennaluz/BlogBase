@@ -22,7 +22,7 @@ if ($user_info == null) {
 
         <script src="./js/profile.js"></script>
 
-        <title>BlogBase Profile</title>
+        <title>BlogBase Settings</title>
     </head>
 
     <body onload="load_profile('<?php echo $user_info['profile_picture']; ?>')">
