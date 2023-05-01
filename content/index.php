@@ -28,32 +28,6 @@ $approved_articles_result = mysqli_query($con, $approved_articles_query);
         <title>BlogBase</title>
     </head>
 
-    <script>
-        function change_bookmark_icon(article_id) {
-            var bookmark_icon = $('#bookmark-icon-' + article_id);
-
-            if (bookmark_icon.hasClass("fa-solid")) {
-                save = false;
-                remove_class = "fa-solid";
-                add_class = "fa-regular";
-            } else if (bookmark_icon.hasClass("fa-regular")) {
-                save = true;
-                remove_class = "fa-regular";
-                add_class = "fa-solid";
-            } else {
-                return false;
-            }
-
-            save_article(article_id, save, function(result) {
-                if (result == true) {
-                    bookmark_icon.removeClass(remove_class).addClass(add_class);
-                    return true;
-                }
-                return false;
-            });
-        }
-    </script>
-
     <body>
         <div class="header">
             <?php include "./views/header.php" ?>
@@ -69,7 +43,7 @@ $approved_articles_result = mysqli_query($con, $approved_articles_query);
         <div class="col-10 col-lg-7 mx-auto mt-3">
             <table class="table text-start">
                 <thead>
-                </thead
+                </thead>
                 <tbody>
                     <?php while ($current_row = $approved_articles_result->fetch_assoc()) { ?>
                         <tr>
