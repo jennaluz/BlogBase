@@ -54,6 +54,6 @@ if (isset($_POST['update_account'])) {
     }
 }
 
-header("Location: ../content/profile.php");
+header("Location: ../content/settings.php");
 ob_end_flush();
 ?>
