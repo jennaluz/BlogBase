@@ -8,6 +8,16 @@ if ($user_info == null) {
     echo "You can't be here";
     // redirect to login page?
 }
+
+$roles_arr = array(
+    'admin' => $user_info['admin'],
+    'advertiser' => $user_info['advertiser'],
+    'designer' => $user_info['designer'],
+    'writer' => $user_info['writer'],
+    );
+
+// convert array into a json string
+$roles_str = json_encode($roles_arr);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +38,12 @@ if ($user_info == null) {
         <title>BlogBase Settings</title>
     </head>
 
-    <body onload="load_profile('<?php echo $user_info['profile_picture']; ?>')">
+    <?php
+    // create a js object using the json string
+    echo "<script>var roles_str = JSON.parse('" . $roles_str . "');</script>"
+    ?>
+
+    <body onload="load_profile('<?php echo $user_info['profile_picture']; ?>', roles_str)">
         <div class="header">
             <?php include "./views/header.php" ?>
         </div>
@@ -43,7 +58,30 @@ if ($user_info == null) {
                 </div>
 
                 <div class="col-9 pe-5 mx-auto">
-                    <div class="display-6 text-xxl-start text-center"><?php echo $user_info['username']; ?></div>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <div class="display-6 text-xxl-start text-center"><?php echo $user_info['username']; ?></div>
+                        </li>
+                        <li class="list-inline-item align-text-bottom">
+                            <ul class="list-inline">
+                                <li class="list-inline-item me-0">
+                                    <button class="btn badge bg-primary rounded-pill role-badge">reader</button>
+                                </li>
+                                <li class="list-inline-item me-0">
+                                    <button class="btn badge bg-success rounded-pill role-badge">admin</button>
+                                </li>
+                                <li class="list-inline-item me-0">
+                                    <button class="btn badge bg-danger rounded-pill role-badge">advertiser</button>
+                                </li>
+                                <li class="list-inline-item me-0">
+                                    <button class="btn badge bg-warning rounded-pill role-badge">designer</button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button class="btn badge bg-info rounded-pill role-badge">writer</button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
                     <form method="post" enctype="multipart/form-data" class="mt-3 profile-form" action="../include/update_account.inc.php">
                         <input name="user-id" type="hidden" value="<?php echo $user_info['user_id']; ?>">
@@ -104,7 +142,7 @@ if ($user_info == null) {
                         <hr>
                         <div class="row m-0 profile-input">
 
-                            <div class="col">
+                            <div class="col p-0">
                                 <label class="form-label" for="delete-account">Delete Account</label><br>
                                 <button class="btn btn-danger" name="delete_account" id="delete-account" type="submit">Delete</button>
                             </div>
@@ -118,7 +156,7 @@ if ($user_info == null) {
                                             <button class="btn btn-outline-dark" name="update_account" type="submit">Update</button>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a href="./profile.php" class="text-decoration-none">
+                                            <a href="./settings.php" class="text-decoration-none">
                                                 <button class="btn btn-outline-primary" type="button">Cancel</button>
                                             </a>
                                         </li>

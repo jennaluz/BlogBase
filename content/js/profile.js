@@ -1,10 +1,19 @@
-function load_profile(prof_pic_file) {
+function load_profile(prof_pic_file, roles) {
     const input_file = document.getElementById("profile-image-input");
     const remove_btn = document.getElementById("remove-profile-picture-btn");
+    const role_badges = document.getElementsByClassName("role-badge");
 
     if (prof_pic_file != "anonymous.jpg") {
         input_file.classList.remove("rounded");
         remove_btn.hidden = false;
+    }
+
+    for (var i = 0; i < role_badges.length; i++) {
+        var role = role_badges[i].innerHTML;
+
+        if (roles[role] == 0) {
+            role_badges[i].disabled = true;
+        }
     }
 }
 
