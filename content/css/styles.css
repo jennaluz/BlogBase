@@ -5,6 +5,24 @@
    font-family: 'Outfit', sans-serif;
 }
 
+.profile-form {
+    width: 95%;
+}
+
+.profile-input {
+    width: 75%;
+}
+
+@media (max-width: 1399.98px) {
+    .profile-form {
+        width: 100%;
+    }
+
+    .profile-input {
+        width: 95%;
+    }
+}
+
 .profile-label {
     font-weight: bold;
 }
