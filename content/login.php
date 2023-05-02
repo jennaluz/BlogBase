@@ -3,6 +3,11 @@ require_once "../include/connect.inc.php";
 include_once "../include/user_info.inc.php";
 
 ob_start();
+
+if ($user_info) {
+    header("Location: ./index.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +73,6 @@ ob_start();
                         </div>
                         <div class="col-auto pt-2">
                             <p>Don't have an account?&emsp;<a href="./register.php">Register Now</a></p>
-                            <p> Forgot your password? <a href="#">Reset Password</a></p>
                         </div>
                     </div>
                 </form>

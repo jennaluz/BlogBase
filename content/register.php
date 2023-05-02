@@ -1,7 +1,13 @@
 <?php
 require_once "../include/connect.inc.php";
 include_once "../include/user_info.inc.php";
+
 ob_start();
+
+if ($user_info) {
+    header("Location: ./index.php");
+}
+
 ?>
 
 <!DOCTYPE html>
