@@ -42,7 +42,7 @@ if ($user_info['writer'] == false) {
         </div>
 
         <div class="col-10 col-lg-7 mt-3 mx-auto">
-        <hr>
+            <hr>
             <h4>
                 <ul class="list-inline">
                     <li class="list-inline-item align-middle">
