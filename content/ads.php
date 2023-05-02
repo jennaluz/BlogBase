@@ -3,7 +3,9 @@ require_once "../include/connect.inc.php";
 include_once "../include/user_info.inc.php";
 
 if ($user_info['advertiser'] == false) {
-    echo "You don't have access to this page";
+    http_response_code(404);
+    include("./404.php");
+    die();
 }
 
 $user_id = $user_info['user_id'];
