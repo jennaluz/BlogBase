@@ -150,7 +150,7 @@ if ($_GET['query'] == "") {
                                                     <?php echo $current_row['first_name'] . " " . $current_row['last_name'] ?>
                                                 </a>
                                             </h4>
-                                            <?php echo "@" . $current_row['username'] ?>
+                                            <p><?php echo "@" . $current_row['username'] ?></p>
                                         </td>
                                     </tr>
                                 <?php } ?>
