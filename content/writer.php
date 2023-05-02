@@ -37,15 +37,22 @@ if ($user_info['writer'] == false) {
             <?php include "./views/sidebar.php" ?>
         </div>
 
+        <div class="container mt-3 mb-3 text-center">
+            <h1>Writer Dashboard</h1>
+        </div>
+
         <div class="col-10 col-lg-7 mt-3 mx-auto">
-            <ul class="list-inline my-5">
-                <li class="list-inline-item align-middle">
-                    <a class="fa-regular fa-square-plus fa-2xl text-reset text-decoration-none" href="./create.php"></a>
-                </li>
-                <li class="list-inline-item align-middle">
-                    <span class="display-6">Written by <?php echo $user_first_name . " " . $user_last_name . ","; ?></span>
-                </li>
-            </ul>
+        <hr>
+            <h4>
+                <ul class="list-inline">
+                    <li class="list-inline-item align-middle">
+                        <a class="fa-regular fa-square-plus text-reset text-decoration-none" href="./create.php"></a>
+                    </li>
+                    <li class="list-inline-item align-middle">
+                        <span>Create a new article</span>
+                    </li>
+                </ul>
+            </h4>
 
             <ul class="nav nav-tabs" id="writer-article-tabs" role="tablist">
                 <li class="nav-item" role="presentation">
