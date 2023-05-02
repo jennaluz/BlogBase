@@ -9,8 +9,10 @@ function xxl() {
         if (width < 1400) {
             roles.classList.remove("list-inline-item");
             roles.classList.add("list-inline");
+            roles.classList.add("mt-2");
         } else {
             roles.classList.remove("list-inline");
+            roles.classList.remove("mt-2");
             roles.classList.add("list-inline-item");
         }
     }
