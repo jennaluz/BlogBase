@@ -165,9 +165,7 @@ $roles_str = json_encode($roles_arr);
                 <p><?php echo $article_info['description']; ?></p>
 
                 <?php if ($article_info['lead_image'] != null) { ?>
-                    <div class="justify-content-center">
-                        <img class="lead-img img-fluid" src="./uploads/leads/<?php echo $article_info['lead_image']; ?>" alt="<?php echo $article_info['lead_image']; ?>">
-                    </div>
+                    <img class="d-block mx-auto img-fluid rounded w-75" src="./uploads/leads/<?php echo $article_info['lead_image']; ?>" alt="<?php echo $article_info['lead_image']; ?>">
                 <?php } ?>
             </div>
 
