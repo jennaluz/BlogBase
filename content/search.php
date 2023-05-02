@@ -85,6 +85,7 @@ if ($_GET['query'] == "") {
         </div>
 
         <div class="col-10 col-lg-7 mx-auto mt-3">
+            <hr>
             <form method="get" action="./search.php" class="input-group rounded">
                 <input class="form-control" name="query" type="search" placeholder="Search" value="<?php echo $search_term ?>" aria-label="Search">
                 <button class="btn btn-outline-dark input-group-text" type="submit">
