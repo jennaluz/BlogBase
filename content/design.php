@@ -6,8 +6,9 @@ ob_start();
 
 // check if user is a designer
 if ($user_info['designer'] == false) {
-    // send to "you don't have access page"
-    echo "You don't have access";
+    http_response_code(404);
+    include("./404.php");
+    die();
 }
 ?>
 
