@@ -42,12 +42,13 @@ $result = mysqli_query($con, $ad_query);
             <?php include "./views/sidebar.php" ?>
         </div>
 
-        <div class="col-10 col-lg-7 mt-5 mx-auto">
-            <div class="text-center">
-                <p class="display-3 mt-3">Spread the Word!</p>
-                <p>Upload your ads to BlogBase to show to our viewers!</p>
-            </div>
+        <div class="container mt-3 mb-3 text-center">
+            <h1>Advertiser Dashboard</h1>
+        </div>
 
+        <div class="col-10 col-lg-7 mt-3 mx-auto">
+            <hr>
+            <h4 class="text-center">Upload your ads to BlogBase to show to our viewers!</h4>
             <div class="col-10 col-lg-7 my-5 mx-auto text-center">
                 <form method="post" action="../include/upload_img.inc.php?img=ad" enctype="multipart/form-data">
                     <div class="input-group">
