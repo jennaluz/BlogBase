@@ -6,8 +6,6 @@ ob_start();
 
 // check if the current user has admin authorization
 if ($user_info['admin'] != true) {
-    // send to "you don't have access" page
-    //echo "You don't have access to the admin page!";
     http_response_code(404);
     include("./404.php");
     die();
