@@ -41,6 +41,7 @@ if ($user_info['designer'] == false) {
         </div>
 
         <div class="col-10 col-lg-7 mt-3 mx-auto">
+            <hr>
             <ul class="nav nav-tabs" id="article-approval-tabs" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="unapproved-tab" data-bs-toggle="tab" data-bs-target="#unapproved-tab-pane" type="button" role="tab" aria-controls="unapproved-tab-pane" aria-selected="true">Unapproved</button>
