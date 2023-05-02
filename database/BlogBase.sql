@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 01, 2023 at 12:39 AM
+-- Generation Time: May 02, 2023 at 03:19 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -146,6 +146,7 @@ CREATE TABLE `Users` (
   `last_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `biography` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `approved` tinyint(1) NOT NULL DEFAULT 0,
   `reader` tinyint(1) NOT NULL DEFAULT 1,
   `writer` tinyint(1) NOT NULL DEFAULT 0,
@@ -158,12 +159,12 @@ CREATE TABLE `Users` (
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`user_id`, `profile_picture`, `username`, `first_name`, `last_name`, `email`, `password`, `approved`, `reader`, `writer`, `designer`, `advertiser`, `admin`) VALUES
-(1, 'anonymous.jpg', 'chad_flemmington', 'Chad', 'Flemmington', 'chad.flemmington@gmail.com', '7494dc318aa9772ec3fe1c507c4e2be5', 1, 1, 1, 1, 1, 1),
-(2, 'anonymous.jpg', 'rodrick_henry', 'Rodrick', 'Henry', 'rodrick.henry@gmail.com', 'bb795fe9516be8a6b6e91f1e68ec68fa', 1, 1, 1, 1, 0, 0),
-(3, 'anonymous.jpg', 'chii_robinson', 'Chii', 'Robinson', 'chii.robinson@gmail.com', 'fcb98ce75506ba63e4476a57998810c9', 1, 1, 1, 1, 1, 1),
-(4, 'anonymous.jpg', 'rebecca_ross', 'Rebecca', 'Ross', 'rebecca.ross@gmail.com', 'a25d40c2e2be71e10fe7778758a28029', 1, 1, 1, 0, 0, 0),
-(9, 'anonymous.jpg', 'erin_block', 'Erin', 'Block', 'erin.block@gmail.com', '9e90273a6a0607dfc7039a0a34eff03e', 1, 1, 0, 0, 0, 0);
+INSERT INTO `Users` (`user_id`, `profile_picture`, `username`, `first_name`, `last_name`, `email`, `password`, `biography`, `approved`, `reader`, `writer`, `designer`, `advertiser`, `admin`) VALUES
+(1, 'anonymous.jpg', 'chad_flemmington', 'Chadwick', 'Flemmington', 'chad.flemmington@gmail.com', '7494dc318aa9772ec3fe1c507c4e2be5', 'I am the founder of BlogBase!', 1, 1, 1, 1, 1, 1),
+(2, 'anonymous.jpg', 'rodrick_henry', 'Rodrick', 'Henry', 'rodrick.henry@gmail.com', 'bb795fe9516be8a6b6e91f1e68ec68fa', NULL, 1, 1, 1, 1, 0, 0),
+(3, 'anonymous.jpg', 'chii_robinson', 'Chii', 'Robinson', 'chii.robinson@gmail.com', 'fcb98ce75506ba63e4476a57998810c9', NULL, 1, 1, 1, 1, 1, 1),
+(4, 'anonymous.jpg', 'rebecca_ross', 'Rebecca', 'Ross', 'rebecca.ross@gmail.com', 'a25d40c2e2be71e10fe7778758a28029', NULL, 1, 1, 1, 0, 0, 0),
+(9, 'anonymous.jpg', 'erin_block', 'Erin', 'Block', 'erin.block@gmail.com', '9e90273a6a0607dfc7039a0a34eff03e', NULL, 1, 1, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
