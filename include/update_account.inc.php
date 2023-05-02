@@ -23,7 +23,7 @@ if (isset($_POST['update_account'])) {
 
     $update_query = "UPDATE Users
                      SET first_name = '$first_name', last_name = '$last_name', email = '$email', biography = '$biography'
-                     WHERE user_id = $user_id";
+                     WHERE username = '$username'";
 
     $result = mysqli_query($con, $update_query);
 
@@ -54,6 +54,6 @@ if (isset($_POST['update_account'])) {
     }
 }
 
-header("Location: ../content/settings.php");
+header("Location: ../content/settings.php?username=$username");
 ob_end_flush();
 ?>
