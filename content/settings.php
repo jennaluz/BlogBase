@@ -145,7 +145,7 @@ $roles_str = json_encode($roles_arr);
                         <hr>
                         <div class="row m-0 profile-input">
 
-                            <div class="col p-0">
+                            <div class="col p-0 mb-2">
                                 <label class="form-label" for="delete-account">Delete Account</label><br>
                                 <button class="btn btn-danger" name="delete_account" id="delete-account" type="submit">Delete</button>
                             </div>
