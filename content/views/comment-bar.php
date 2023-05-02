@@ -30,7 +30,7 @@ $num_comments = $comments_result->num_rows;
                         <textarea class="form-control border-0 p-0" id="user-comment-box" placeholder="Add a comment..." style="resize: none; box-shadow: none"></textarea>
                     </div>
                 </div>
-                <button onclick="root_comment(<?php echo $article_info['article_id']; ?>)" class="m-3 ms-auto btn btn-outline-dark rounded-pill">Submit</button>
+                <button onclick="root_comment(<?php echo $article_info['article_id']; ?>, '<?php echo isset($user_info) ? $user_info['profile_picture'] : null ?>')" class="m-3 ms-auto btn btn-outline-dark rounded-pill">Submit</button>
             </div>
 
             <?php while ($row = $comments_result->fetch_assoc()) { ?>

@@ -15,17 +15,20 @@ function upload_comment(a_id, p_id, text, callback) {
     );
 }
 
-function root_comment(a_id) {
+function root_comment(a_id, pic_path) {
     username = $('#username');
-    console.log(username.text());
+    console.log(pic_path);
     text = $('#user-comment-box').val();
+    if (pic_path == "") {
+        pic_path = "anonymous.jpg";
+    }
     upload_comment(a_id, null, text, function(result) {
         if (result == true) {
             $('#user-comment-box').val('');
             $('#new-comment').after(
                 `<hr>
                 <div class="d-flex my-3">
-                    <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
+                    <img src="uploads/profile_pictures/` + pic_path + `" class="me-3 rounded-circle" style="width:45px; height:45px;">
                     <div class="body">
                         <h5 class="fw-bold">
                             ` + username.text() + `
