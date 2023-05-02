@@ -3,12 +3,21 @@ ob_start();
 require_once "../include/connect.inc.php";
 include_once "../include/user_info.inc.php";
 
-$username = $_GET['username'];
-
-if (($user_info == null) || ($user_info['username'] != $username)) {
+/*
+if (($user_info == null)) {
     echo "You can't be here";
     // redirect to login page?
 }
+ */
+
+$username = $_GET['username'];
+
+$user_query = "SELECT *
+               FROM Users
+               WHERE username = '$username'";
+
+$user_result = mysqli_query($con, $user_query);
+$user_prof = $user_result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -38,39 +47,51 @@ if (($user_info == null) || ($user_info['username'] != $username)) {
         <div class="container">
             <div class="row mt-3 gx-xl-5">
                 <div class="col-10 col-lg mx-auto text-center">
-                    <img class="profile-img rounded-circle" id="profile-picture" src="./uploads/profile_pictures/<?php echo $user_info['profile_picture']; ?>">
+                    <img class="profile-img rounded-circle" id="profile-picture" src="./uploads/profile_pictures/<?php echo $user_prof['profile_picture']; ?>">
                 </div>
 
                 <div class="col-9 mx-auto">
                     <ul class="list-inline text-xxl-start text-center">
-                        <li class="list-inline-item m-0">
-                            <div class="display-6"><?php echo $user_info['username']; ?></div>
+                        <li class="list-inline-item m-0 me-3">
+                            <div class="display-6"><?php echo $user_prof['username']; ?></div>
                         </li>
                         <?php if ($username != $user_info['username']) { ?>
                             <li class="list-inline-item align-text-bottom">
                                 <button type="button" class="btn btn-outline-dark btn-sm">Follow</button>
                             </li>
                         <?php }?>
-                        <li class="list-inline align-text-middle" id="role-list">
+                        <li class="list-inline align-text-middle mt-2" id="role-list">
                             <ul class="list-inline">
                                 <li class="list-inline-item me-0">
-                                    <button class="btn badge bg-primary rounded-pill role-badge">reader</button>
+                                    <a class="btn badge bg-primary rounded-pill role-badge text-decoration-none" href="./index.php">reader</a>
                                 </li>
-                                <li class="list-inline-item me-0">
-                                    <button class="btn badge bg-success rounded-pill role-badge">admin</button>
-                                </li>
-                                <li class="list-inline-item me-0">
-                                    <button class="btn badge bg-danger rounded-pill role-badge">advertiser</button>
-                                </li>
-                                <li class="list-inline-item me-0">
-                                    <button class="btn badge bg-warning rounded-pill role-badge">designer</button>
-                                </li>
-                                <li class="list-inline-item">
-                                    <button class="btn badge bg-info rounded-pill role-badge">writer</button>
-                                </li>
+                                <?php if ($user_prof['admin'] == 1) { ?>
+                                    <li class="list-inline-item me-0">
+                                        <a class="btn badge bg-success rounded-pill role-badge text-decoration-none" href="./admin.php">admin</a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($user_prof['advertiser'] == 1) { ?>
+                                    <li class="list-inline-item me-0">
+                                        <a class="btn badge bg-danger rounded-pill role-badge text-decoration-none" href="./ads.php">advertiser</a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($user_prof['designer'] == 1) { ?>
+                                    <li class="list-inline-item me-0">
+                                        <a class="btn badge bg-warning rounded-pill role-badge text-decoration-none" href="./design.php">designer</a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($user_prof['writer'] == 1) { ?>
+                                    <li class="list-inline-item">
+                                        <a class="btn badge bg-info rounded-pill role-badge text-decoration-none" href="./writer.php">writer</a>
+                                    </li>
+                                <?php } ?>
                             </ul>
                         </li>
                     </ul>
+
+                    <h5 class="px-2 text-xxl-start text-center">
+                        <?php echo $user_prof['biography']; ?>
+                    </h5>
 
                     <hr>
                 </div>
