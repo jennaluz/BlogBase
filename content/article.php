@@ -8,7 +8,7 @@ ob_start();
 $requested_id = $_GET['id'];
 $article_query = "SELECT Articles.article_id, Articles.title, Articles.description, Articles.lead_image,
                          Articles.content, UNIX_TIMESTAMP(Articles.submit_date) as submit_date,
-                         Articles.approved, Articles.submitted, Articles.author_id, Users.first_name, Users.last_name
+                         Articles.approved, Articles.submitted, Articles.author_id, Users.first_name, Users.last_name, Users.username
                   FROM Articles INNER JOIN Users ON Articles.author_id = Users.user_id
                   WHERE Articles.article_id = $requested_id";
 $article_result = mysqli_query($con, $article_query);
@@ -122,7 +122,9 @@ $roles_str = json_encode($roles_arr);
 
                 <ul class="list-inline">
                     <li class="list-inline-item align-middle">
-                        <?php echo $article_info['first_name'] . " " . $article_info['last_name'] ?>
+                        <a class="text-reset text-decoration-none" href="./profile.php?username=<?php echo $article_info['username'] ?>">
+                            <?php echo $article_info['first_name'] . " " . $article_info['last_name'] ?>
+                        </a.
                     </li>
                     <li class="mx-0 list-inline-item align-middle">
                         <?php echo date("M. d, Y", $article_info['submit_date']) ?>
