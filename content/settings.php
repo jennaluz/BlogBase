@@ -7,8 +7,9 @@ include_once "../include/user_info.inc.php";
 $username = $_GET['username'];
 
 if (($user_info == null) || ($user_info['username'] != $username)) {
-    echo "You can't be here";
-    // redirect to login page?
+    http_response_code(404);
+    include("./404.php");
+    die();
 }
 
 $roles_arr = array(
