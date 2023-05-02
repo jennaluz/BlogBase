@@ -10,14 +10,34 @@ if (($user_info == null)) {
 }
  */
 
-$username = $_GET['username'];
+if (isset($_GET['username'])) {
+    // user wants to look up a specific profile
+    $username = $_GET['username'];
 
-$user_query = "SELECT *
-               FROM Users
-               WHERE username = '$username'";
+    $user_query = "SELECT *
+                   FROM Users
+                   WHERE username = '$username'";
 
-$user_result = mysqli_query($con, $user_query);
-$user_prof = $user_result->fetch_assoc();
+    $user_result = mysqli_query($con, $user_query);
+    $user_prof = $user_result->fetch_assoc();
+} else {
+    if ($user_info) {
+        // user is logged in
+        $username = $user_info['username'];
+        $user_query = "SELECT *
+                       FROM Users
+                       WHERE username = '$username'";
+
+        $user_result = mysqli_query($con, $user_query);
+        $user_prof = $user_result->fetch_assoc();
+    } else {
+        // user is not logged in
+        http_response_code(404);
+        include("./404.php");
+        die();
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
