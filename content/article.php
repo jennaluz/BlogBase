@@ -158,9 +158,6 @@ $roles_str = json_encode($roles_arr);
                                     </a>
                             <?php } ?>
                         </li>
-                        <li class="mx-0 list-inline-item align-middle">
-                            <i class="btn p-1 fa-solid fa-newspaper"></i>
-                        </li>
                     <?php } ?>
                 </ul>
 
