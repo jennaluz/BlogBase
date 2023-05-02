@@ -1,7 +1,7 @@
 <script src="./js/comment.js"></script>
 
 <?php
-$comments_query = "SELECT u.username, c.comment_id, c.article_id, c.parent_id, c.submitter_id, c.content, UNIX_TIMESTAMP(c.submit_date) as submit_date, n.num_likes
+$comments_query = "SELECT u.profile_picture, u.username, c.comment_id, c.article_id, c.parent_id, c.submitter_id, c.content, UNIX_TIMESTAMP(c.submit_date) as submit_date, n.num_likes
                    FROM Comments AS c LEFT JOIN (
                        SELECT l.comment_id, count(l.comment_id) AS num_likes
                        FROM LikedComments AS l
@@ -24,7 +24,7 @@ $num_comments = $comments_result->num_rows;
         <div>
             <div id="new-comment" class="card mb-2">
                 <div class="d-flex m-3">
-                    <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
+                    <img src="./uploads/profile_pictures/<?php echo isset($user_info) ? $user_info['profile_picture'] : 'anonymous.jpg' ?>" class="me-3 rounded-circle" style="width:45px; height:45px;">
                     <div class="body">
                         <h5 id="username" class="fw-bold"><?php echo isset($user_info['username']) ? $user_info['username'] : "anonymous"; ?></h5>
                         <textarea class="form-control border-0 p-0" id="user-comment-box" placeholder="Add a comment..." style="resize: none; box-shadow: none"></textarea>
@@ -36,7 +36,7 @@ $num_comments = $comments_result->num_rows;
             <?php while ($row = $comments_result->fetch_assoc()) { ?>
                 <hr>
                 <div class="d-flex my-3">
-                    <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
+                    <img src="./uploads/profile_pictures/<?php echo isset($row['submitter_id']) ? $row['profile_picture'] : 'anonymous.jpg' ?>" class="me-3 rounded-circle" style="width:45px; height:45px;">
                     <div class="body">
                         <h5 class="fw-bold">
                             <?php
