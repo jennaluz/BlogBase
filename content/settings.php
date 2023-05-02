@@ -133,12 +133,12 @@ $roles_str = json_encode($roles_arr);
 
                             <div class="col p-0">
                                 <label class="form-label" for="old-password-input">Old Password</label>
-                                <input class="form-control" type="password" id="old-password-input" oninput="update();">
+                                <input class="form-control" type="password" id="old-password-input" name="old_password" oninput="update();">
                             </div>
 
                             <div class="col pe-0">
                                 <label class="form-label" for="new-password-input">New Password</label>
-                                <input class="form-control" type="" id="new-password-input" oninput="update();">
+                                <input class="form-control" type="" id="new-password-input" name="new_password" oninput="update();">
                             </div>
                         </div>
 
