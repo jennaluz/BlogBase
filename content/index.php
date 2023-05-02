@@ -41,6 +41,7 @@ $approved_articles_result = mysqli_query($con, $approved_articles_query);
         </div>
 
         <div class="col-10 col-lg-7 mx-auto mt-3">
+            <hr>
             <table class="table text-start">
                 <thead>
                 </thead>
