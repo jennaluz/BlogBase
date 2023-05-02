@@ -61,10 +61,10 @@ $roles_str = json_encode($roles_arr);
 
                 <div class="col-9 mx-auto">
                     <ul class="list-inline text-xxl-start text-center">
-                        <li class="list-inline-item m-0">
+                        <li class="list-inline-item m-0 me-2">
                             <div class="display-6"><?php echo $user_info['username']; ?></div>
                         </li>
-                        <li class="list-inline-item align-text-bottom" id="role-list">
+                        <li class="list-inline-item align-text-bottom mt-2" id="role-list">
                             <ul class="list-inline">
                                 <li class="list-inline-item me-0">
                                     <button class="btn badge bg-primary rounded-pill role-badge">reader</button>
