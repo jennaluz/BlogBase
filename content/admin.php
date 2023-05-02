@@ -39,10 +39,11 @@ if ($user_info['admin'] != true) {
         </div>
 
         <div class="container mt-3 mb-3 text-center">
-            <h1>Hello <?php echo $user_info['username'] ?>,</h1>
+            <h1>Admin Dashboard</h1>
         </div>
 
         <div class="col-10 col-lg-7 mx-auto mt-3">
+            <hr>
             <ul class="nav nav-tabs" id="users-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="registered-tab" data-bs-toggle="tab" data-bs-target="#registered-tab-pane" type="button" role="tab" aria-controls="registered-tab-pane" aria-selected="true">Registered Users</button>
