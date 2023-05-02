@@ -50,25 +50,31 @@ $saved_articles_result = mysqli_query($con, $saved_articles_query);
                 <thead>
                 </thead
                 <tbody>
-                    <?php while ($current_row = $saved_articles_result->fetch_assoc()) { ?>
-                        <tr id="article-<?php echo $current_row['article_id'] ?>">
-                            <td class="text-nowrap">
-                                <?php echo date("M. d, Y", $current_row['saved_date']) ?>
-                            </td>
-                            <td>
-                                <h4>
-                                    <a class="text-reset text-decoration-none" href="./article.php?id=<?php echo $current_row['article_id'] ?>">
-                                        <?php echo $current_row['title'] ?>
-                                    </a>
-                                </h4>
-                                <?php echo $current_row['description'] ?>
-                            </td>
-                            <td>
-                                <button onclick="remove_saved_row(<?php echo $current_row['article_id'] ?>)" id="bookmark-<?php echo $current_row['article_id'] ?>" class="btn p-1">
-                                    <span id="bookmark-icon-<?php echo $current_row['article_id'] ?>" class="fa-solid fa-bookmark">
-                                </button>
-                            </td>
+                    <?php if ($saved_articles_result->num_rows == 0) { ?>
+                        <tr>
+                            <h4 class="m-2">No saved articles...</h4>
                         </tr>
+                    <?php } else {?>
+                        <?php while ($current_row = $saved_articles_result->fetch_assoc()) { ?>
+                            <tr id="article-<?php echo $current_row['article_id'] ?>">
+                                <td class="text-nowrap">
+                                    <?php echo date("M. d, Y", $current_row['saved_date']) ?>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <a class="text-reset text-decoration-none" href="./article.php?id=<?php echo $current_row['article_id'] ?>">
+                                            <?php echo $current_row['title'] ?>
+                                        </a>
+                                    </h4>
+                                    <?php echo $current_row['description'] ?>
+                                </td>
+                                <td>
+                                    <button onclick="remove_saved_row(<?php echo $current_row['article_id'] ?>)" id="bookmark-<?php echo $current_row['article_id'] ?>" class="btn p-1">
+                                        <span id="bookmark-icon-<?php echo $current_row['article_id'] ?>" class="fa-solid fa-bookmark">
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     <?php } ?>
                 </tbody>
             </table>
