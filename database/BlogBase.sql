@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 03, 2023 at 02:44 AM
+-- Generation Time: May 03, 2023 at 03:26 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -163,12 +163,11 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`user_id`, `profile_picture`, `username`, `first_name`, `last_name`, `email`, `password`, `biography`, `approved`, `reader`, `writer`, `designer`, `advertiser`, `admin`) VALUES
-(1, 'winter.jpeg', 'chad_flemmington', 'Chadwick', 'Flemmington', 'chad.flemmington@gmail.com', 'af4126b50d9623c8650424bccaa46ded', 'I am the founder of BlogBase!', 1, 1, 1, 1, 1, 1),
-(2, 'anonymous.jpg', 'rodrick_henry', 'Rodrick', 'Henry', 'rodrick.henry@gmail.com', 'bb795fe9516be8a6b6e91f1e68ec68fa', NULL, 1, 1, 1, 1, 0, 0),
-(3, 'anonymous.jpg', 'chii_robinson', 'Chii', 'Robinson', 'chii.robinson@gmail.com', 'fcb98ce75506ba63e4476a57998810c9', 'I love surfing.', 1, 1, 1, 1, 1, 1),
-(4, 'anonymous.jpg', 'rebecca_ross', 'Rebecca', 'Ross', 'rebecca.ross@gmail.com', 'a25d40c2e2be71e10fe7778758a28029', NULL, 1, 1, 1, 0, 0, 0),
-(9, 'anonymous.jpg', 'erin_block', 'Erin', 'Block', 'erin.block@gmail.com', '9e90273a6a0607dfc7039a0a34eff03e', NULL, 1, 1, 0, 0, 0, 0),
-(11, 'anonymous.jpg', 'jennaluz', 'Jenna', 'P', 'jpura827@gmail.com', 'baf81cf446fd9c1ace21fba8912c354e', NULL, 1, 1, 1, 1, 1, 1);
+(1, 'winter.jpeg', 'chad_flemmington', 'Chadwick', 'Flemmington', 'chad.flemmington@gmail.com', '$2y$10$xWEmJy.sVbqEUqiBc0WS4ed5otgNHyLKj4oEwuiqq4qUkWW8gMnCK', 'I am the founder of BlogBase!', 1, 1, 1, 1, 1, 1),
+(2, 'anonymous.jpg', 'rodrick_henry', 'Rodrick', 'Henry', 'rodrick.henry@gmail.com', '$2y$10$tLIUwGfglJHQEpZO5VroMucCVs5WV5N6TNy7rtCl.fcnAZLvbyeKK', NULL, 1, 1, 1, 1, 0, 0),
+(3, 'anonymous.jpg', 'chii_robinson', 'Chii', 'Robinson', 'chii.robinson@gmail.com', '$2y$10$OIEgQ9EAdUEvcZw12yt9a.CPGY7V/QinhqDwi1.Y.8jwz6tH/zHZq', 'I love surfing.', 1, 1, 1, 1, 1, 1),
+(4, 'anonymous.jpg', 'rebecca_ross', 'Rebecca', 'Ross', 'rebecca.ross@gmail.com', '$2y$10$4W7slFgSVkA5Na4LGLVCVOXX/vG3U9EVpeXEeWAvHgKxBTaXkRPu6', NULL, 1, 1, 1, 0, 0, 0),
+(9, 'anonymous.jpg', 'erin_block', 'Erin', 'Block', 'erin.block@gmail.com', '$2y$10$hiVSVxb1DhvSEUFHZlFXP.ryUdEtIr7cdzk6ZIZIqzBs6ulO4jzk2', '', 1, 1, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
