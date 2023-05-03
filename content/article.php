@@ -18,13 +18,17 @@ if ($article_info == null) {
     // send to 404 error page
     //header('Location: ./error_404.php');
     //ob_end_flush();
-    echo "doesn't exist 404";
+    http_response_code(404);
+    include("./404.php");
+    die();
 }
 
 // check if user is accessing unapproved article w/o designer role
 if ($article_info['approved'] != true && $user_info['designer'] != true) {
     // send to "you don't have access" page
-    echo "You don't have access";
+    http_response_code(404);
+    include("./404.php");
+    die();
 }
 
 if ($user_info['user_id'] == $article_info['author_id']) {
