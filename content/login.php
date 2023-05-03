@@ -7,7 +7,6 @@ ob_start();
 if ($user_info) {
     header("Location: ./index.php");
 }
-
 ?>
 
 <!DOCTYPE html>

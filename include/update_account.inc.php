@@ -27,9 +27,6 @@ if (isset($_POST['update_account'])) {
 
     $update_result = mysqli_query($con, $update_query);
 
-    $old_password = "";
-    $new_password = "";
-
     if (isset($_POST['old_password'])) {
         $old_password = stripslashes($_POST['old_password']);
         $old_password = mysqli_escape_string($con, $old_password);
@@ -37,14 +34,14 @@ if (isset($_POST['update_account'])) {
         if (md5($old_password) == $user_info['password']) {
             $new_password = stripslashes($_POST['new_password']);
             $new_password = mysqli_escape_string($con, $new_password);
+
+            $password_query = "UPDATE Users
+                               SET password = '" . md5($new_password) . "'
+                               WHERE username = '$username'";
+
+            $password_result = mysqli_query($con, $password_query);
         }
-        $password_query = "UPDATE Users
-                           SET password = '" . md5($new_password) . "'
-                           WHERE username = '$username'";
-
-        $password_result = mysqli_query($con, $password_query);
     }
-
 
     $dest_dir = "../content/uploads/profile_pictures/";
     $accepted_types = array('jpg','png','jpeg');
