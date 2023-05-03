@@ -31,12 +31,12 @@ if (isset($_POST['update_account'])) {
         $old_password = stripslashes($_POST['old_password']);
         $old_password = mysqli_escape_string($con, $old_password);
 
-        if (md5($old_password) == $user_info['password']) {
+        if (password_verify($old_password, $user_info['password'])) {
             $new_password = stripslashes($_POST['new_password']);
             $new_password = mysqli_escape_string($con, $new_password);
 
             $password_query = "UPDATE Users
-                               SET password = '" . md5($new_password) . "'
+                               SET password = '" . password_hash($new_password, PASSWORD_DEFAULT) . "'
                                WHERE username = '$username'";
 
             $password_result = mysqli_query($con, $password_query);

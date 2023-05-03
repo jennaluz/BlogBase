@@ -7,6 +7,7 @@ ob_start();
 if ($user_info) {
     header("Location: ./index.php");
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -42,20 +43,21 @@ if ($user_info) {
 
             $query = "SELECT *
                       FROM `Users`
-                      WHERE username = ? AND password = '" . md5($password) . "' AND approved != 0";
-                      /*WHERE username = ? AND password = '" . password_hash($password, PASSWORD_DEFAULT) . "' AND approved != 0";*/
+                      WHERE username = ? AND approved != 0";
             $result = mysqli_execute_query($con, $query, [$username]);
-            $rows = mysqli_num_rows($result);
+            $rows = $result->num_rows;
 
             if ($rows == 1) {
-                $_SESSION['username'] = $username;
-                header("Location: ./index.php");
-                ob_end_flush();
-            } else{
-                header("Location: ./login_error.php");
-                ob_end_flush();
+                $requested_user = $result->fetch_assoc();
+                if (password_verify($password, $requested_user['password'])) {
+                    $_SESSION['username'] = $username;
+                    header("Location: ./index.php");
+                    die();
+                }
             }
-        } else{ ?>
+            header("Location: ./login_error.php");
+            ob_end_flush();
+        } else { ?>
             <div class="col-10 col-lg-5  mx-auto">
                 <form method="post" name="login">
                     <div class="mt-2 mb-3">

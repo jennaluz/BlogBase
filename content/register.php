@@ -91,7 +91,7 @@ if ($user_info) {
                 echo "<h5 class='mx-auto'> That username has been taken!</h5>";
             } else {
                 $query = "INSERT INTO `Users` (username, first_name, last_name, email, password, admin, designer, writer, advertiser)
-                          VALUES (?, ?, ?, ?, '" . md5($password) . "', '$admin', '$designer', '$writer', '$advertiser')";
+                          VALUES (?, ?, ?, ?, '" . password_hash($password, PASSWORD_DEFAULT) . "', '$admin', '$designer', '$writer', '$advertiser')";
                 $result = mysqli_execute_query($con, $query, $user_info_array);
 
                 if ($result) {
