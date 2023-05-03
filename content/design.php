@@ -37,7 +37,7 @@ if ($user_info['designer'] == false) {
         </div>
 
         <div class="mt-3 text-center">
-            <h1>Article Approval</h1>
+            <h1>Designer Dashboard</h1>
         </div>
 
         <div class="col-10 col-lg-7 mt-3 mx-auto">
