@@ -41,7 +41,6 @@ function root_comment(a_id, pic_path) {
                             <button class="btn p-1">
                                 <span id="like-icon-<?php echo $row['comment_id']?>" class="fa-regular fa-heart">
                             </button>
-                            <button class="btn p-1">Reply</button>
                         </div>
                     </div>
                 </div>`

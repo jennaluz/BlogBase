@@ -17,7 +17,7 @@ $num_comments = $comments_result->num_rows;
 
 <div class="offcanvas offcanvas-end bg-light" data-bs-scroll="true" tabindex="-1" id="offcanvas-comments" aria-labelledby="offcanvas-comments-label">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvas-comments-label">Comments (<?php echo $num_comments + 10 ?>)</h5>
+        <h5 class="offcanvas-title" id="offcanvas-comments-label">Comments (<?php echo $num_comments ?>)</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -80,14 +80,14 @@ $num_comments = $comments_result->num_rows;
                                 if ($row['num_likes'] > 0) {
                                 }
                             ?>
-                            <button class="btn p-1">Reply</button>
+                            <!-- <button class="btn p-1">Reply</button> -->
                         </div>
                     </div>
                 </div>
             <?php } ?>
 
+            <?php /* here are some examples of what we envisioned the comment bar to look like with reply cards and texareas.
             <hr>
-
             <div class="d-flex my-3">
                 <img src="uploads/profile_pictures/anonymous.jpg" class="me-3 rounded-circle" style="width:45px; height:45px;">
                 <div class="body">
@@ -310,6 +310,7 @@ $num_comments = $comments_result->num_rows;
                     </div>
                 </div>
             </div>
+            */?>
         </div>
     </div>
 </div>
