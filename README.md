@@ -35,6 +35,13 @@ We are building BlogBase with XAMPP in mind. Other server stacks may work, but h
 
 You should now be able to access BlogBase by navigating to `localhost/blogbase/content/` in your browser!
 
+* Note: In order to upload images through the webpage, you will need to change the permissions of the `uploads` directory. From the
+  root of the project, run the following command:
+  
+
+      chmod -R 777 content/uploads
+
+
 ## Usage
 
 The usernames of all included users can be found in the "Users" table of the BlogBase database. 
