@@ -57,7 +57,7 @@ if(isset($_SESSION["username"])){
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item d-md-none mb-2">
                     <form method="get" action="./search.php" class="input-group rounded">
-                        <button class="btn input-group-text rounded" type="submit">
+                        <button class="btn btn-outline-warning border-0 text-dark input-group-text rounded" type="submit">
                             <i class="fa-solid fa-search"></i>
                         </button>
                         <input class="form-control rounded" name="query" type="search" placeholder="Search" aria-label="Search">
