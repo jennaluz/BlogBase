@@ -21,7 +21,11 @@
             </ul>
         </div>
 
-        <a class="navbar-brand col-4 mx-auto text-center order-1 order-md-1" href="./index.php">BlogBase</a>
+        <a class="col-4 mx-auto text-center order-1 order-md-1" href="./index.php">
+            <span class="navbar-brand border-0 rounded-pill btn btn-outline-warning">
+                BlogBase
+            </span>
+        </a>
 
         <div class="navbar ms-auto order-2 col-4 py-0">
             <?php session_start() ?>
