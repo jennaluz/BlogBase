@@ -5,6 +5,10 @@
    font-family: 'Outfit', sans-serif;
 }
 
+.navbar-brand {
+    font-family: 'Aclonica', sans-serif;
+}
+
 .profile-form {
     width: 95%;
 }
