@@ -6,13 +6,13 @@
         <div class="me-auto order-0 order-md-0 col-4">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="btn" data-bs-toggle="offcanvas" href="#offcanvas-sidebar" role="button" aria-controls="offcanvas-sidebar">
+                    <a class="btn btn-outline-warning text-dark border-0" data-bs-toggle="offcanvas" href="#offcanvas-sidebar" role="button" aria-controls="offcanvas-sidebar">
                         <span class="fa-solid fa-bars"></span>
                     </a>
                 </li>
                 <li class="nav-item d-md-block d-none">
                     <form method="get" action="./search.php" class="input-group rounded">
-                        <button class="btn input-group-text rounded" type="submit">
+                        <button class="btn btn-outline-warning border-0 text-dark input-group-text rounded" type="submit">
                             <i class="fa-solid fa-search"></i>
                         </button>
                         <input class="form-control rounded" name="query" type="search" placeholder="Search" aria-label="Search">
@@ -33,7 +33,7 @@
                 <?php if (isset($user_info['username'])) { ?>
                     <li class="nav-item">
                         <div class="dropdown">
-                            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-outline-warning border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="./uploads/profile_pictures/<?php echo $user_info['profile_picture']; ?>" class="rounded-circle" style="width:35px; height:35px;">
                             </button>
 
