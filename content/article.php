@@ -79,7 +79,7 @@ $roles_str = json_encode($roles_arr);
             <?php include "./views/sidebar.php" ?>
         </div>
         <div class="comment-bar">
-            <?php include "./views/comment-bar.php" ?>
+            <?php include "./views/comment_bar.php" ?>
         </div>
 
         <div class="col-10 col-lg-7 mx-auto mt-3">
