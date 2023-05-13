@@ -6,8 +6,9 @@ include_once "../include/user_info.inc.php";
 
 // check if user is a writer
 if ($user_info['writer'] == false) {
-    // redirect to "You don't have access" page
-    echo "You don't have access to this page";
+    http_response_code(404);
+    include("./404.php");
+    die();
 }
 
 $requested_id = -1;
