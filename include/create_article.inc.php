@@ -71,6 +71,8 @@ if (isset($_POST['submit_article']) || isset($_POST['save_article'])) {  // crea
 
         $result = mysqli_query($con, $remove_lead_query);
     }
+
+    $return_page = "article.php?id=$article_id";
 } else if (isset($_GET['submit_article'])) {  // writer.php
     $article_id = $_GET['submit_article'];
     $user_id = $user_info['user_id'];
