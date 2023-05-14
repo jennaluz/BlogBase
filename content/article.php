@@ -23,16 +23,19 @@ if ($article_info == null) {
     die();
 }
 
-// check if user is accessing unapproved article w/o designer role
-if ($article_info['approved'] != true && $user_info['designer'] != true) {
-    // send to "you don't have access" page
-    http_response_code(404);
-    include("./404.php");
-    die();
-}
-
 if ($user_info['user_id'] == $article_info['author_id']) {
     $writer = true;
+}
+
+// check if user can see unsubmitted version (i.e. is the writer)
+if ($article_info['submitted'] == false && $writer != true) {
+    // check if user is accessing unapproved article w/o designer role
+    if ($article_info['approved'] != true && $user_info['designer'] != true) {
+        // send to "you don't have access" page
+        http_response_code(404);
+        include("./404.php");
+        die();
+    }
 }
 
 $roles_arr = array(
