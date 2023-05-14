@@ -30,7 +30,7 @@ if ($user_info) {
     <body>
         <div class="container mt-5 mb-3 text-center">
             <h1>
-                <a class="text-decoration-none text-reset" href="./index.php">BlogBase</a>
+                <a class="navbar-brand text-decoration-none text-reset" href="./index.php">BlogBase</a>
             </h1>
         </div>
 
